@@ -5,10 +5,7 @@ import org.academiadecodigo.debuggingac.characters.CharactersFactory;
 import org.academiadecodigo.debuggingac.characters.Feature;
 import org.academiadecodigo.debuggingac.characters.Hittable;
 import org.academiadecodigo.debuggingac.menu.Menu;
-import org.academiadecodigo.debuggingac.simplegraphics.keyboard.Keyboard;
-import org.academiadecodigo.debuggingac.simplegraphics.keyboard.KeyboardEvent;
-import org.academiadecodigo.debuggingac.simplegraphics.keyboard.KeyboardEventType;
-import org.academiadecodigo.debuggingac.simplegraphics.keyboard.KeyboardHandler;
+import org.academiadecodigo.debuggingac.simplegraphics.pictures.Picture;
 
 public class Game implements Clickable {
     private static final int TOTAL_CHARACTERS = 5;
@@ -131,10 +128,11 @@ public class Game implements Clickable {
 
     }
 
-    private void gameOver() {
+    public void gameOver() throws InterruptedException {
         finished = true;
-        //gameOverMenu();
-
+        Picture gameOver = new Picture(0, 0, "resources/images/gameover.png");
+        gameOver.draw();
+        Thread.sleep(2000);
     }
 
     public int getScore() {
