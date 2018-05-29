@@ -7,8 +7,8 @@ import org.academiadecodigo.debuggingac.Clickable;
 public class Menu implements Clickable{
 
     private MenuEvent menuEvent;
-    private int mouseX;
-    private int mouseY;
+    private volatile int mouseX;
+    private volatile int mouseY;
     private Buttons play;
     private Buttons tutorial;
     private Buttons credits;
@@ -33,15 +33,11 @@ public class Menu implements Clickable{
     public void selection() throws InterruptedException {
 
         menuEvent.init();
-        menuEvent.mainMenu();
+        menuEvent.mainMenuLoop();
 
         while (!startSelection) {
-            //long time = System.currentTimeMillis();
 
-            System.out.println(mouseX +" " + mouseY);
-
-
-            //back botton
+            //back button
             if (secondaryMenu) {
                 if ((mouseX >= back.getStartX() && mouseX <= back.getEndX()) &&
                         (mouseY >= back.getStartY() && mouseY <= back.getEndY())) {
@@ -101,7 +97,7 @@ public class Menu implements Clickable{
 
     private void mainMenu() throws InterruptedException{
 
-        menuEvent.mainMenu();
+        menuEvent.mainMenuLoop();
 
     }
 

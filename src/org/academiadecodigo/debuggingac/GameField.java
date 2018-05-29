@@ -17,6 +17,7 @@ public class GameField {
     private Picture background;
     private Picture folderPic;
     Text score = new Text(1200, 50, "0");
+    Text lives = new Text(300, 50, "3");
 
 
     public GameField() {
@@ -27,6 +28,18 @@ public class GameField {
         background.draw();
         gameWindow.draw();
 
+        //LIVES TEXT
+        Text displayLives = new Text(200, 50, "Lives: ");
+        displayLives.setColor(Color.GREEN);
+        displayLives.grow(80,50);
+
+        displayLives.draw();
+
+        lives.setColor(Color.GREEN);
+        lives.grow(10,50);
+        lives.draw();
+
+        //SCORE TEXT
         Text displayScore = new Text(1100, 50, "SCORE: ");
         displayScore.setColor(Color.GREEN);
         displayScore.grow(80,50);

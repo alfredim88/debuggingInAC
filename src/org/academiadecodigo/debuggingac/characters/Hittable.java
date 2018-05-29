@@ -4,11 +4,13 @@ public interface Hittable {
 
     void move(int speed) throws InterruptedException;
 
+    boolean hasEnded();
+
     int getOffsetX();
 
     int getOffsetY();
 
-    void hit();
+    void hit() throws InterruptedException;
 
     boolean isSwattered();
 

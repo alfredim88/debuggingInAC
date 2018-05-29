@@ -11,16 +11,21 @@ public class Bug implements Hittable {
     private int points;
     private Picture pic1;
     private Picture pic2;
+    private boolean goingUp;
+    private long topTimer;
+    private boolean reachTop;
 
     public Bug(BugType bugType) {
         this.bugType = bugType;
-        this.pic1 = new Picture(x,y,bugType.getPic1());
-        this.pic2 = new Picture(x,y,bugType.getPic2());
+        this.pic1 = new Picture(x, y, bugType.getPic1());
+        this.pic2 = new Picture(x, y, bugType.getPic2());
         this.points = bugType.getKillPoints();
+        goingUp = true;
     }
 
     @Override
     public void hit() {
+
         System.out.println("AUTCH!");
     }
 
@@ -32,19 +37,48 @@ public class Bug implements Hittable {
     @Override
     public void move(int speed) throws InterruptedException {
 
-        pic1.draw();
-        pic1.translate(0,-10);
-        Thread.sleep(100);
-        pic1.translate(0,-30);
-        Thread.sleep(100);
-        pic1.translate(0,-50);
-        Thread.sleep(1500);
-        pic1.translate(0,10);
-        Thread.sleep(100);
-        pic1.translate(0,30);
-        Thread.sleep(100);
-        pic1.translate(0,50);
+        if (goingUp) {
 
+            pic1.draw();
+            pic1.translate(0,-10);
+            Thread.sleep(30);
+            pic1.translate(0, -30);
+            Thread.sleep(30);
+            pic1.translate(0, -50);
+            System.out.println(pic1.getY());
+
+
+            if (reachTop() == true) {
+                goingUp = false;
+                topTimer = System.currentTimeMillis();
+                System.out.println("top reached");
+            }
+
+            return;
+        }
+
+        if (System.currentTimeMillis() - topTimer > 3000) {
+            pic1.translate(0, 10);
+        }
+
+    }
+
+    public boolean reachTop(){
+
+        if(pic1.getY() == 410){
+
+            reachTop = true;
+        }
+
+        return false;
+
+
+    }
+
+    @Override
+    public boolean hasEnded() {
+
+        return reachTop && pic1.getX() == x;
     }
 
     @Override
@@ -62,8 +96,8 @@ public class Bug implements Hittable {
 
     }
 
-    private int randomFolder(){
-        return 100 + (200 * (int)(Math.random() * 6));
+    private int randomFolder() {
+        return 100 + (200 * (int) (Math.random() * 6));
     }
 
     public BugType getBugType() {
