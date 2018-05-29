@@ -1,21 +1,20 @@
 package org.academiadecodigo.debuggingac.characters;
 
 public enum BugType {
-    RED(2, 20, "resources/images/chars/goomba.png", "resources/images/chars/goomba.png"),
+    RED(2, 20, "resources/images/chars/red", "resources/images/chars/goomba.png"),
     PURPLE(1, 10, "resources/images/chars/goomba.png", "resources/images/chars/goomba.png"),
-    BROWN(2, 10, "resources/images/chars/goomba.png", "resources/images/chars/goomba.png"),
     GREEN(1, 20, "resources/images/chars/goomba.png", "resources/images/chars/goomba.png");
 
     private int speed;
     private int killPoints;
-    private String pic1;
-    private String pic2;
+    private String alive;
+    private String dead;
 
-    BugType(int speed, int killPoints, String pic1, String pic2){
+    BugType(int speed, int killPoints, String alive, String dead){
         this.speed = speed;
         this.killPoints = killPoints;
-        this.pic1 = pic1;
-        this.pic2 = pic2;
+        this.alive = alive;
+        this.dead = dead;
     }
 
     public static BugType getRandomBug(){
@@ -30,11 +29,11 @@ public enum BugType {
         return killPoints;
     }
 
-    public String getPic1() {
-        return pic1;
+    public String getAlive() {
+        return alive;
     }
 
-    public String getPic2() {
-        return pic2;
+    public String getDead() {
+        return dead;
     }
 }
