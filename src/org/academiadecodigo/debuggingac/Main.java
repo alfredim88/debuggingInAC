@@ -14,6 +14,6 @@ public class Main {
 
         Game game = new Game();
         swatter.setClickable(game);
-        game.startGame();
+        game.init();
     }
 }

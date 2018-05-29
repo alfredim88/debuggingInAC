@@ -4,6 +4,8 @@ public interface Hittable {
 
     boolean hasEnded();
 
+    void drawCharacter();
+
     int getOffsetX();
 
     int getOffsetY();

@@ -20,6 +20,10 @@ public class Feature implements Hittable {
         this.pic2 = new Picture(x, y, featureType.getCaught());
     }
 
+    @Override
+    public void drawCharacter(){
+        pic1.draw();
+    }
 
     @Override
     public void hit() throws InterruptedException {

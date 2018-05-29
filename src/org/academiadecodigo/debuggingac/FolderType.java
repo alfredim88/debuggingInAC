@@ -17,10 +17,13 @@ public enum FolderType {
         this.folderPic = folderPic;
     }
 
-    public FolderType getRandomFolder(){
+    public static FolderType getRandomFolder(){
 
         return FolderType.values()[(int)(Math.random() * FolderType.values().length)];
 
     }
 
+    public String getFolderPic() {
+        return folderPic;
+    }
 }

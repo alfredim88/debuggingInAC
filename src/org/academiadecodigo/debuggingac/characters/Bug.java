@@ -23,6 +23,11 @@ public class Bug implements Hittable {
     }
 
     @Override
+    public void drawCharacter(){
+        pic1.draw();
+    }
+
+    @Override
     public void hit() {
         pic1.delete();
         swattered = true;
@@ -39,7 +44,6 @@ public class Bug implements Hittable {
 
         if (goingUp) {
 
-            pic1.draw();
             pic1.translate(0,-10);
 
             if (reachTop() == true) {

@@ -8,6 +8,12 @@ import org.academiadecodigo.debuggingac.menu.Menu;
 import org.academiadecodigo.debuggingac.simplegraphics.pictures.Picture;
 
 public class Game implements Clickable {
+
+
+    private static final int FOLDERS_PER_ROW = 6;
+    private static final int PADDING_FOLDERS = 200;
+    private static final int MARGIN_LEFT = 70;
+    private static final int MARGIN_TOP = 500;
     private static final int TOTAL_CHARACTERS = 200;
     private GameField gameField;
     private int mouseX;
@@ -16,31 +22,14 @@ public class Game implements Clickable {
     private boolean finished;
     private int gameLevel = 1;
     private int lives = 3;
-    private int score = 00000;
+    private int score = 0;
     private int currentCharacter = 0;
     private Hittable[] gameCharacters = new Hittable[TOTAL_CHARACTERS];
-
-
-    public Game() {
-        System.out.println("game start");
-    }
-
-
-    public void startGame() throws InterruptedException {
-
-        gameField = new GameField();
-        init();
-    }
-
-    /*public void menu() throws InterruptedException {
-        Menu menu = new Menu();
-        menu.selection();
-        init();
-    }*/
+    private Picture[] folderPic = new Picture[FOLDERS_PER_ROW];
 
     public void init() throws InterruptedException {
 
-        System.out.println("creating characters");
+        gameField = new GameField();
 
         CharactersFactory factory = new CharactersFactory();
 
@@ -56,13 +45,19 @@ public class Game implements Clickable {
             }
         }
 
-        System.out.println("chars created");
+        //Grid for the folders
+        for (int i = 0; i < FOLDERS_PER_ROW; i++) {
+            String folderPath = FolderType.getRandomFolder().getFolderPic();
+            folderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), MARGIN_TOP, "resources/images/folders/folder_arabian-nights.png");
+        }
 
         start();
 
     }
 
     public void start() throws InterruptedException {
+
+        drawEverything();
 
 
         while (!finished && currentCharacter < TOTAL_CHARACTERS) {
@@ -88,8 +83,6 @@ public class Game implements Clickable {
 
             if (mouseX >= character.getX() && mouseX <= character.getOffsetX() || mouseX + 50 >= character.getX() && mouseX <= character.getOffsetX()
                     && mouseY >= character.getY() && mouseY <= character.getOffsetY() || mouseY + 50 >= character.getY() && mouseY <= character.getOffsetY()) {
-
-
 
             if (character instanceof Bug) {
 
@@ -139,6 +132,18 @@ public class Game implements Clickable {
         Thread.sleep(2000);
     }
 
+    private void drawEverything(){
+
+        gameField.drawField();
+
+        for (int i = 0; i < TOTAL_CHARACTERS; i++) {
+                gameCharacters[i].drawCharacter();
+        }
+
+        for (int i = 0; i < FOLDERS_PER_ROW; i++) {
+            folderPic[i].draw();
+        }
+    }
 
     @Override
     public void setX(int x) {
