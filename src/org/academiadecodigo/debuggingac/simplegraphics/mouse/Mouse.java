@@ -23,6 +23,7 @@ public class Mouse implements MouseListener, MouseMotionListener {
     boolean isMacOs = osName.startsWith("mac");
     boolean isUnix = osName.indexOf("nix") >= 0 || osName.indexOf("nux") >= 0 || osName.indexOf("aix") > 0;
 
+
     /**
      * @param handler the mouse handler
      */
