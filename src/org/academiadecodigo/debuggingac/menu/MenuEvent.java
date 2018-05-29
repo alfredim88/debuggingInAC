@@ -110,11 +110,6 @@ public class MenuEvent {
 
     }
 
-   /* public void mainMenu() throws InterruptedException{
-
-        mainMenuLoop(MENU_LOOPS);
-
-    }*/
     public void killSoundMenu(){
 
         menu.stop();
