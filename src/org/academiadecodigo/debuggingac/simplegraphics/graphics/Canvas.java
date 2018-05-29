@@ -33,7 +33,9 @@ public class Canvas {
         frame.pack();
         frame.setLocation(LOCATION_OFFSET, LOCATION_OFFSET);
         frame.setSize(1200, 800);
+        //frame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
         frame.setTitle("Debugging in <AC_>");
+       //frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setVisible(true);
     }
 

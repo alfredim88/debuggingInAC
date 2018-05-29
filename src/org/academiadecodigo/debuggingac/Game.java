@@ -7,6 +7,7 @@ import org.academiadecodigo.debuggingac.characters.Hittable;
 import org.academiadecodigo.debuggingac.menu.Menu;
 import org.academiadecodigo.debuggingac.simplegraphics.pictures.Picture;
 
+
 public class Game implements Clickable {
 
 
