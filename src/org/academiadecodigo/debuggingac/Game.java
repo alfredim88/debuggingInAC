@@ -11,7 +11,7 @@ import org.academiadecodigo.debuggingac.simplegraphics.keyboard.KeyboardEventTyp
 import org.academiadecodigo.debuggingac.simplegraphics.keyboard.KeyboardHandler;
 
 public class Game implements Clickable {
-    private static final int TOTAL_CHARACTERS = 30;
+    private static final int TOTAL_CHARACTERS = 5;
     private GameField gameField;
     private int mouseX;
     private int mouseY;
@@ -25,7 +25,6 @@ public class Game implements Clickable {
 
 
     public Game() {
-        new Controller();
         System.out.println("game start");
     }
 
@@ -51,7 +50,7 @@ public class Game implements Clickable {
         for (int i = 0; i < TOTAL_CHARACTERS; i++) {
             int random = (int) (Math.random() * 10);
 
-            if (random > 3) {
+            if (random > -1) {
                 gameCharacters[i] = factory.createBugs();
                 System.out.println("bug");
             } else {
@@ -68,8 +67,6 @@ public class Game implements Clickable {
 
     public void start() throws InterruptedException {
 
-        System.out.println("it started allright");
-
         //long time = System.currentTimeMillis();
 
         while (!finished && currentCharacter < TOTAL_CHARACTERS) {
@@ -77,48 +74,37 @@ public class Game implements Clickable {
             for (int i = 0; i < TOTAL_CHARACTERS; i++) {
 
                 showRandomCharacter();
-                //field.updateScore();
                 currentCharacter++;
-
-                Thread.sleep(100);
+                Thread.sleep(1000);
             }
 
         }
 
-        //levelUp();
-        //nextLevelMenu();
-
     }
-
-   /* private Hittable chooseRandomCharacter() {
-        Hittable randomChar = gameCharacters[(int) (Math.random() * gameCharacters.length)];
-        return randomChar;
-    }*/
 
     private void showRandomCharacter() throws InterruptedException {
 
-        //para aparecer apenas 1 character de cada vez
         Hittable character = gameCharacters[currentCharacter];
 
-        //criar o movimento do boneco no local correto
-
         while (!character.hasEnded()) {
+
+            character.move();
+
+            if (mouseX >= character.getX() && mouseX <= character.getOffsetX() || mouseX + 50 >= character.getX() && mouseX <= character.getOffsetX()
+                    && mouseY >= character.getY() && mouseY <= character.getOffsetY() || mouseY + 50 >= character.getY() && mouseY <= character.getOffsetY()) {
+
 
 
             if (character instanceof Bug) {
 
                 Bug bug = (Bug) character;
+                bug.hit();
+                gameField.score.delete();
+                gameField.score.setText("" + score);
+                gameField.score.draw();
+                score += bug.getPoints();
+                break;
 
-                bug.move(bug.getBugType().getSpeed());
-
-                if (mouseX >= bug.getX() && mouseX <= bug.getOffsetX() || mouseX + 50 >= bug.getX() && mouseX <= bug.getOffsetX()
-                        && mouseY >= bug.getY() && mouseY <= bug.getOffsetY() || mouseY + 50 >= bug.getY() && mouseY <= bug.getOffsetY()) {
-
-                    gameField.score.delete();
-                    gameField.score.setText("" + score);
-                    gameField.score.draw();
-                    score += bug.getPoints();
-                }
             }
 
 
@@ -126,12 +112,8 @@ public class Game implements Clickable {
 
                 Feature feature = (Feature) character;
 
-                feature.move(feature.getFeatureType().getSpeed());
+                feature.hit();
 
-                if (mouseX >= feature.getX() && mouseX <= feature.getOffsetX() || mouseX + 30 >= feature.getX() && mouseX <= feature.getOffsetX()
-                        && mouseY >= feature.getY() && mouseY <= feature.getOffsetY() || mouseY - 30 >= feature.getY() && mouseY <= feature.getOffsetY() && !feature.isSwattered()) {
-
-                    feature.hit();
                     lives--;
                     gameField.lives.delete();
                     gameField.lives.setText("" + lives);
@@ -146,18 +128,9 @@ public class Game implements Clickable {
 
             Thread.sleep(10);
         }
+
     }
 
-    /* private void levelUp(){
-
-         if(score >= LevelScores(gameLevel)){
-             gameLevel++;
-             gameMenu();
-         } else {
-             gameOverMenu();
-         }
-     }
- */
     private void gameOver() {
         finished = true;
         //gameOverMenu();
@@ -177,47 +150,6 @@ public class Game implements Clickable {
     @Override
     public void setY(int y) {
         mouseY = y;
-    }
-
-    private class Controller implements KeyboardHandler {
-        private Keyboard key;
-        private KeyboardEvent[] escKey;
-
-        Controller() {
-            key = new Keyboard(this);
-            escKey = new KeyboardEvent[2];
-            createEvent();
-            setEvents();
-            addEventListener();
-        }
-
-        void createEvent() {
-            for (int i = 0; i < escKey.length; i++) {
-                escKey[i] = new KeyboardEvent();
-            }
-        }
-
-        void setEvents() {
-            escKey[0].setKey(KeyboardEvent.KEY_ESC);
-            escKey[0].setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-            escKey[1].setKey(KeyboardEvent.KEY_ESC);
-            escKey[1].setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
-        }
-
-        void addEventListener() {
-            for (KeyboardEvent event : escKey) {
-                key.addEventListener(event);
-            }
-        }
-
-        @Override
-        public void keyPressed(KeyboardEvent e) {
-            quit = true;
-        }
-
-        @Override
-        public void keyReleased(KeyboardEvent e) {
-        }
     }
 
 }

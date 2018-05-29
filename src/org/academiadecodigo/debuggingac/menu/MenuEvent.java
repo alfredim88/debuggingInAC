@@ -41,6 +41,7 @@ public class MenuEvent {
         this.loadingSeven = new Picture(0, 0, "resources/images/loading/7.jpg");
         this.loadingEight = new Picture(0, 0, "resources/images/loading/8.jpg");
 
+
     }
 
     public void init() throws InterruptedException{
@@ -114,7 +115,6 @@ public class MenuEvent {
         System.out.println("loops has finished");
 
     }
-
 
 
     public void killSoundMenu(){

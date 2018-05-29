@@ -10,6 +10,9 @@ public class Feature implements Hittable {
     private int y = 500;
     private Picture pic1;
     private Picture pic2;
+    private boolean goingUp;
+    private long topTimer;
+    private boolean reachTop;
 
     public Feature(FeatureType featureType) {
         this.featureType = featureType;
@@ -19,7 +22,7 @@ public class Feature implements Hittable {
 
 
     @Override
-    public void hit() throws InterruptedException{
+    public void hit() throws InterruptedException {
         swattered = true;
         this.pic1.delete();
         this.pic2.draw();
@@ -29,22 +32,21 @@ public class Feature implements Hittable {
     }
 
     @Override
-    public void move(int speed) throws InterruptedException {
-        pic1.draw();
-        pic1.translate(0,-10);
-        Thread.sleep(100);
-        pic1.translate(0,-30);
-        Thread.sleep(100);
-        pic1.translate(0,-50);
-        Thread.sleep(500);
-        pic1.translate(0,10);
-        Thread.sleep(100);
-        pic1.translate(0,30);
-        Thread.sleep(100);
+    public void move() throws InterruptedException {
 
-        Thread.sleep(1500);
 
-        pic1.delete();
+    }
+
+    public boolean reachTop() {
+
+        if (pic1.getY() == 410) {
+
+            reachTop = true;
+        }
+
+        return false;
+
+
     }
 
     @Override
@@ -72,14 +74,16 @@ public class Feature implements Hittable {
         return false;
     }
 
-    private int randomFolder(){
-        return 100 + (200 * (int)(Math.random() * 6));
+    private int randomFolder() {
+        return 100 + (200 * (int) (Math.random() * 6));
     }
 
+    @Override
     public int getX() {
         return x;
     }
 
+    @Override
     public int getY() {
         return y;
     }
