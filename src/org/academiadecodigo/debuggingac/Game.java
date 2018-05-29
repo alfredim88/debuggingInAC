@@ -98,6 +98,7 @@ public class Game implements Clickable {
             if (character instanceof Bug) {
 
                 Bug bug = (Bug) character;
+                bug.hit();
                 gameField.score.delete();
                 gameField.score.setText("" + score);
                 gameField.score.draw();
@@ -108,6 +109,11 @@ public class Game implements Clickable {
 
 
             if (character instanceof Feature) {
+
+                Feature feature = (Feature) character;
+
+                feature.hit();
+
                     lives--;
                     gameField.lives.delete();
                     gameField.lives.setText("" + lives);
