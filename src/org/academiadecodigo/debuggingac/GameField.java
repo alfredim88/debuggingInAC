@@ -5,7 +5,7 @@ import org.academiadecodigo.debuggingac.simplegraphics.graphics.Text;
 import org.academiadecodigo.debuggingac.simplegraphics.pictures.Picture;
 
 public class GameField {
-    
+
     private static final int FOLDERS_PER_ROW = 6;
     private static final int PADDING_FOLDERS = 200;
     private static final int MARGIN_LEFT = 70;

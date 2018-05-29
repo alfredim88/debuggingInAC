@@ -8,7 +8,7 @@ import org.academiadecodigo.debuggingac.menu.Menu;
 import org.academiadecodigo.debuggingac.simplegraphics.pictures.Picture;
 
 public class Game implements Clickable {
-    private static final int TOTAL_CHARACTERS = 5;
+    private static final int TOTAL_CHARACTERS = 200;
     private GameField gameField;
     private int mouseX;
     private int mouseY;
@@ -16,7 +16,7 @@ public class Game implements Clickable {
     private boolean finished;
     private int gameLevel = 1;
     private int lives = 3;
-    private int score = 0;
+    private int score = 00000;
     private int currentCharacter = 0;
     private Hittable[] gameCharacters = new Hittable[TOTAL_CHARACTERS];
 
@@ -64,7 +64,6 @@ public class Game implements Clickable {
 
     public void start() throws InterruptedException {
 
-        //long time = System.currentTimeMillis();
 
         while (!finished && currentCharacter < TOTAL_CHARACTERS) {
 
@@ -121,8 +120,9 @@ public class Game implements Clickable {
                 }
 
                 if (lives == 0) {
+
                     gameOver();
-                }
+                } System.out.println("no libes");
             }
             mouseY = 0;
             mouseX = 0;
@@ -139,10 +139,6 @@ public class Game implements Clickable {
         Thread.sleep(2000);
     }
 
-    public int getScore() {
-        return score;
-    }
-
 
     @Override
     public void setX(int x) {
@@ -153,5 +149,6 @@ public class Game implements Clickable {
     public void setY(int y) {
         mouseY = y;
     }
+
 
 }
