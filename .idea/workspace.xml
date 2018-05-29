@@ -2,17 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9fd0582a-2bd4-4142-b0f6-675861f817cd" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/images/Folders-PNG-File.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/debuggingInAC/org/academiadecodigo/debuggingac/GameField.class" afterPath="$PROJECT_DIR$/out/production/debuggingInAC/org/academiadecodigo/debuggingac/GameField.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/debuggingInAC/org/academiadecodigo/debuggingac/characters/Bug.class" afterPath="$PROJECT_DIR$/out/production/debuggingInAC/org/academiadecodigo/debuggingac/characters/Bug.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/debuggingInAC/org/academiadecodigo/debuggingac/characters/BugType.class" afterPath="$PROJECT_DIR$/out/production/debuggingInAC/org/academiadecodigo/debuggingac/characters/BugType.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/debuggingInAC/org/academiadecodigo/debuggingac/characters/FeatureType.class" afterPath="$PROJECT_DIR$/out/production/debuggingInAC/org/academiadecodigo/debuggingac/characters/FeatureType.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/GameField.java" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/GameField.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/characters/Bug.java" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/characters/Bug.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/characters/BugType.java" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/characters/BugType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/characters/FeatureType.java" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/characters/FeatureType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/menu/Menu.java" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/menu/Menu.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/images/features/toadDead.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/images/game/gameBG.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/images/loadingmenu/1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/images/loadingmenu/2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/images/loadingmenu/3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/images/loadingmenu/4.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/images/loadingmenu/5.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/images/loadingmenu/6.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/images/loadingmenu/7.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/images/loadingmenu/8.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/images/loadingmenu/loadmenu.psd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/images/menu/cursor00.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/images/menu/cursor01.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/images/menu/cursor02.png" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,9 +40,17 @@
       <file leaf-file-name="Game.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
+            <state relative-caret-position="690">
               <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
-              <folding />
+              <folding>
+                <marker date="1527613550076" expanded="true" signature="5207:5383" ph="{...}" />
+                <marker date="1527613550076" expanded="true" signature="5207:6178" ph="{...}" />
+                <marker date="1527613550076" expanded="true" signature="5412:5540" ph="{...}" />
+                <marker date="1527613550076" expanded="true" signature="5567:5835" ph="{...}" />
+                <marker date="1527613550076" expanded="true" signature="5869:5988" ph="{...}" />
+                <marker date="1527613550076" expanded="false" signature="6055:6070" ph=" { " />
+                <marker date="1527613550076" expanded="false" signature="6082:6092" ph=" }" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -49,7 +60,18 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
               <caret line="7" column="44" lean-forward="false" selection-start-line="7" selection-start-column="44" selection-end-line="7" selection-end-column="44" />
-              <folding />
+              <folding>
+                <marker date="1527613550080" expanded="true" signature="646:770" ph="{...}" />
+                <marker date="1527613550080" expanded="true" signature="820:914" ph="{...}" />
+                <marker date="1527613550080" expanded="false" signature="941:952" ph=" { " />
+                <marker date="1527613550080" expanded="false" signature="965:971" ph=" }" />
+                <marker date="1527613550080" expanded="false" signature="1002:1013" ph=" { " />
+                <marker date="1527613550080" expanded="false" signature="1030:1036" ph=" }" />
+                <marker date="1527613550080" expanded="false" signature="1065:1076" ph=" { " />
+                <marker date="1527613550080" expanded="false" signature="1088:1094" ph=" }" />
+                <marker date="1527613550080" expanded="false" signature="1123:1134" ph=" { " />
+                <marker date="1527613550080" expanded="false" signature="1146:1152" ph=" }" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -57,7 +79,7 @@
       <file leaf-file-name="Picture.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/simplegraphics/pictures/Picture.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="159">
+            <state relative-caret-position="675">
               <caret line="55" column="0" lean-forward="false" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
               <folding />
             </state>
@@ -87,7 +109,7 @@
       <file leaf-file-name="Menu.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/menu/Menu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="472">
+            <state relative-caret-position="1140">
               <caret line="76" column="9" lean-forward="false" selection-start-line="76" selection-start-column="9" selection-end-line="76" selection-end-column="9" />
               <folding />
             </state>
@@ -110,8 +132,8 @@
       <file leaf-file-name="GameField.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/GameField.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+            <state relative-caret-position="259">
+              <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -171,7 +193,6 @@
     </navigator>
     <panes>
       <pane id="AndroidView" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -219,8 +240,9 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -368,15 +390,15 @@
       <updated>1527588261382</updated>
       <workItem from="1527588264163" duration="12188000" />
       <workItem from="1527604749634" duration="916000" />
+      <workItem from="1527613854110" duration="44000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13104000" />
+    <option name="totallyTimeSpent" value="13148000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="143" y="36" width="1566" height="963" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -386,7 +408,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.421659" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.421659" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -420,6 +442,100 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/Main.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="690">
+          <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+          <folding>
+            <marker date="1527613550076" expanded="true" signature="5207:5383" ph="{...}" />
+            <marker date="1527613550076" expanded="true" signature="5207:6178" ph="{...}" />
+            <marker date="1527613550076" expanded="true" signature="5412:5540" ph="{...}" />
+            <marker date="1527613550076" expanded="true" signature="5567:5835" ph="{...}" />
+            <marker date="1527613550076" expanded="true" signature="5869:5988" ph="{...}" />
+            <marker date="1527613550076" expanded="false" signature="6055:6070" ph=" { " />
+            <marker date="1527613550076" expanded="false" signature="6082:6092" ph=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/characters/FeatureType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="44" lean-forward="false" selection-start-line="7" selection-start-column="44" selection-end-line="7" selection-end-column="44" />
+          <folding>
+            <marker date="1527613550080" expanded="true" signature="646:770" ph="{...}" />
+            <marker date="1527613550080" expanded="true" signature="820:914" ph="{...}" />
+            <marker date="1527613550080" expanded="false" signature="941:952" ph=" { " />
+            <marker date="1527613550080" expanded="false" signature="965:971" ph=" }" />
+            <marker date="1527613550080" expanded="false" signature="1002:1013" ph=" { " />
+            <marker date="1527613550080" expanded="false" signature="1030:1036" ph=" }" />
+            <marker date="1527613550080" expanded="false" signature="1065:1076" ph=" { " />
+            <marker date="1527613550080" expanded="false" signature="1088:1094" ph=" }" />
+            <marker date="1527613550080" expanded="false" signature="1123:1134" ph=" { " />
+            <marker date="1527613550080" expanded="false" signature="1146:1152" ph=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/simplegraphics/pictures/Picture.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="825">
+          <caret line="55" column="0" lean-forward="false" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/characters/Bug.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="42" column="34" lean-forward="false" selection-start-line="42" selection-start-column="34" selection-end-line="42" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/characters/CharactersFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/menu/Menu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1140">
+          <caret line="76" column="9" lean-forward="false" selection-start-line="76" selection-start-column="9" selection-end-line="76" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/characters/Feature.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="615">
+          <caret line="41" column="29" lean-forward="false" selection-start-line="41" selection-start-column="29" selection-end-line="41" selection-end-column="29" />
+          <folding>
+            <element signature="e#1617#1618#0" expanded="true" />
+            <element signature="e#1645#1646#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/GameField.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding />
@@ -430,7 +546,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1545">
           <caret line="111" column="54" lean-forward="true" selection-start-line="111" selection-start-column="54" selection-end-line="111" selection-end-column="54" />
-          <folding />
+          <folding>
+            <marker date="1527613550076" expanded="true" signature="5207:5383" ph="{...}" />
+            <marker date="1527613550076" expanded="true" signature="5207:6178" ph="{...}" />
+            <marker date="1527613550076" expanded="true" signature="5412:5540" ph="{...}" />
+            <marker date="1527613550076" expanded="true" signature="5567:5835" ph="{...}" />
+            <marker date="1527613550076" expanded="true" signature="5869:5988" ph="{...}" />
+            <marker date="1527613550076" expanded="false" signature="6055:6070" ph=" { " />
+            <marker date="1527613550076" expanded="false" signature="6082:6092" ph=" }" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -481,7 +605,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="185">
           <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -496,7 +619,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="4" lean-forward="false" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -538,16 +660,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/images/bugs/goomba.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/images/menu/goomba.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/images/bugs/goomba.png" />
+    <entry file="file://$PROJECT_DIR$/resources/images/menu/goomba.jpg" />
     <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/characters/Hittable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -569,7 +683,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/menu/Menu.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="472">
+        <state relative-caret-position="1140">
           <caret line="76" column="9" lean-forward="false" selection-start-line="76" selection-start-column="9" selection-end-line="76" selection-end-column="9" />
           <folding />
         </state>
@@ -601,7 +715,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/simplegraphics/pictures/Picture.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
+        <state relative-caret-position="675">
           <caret line="55" column="0" lean-forward="false" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
           <folding />
         </state>
@@ -625,9 +739,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
+        <state relative-caret-position="690">
           <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1527613550076" expanded="true" signature="5207:5383" ph="{...}" />
+            <marker date="1527613550076" expanded="true" signature="5207:6178" ph="{...}" />
+            <marker date="1527613550076" expanded="true" signature="5412:5540" ph="{...}" />
+            <marker date="1527613550076" expanded="true" signature="5567:5835" ph="{...}" />
+            <marker date="1527613550076" expanded="true" signature="5869:5988" ph="{...}" />
+            <marker date="1527613550076" expanded="false" signature="6055:6070" ph=" { " />
+            <marker date="1527613550076" expanded="false" signature="6082:6092" ph=" }" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -635,14 +757,25 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" column="44" lean-forward="false" selection-start-line="7" selection-start-column="44" selection-end-line="7" selection-end-column="44" />
-          <folding />
+          <folding>
+            <marker date="1527613550080" expanded="true" signature="646:770" ph="{...}" />
+            <marker date="1527613550080" expanded="true" signature="820:914" ph="{...}" />
+            <marker date="1527613550080" expanded="false" signature="941:952" ph=" { " />
+            <marker date="1527613550080" expanded="false" signature="965:971" ph=" }" />
+            <marker date="1527613550080" expanded="false" signature="1002:1013" ph=" { " />
+            <marker date="1527613550080" expanded="false" signature="1030:1036" ph=" }" />
+            <marker date="1527613550080" expanded="false" signature="1065:1076" ph=" { " />
+            <marker date="1527613550080" expanded="false" signature="1088:1094" ph=" }" />
+            <marker date="1527613550080" expanded="false" signature="1123:1134" ph=" { " />
+            <marker date="1527613550080" expanded="false" signature="1146:1152" ph=" }" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/GameField.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+        <state relative-caret-position="259">
+          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
           <folding />
         </state>
       </provider>
