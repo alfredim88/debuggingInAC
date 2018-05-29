@@ -2,10 +2,10 @@ package org.academiadecodigo.debuggingac.characters;
 
 public enum FeatureType {
 
-    TOAD_RED(2, 1, "resources/images/features/toad.png", "resources/images/features/toadDead.png"),
-    TOAD_PURPLE(1, 1, "resources/images/features/toad.png", "resources/images/features/toadDead.png"),
-    TOAD_BROWN(2, 1, "resources/images/features/toad.png", "resources/images/features/toadDead.png"),
-    TOAD_GREEN(1, 1, "resources/images/features/toad.png", "resources/images/features/toadDead.png");
+    TOAD_RED(2, 1, "resources/images/chars/toad.png", "resources/images/features/toadDead.png"),
+    TOAD_PURPLE(1, 1, "resources/images/chars/toad.png", "resources/images/features/toadDead.png"),
+    TOAD_BROWN(2, 1, "resources/images/chars/toad.png", "resources/images/features/toadDead.png"),
+    TOAD_GREEN(1, 1, "resources/images/chars/toad.png", "resources/images/features/toadDead.png");
 
     private int speed;
     private int livesLost;

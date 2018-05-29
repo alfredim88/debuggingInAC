@@ -41,12 +41,6 @@ public class Bug implements Hittable {
 
             pic1.draw();
             pic1.translate(0,-10);
-            Thread.sleep(30);
-            pic1.translate(0, -30);
-            Thread.sleep(30);
-            pic1.translate(0, -50);
-            System.out.println(pic1.getY());
-
 
             if (reachTop() == true) {
                 goingUp = false;

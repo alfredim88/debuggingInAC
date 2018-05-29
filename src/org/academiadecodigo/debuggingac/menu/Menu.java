@@ -36,7 +36,7 @@ public class Menu implements Clickable{
         menuEvent.mainMenuLoop();
 
         while (!startSelection) {
-            
+
             //back button
             if (secondaryMenu) {
                 if ((mouseX >= back.getStartX() && mouseX <= back.getEndX()) &&

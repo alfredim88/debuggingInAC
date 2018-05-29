@@ -8,8 +8,8 @@ import org.academiadecodigo.debuggingac.simplegraphics.pictures.Picture;
 public class GameField {
 
     private static final int PADDING = 10;
-    private static final int WIDTH = 1280;
-    private static final int HEIGHT = 720;
+    private static final int WIDTH = 1200;
+    private static final int HEIGHT = 800;
     private static final int FOLDERS_PER_ROW = 6;
     private static final int PADDING_FOLDERS = 200;
     private static final int MARGIN_LEFT = 70;
@@ -23,10 +23,10 @@ public class GameField {
     public GameField() {
 
         //Game Window
-        Rectangle gameWindow = new Rectangle(PADDING, PADDING, WIDTH, HEIGHT);
-        background = new Picture(0,0,"resources/images/gameField.jpg");
+        //Rectangle gameWindow = new Rectangle(PADDING, PADDING, WIDTH, HEIGHT);
+        background = new Picture(PADDING,PADDING,"resources/images/gameBG.png");
         background.draw();
-        gameWindow.draw();
+        //gameWindow.draw();
 
         //LIVES TEXT
         Text displayLives = new Text(200, 50, "Lives: ");
