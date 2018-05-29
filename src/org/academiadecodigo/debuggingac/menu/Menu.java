@@ -41,7 +41,7 @@ public class Menu implements Clickable{
             System.out.println(mouseX +" " + mouseY);
 
 
-            //back botton
+            //back button
             if (secondaryMenu) {
                 if ((mouseX >= back.getStartX() && mouseX <= back.getEndX()) &&
                         (mouseY >= back.getStartY() && mouseY <= back.getEndY())) {
