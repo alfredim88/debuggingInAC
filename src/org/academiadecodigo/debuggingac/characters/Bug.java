@@ -88,7 +88,7 @@ public class Bug implements Hittable {
     }
 
     private int randomFolder() {
-        return 100 + (200 * (int) (Math.random() * 6));
+        return (190 * (int) (Math.random() * 6));
     }
 
     public BugType getBugType() {

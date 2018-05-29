@@ -31,7 +31,8 @@ public class Mouse implements MouseListener, MouseMotionListener {
         this.handler = handler;
         mouseEventArrayList = new ArrayList<>();
         pane = (JPanel) Canvas.getInstance().getFrame().getContentPane();
-        pane.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("resources/images/cursor/idle.png").getImage(), new Point(74, 172), "idle"));
+        pane.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("resources/images/cursor/idle.png").getImage(), new Point(0, 0), "idle"));
+
     }
 
     /*     public static boolean isWindows() {
