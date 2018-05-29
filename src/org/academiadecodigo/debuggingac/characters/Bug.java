@@ -37,12 +37,12 @@ public class Bug implements Hittable {
     public void move() throws InterruptedException {
 
         if (goingUp) {
-            System.out.println(pic1.getY());
+
             pic1.draw();
             pic1.translate(0,-10);
 
             if (reachTop() == true) {
-                System.out.println("top reached");
+
                 goingUp = false;
                 topTimer = System.currentTimeMillis();
 
@@ -53,7 +53,6 @@ public class Bug implements Hittable {
 
         if (System.currentTimeMillis() - topTimer > 3000) {
             pic1.translate(0, 10);
-            System.out.println(pic1.getY());
 
             if (pic1.getY() >= 500){
                 pic1.delete();

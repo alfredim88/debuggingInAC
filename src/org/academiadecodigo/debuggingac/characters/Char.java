@@ -8,8 +8,8 @@ public abstract class Char {
     private boolean swattered;
     private int x = randomFolder();
     private int y = 500;
-    private Picture pic1;
-    private Picture pic2;
+    private Picture alivePic;
+    private Picture hitPic;
     private boolean goingUp;
     private long topTimer;
     private boolean reachTop;
@@ -21,9 +21,8 @@ public abstract class Char {
     public void move(int speed) throws InterruptedException {
 
         if (goingUp) {
-            System.out.println(pic1.getY());
-            pic1.draw();
-            pic1.translate(0,-10);
+            alivePic.draw();
+            alivePic.translate(0,-10);
 
             if (reachTop() == true) {
                 System.out.println("top reached");
@@ -36,10 +35,10 @@ public abstract class Char {
         }
 
         if (System.currentTimeMillis() - topTimer > 2000) {
-            pic1.translate(0, 10);
+            alivePic.translate(0, 10);
 
-            if (pic1.getY() == 500){
-                pic1.delete();
+            if (alivePic.getY() == 500){
+                alivePic.delete();
             }
         }
 
@@ -51,13 +50,13 @@ public abstract class Char {
 
     public boolean reachTop(){
 
-        return pic1.getY() < 440;
+        return alivePic.getY() < 440;
 
     }
 
     public boolean hasEnded() {
 
-        return reachTop && pic1.getX() == x;
+        return reachTop && alivePic.getX() == x;
     }
 
     public boolean isSwattered() {
@@ -65,11 +64,11 @@ public abstract class Char {
     }
 
     public int getOffsetX() {
-        return x + pic1.getMaxY();
+        return x + alivePic.getMaxY();
     }
 
     public int getOffsetY() {
-        return y + pic1.getMaxY();
+        return y + alivePic.getMaxY();
     }
 
     public void delete() {
