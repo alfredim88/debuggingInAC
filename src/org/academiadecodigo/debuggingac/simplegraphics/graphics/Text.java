@@ -2,15 +2,36 @@ package org.academiadecodigo.debuggingac.simplegraphics.graphics;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.Font;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class Text implements Shape, Colorable, Movable {
     private Color color = Color.BLACK;
     private JLabel label = new JLabel();
+    private static Font font;
     private double x;
-
     private double y;
     private double xGrow;
     private double yGrow;
+
+    static {
+
+        File file = new File("resources/SuperMario.ttf");
+
+        try {
+            font = Font.createFont(Font.TRUETYPE_FONT, file);
+        } catch (FontFormatException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        GraphicsEnvironment genv = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        genv.registerFont(font);
+        font = font.deriveFont(60f);
+    }
 
     /**
      * Constructs a text at a given location.
@@ -19,10 +40,13 @@ public class Text implements Shape, Colorable, Movable {
      * @param y       the topmost y-position of the shape
      * @param message the text string
      */
-    public Text(double x, double y, String message) {
+    public Text(double x, double y, String message){
+
+// makesure to derive the size
         this.x = x;
         this.y = y;
         label.setText(message);
+        label.setFont(font);
     }
 
 

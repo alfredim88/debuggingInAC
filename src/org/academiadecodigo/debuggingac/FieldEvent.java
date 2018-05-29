@@ -1,8 +1,8 @@
 package org.academiadecodigo.debuggingac;
 
-import org.academiadecodigo.debuggingac.simplegraphics.pictures.Picture;
+/*import org.academiadecodigo.debuggingac.simplegraphics.pictures.Picture;
 
-/*public class FieldEvent implements Field {
+public class FieldEvent implements Field {
     private static int fieldWidth = 500;
     private static int fieldHeight = 500;
     private Picture background;

@@ -39,6 +39,7 @@ public class MenuEvent {
         this.loadingSeven = new Picture(0, 0, "resources/images/loadingmenu/7.jpg");
         this.loadingEight = new Picture(0, 0, "resources/images/loadingmenu/8.jpg");
 
+
     }
 
     public void init() throws InterruptedException{
