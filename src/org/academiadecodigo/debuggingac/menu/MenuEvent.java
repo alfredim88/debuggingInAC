@@ -13,6 +13,7 @@ public class MenuEvent {
     private static Picture tutorial;
     private static Picture credits;
     private static Audio menu;
+    private static Picture loadingZero;
     private static Picture loadingOne;
     private static Picture loadingTwo;
     private static Picture loadingThree;
@@ -30,26 +31,30 @@ public class MenuEvent {
         this.tutorial = new Picture(0,0, "resources/images/menu/tutorial.png");
         this.credits = new Picture(0,0, "resources/images/menu/credits.png");
         this.loadingSound = new Audio("/resources/sounds/boot.wav");
-        this.loadingOne = new Picture(0, 0, "resources/images/loadingmenu/1.jpg");
-        this.loadingTwo = new Picture(0, 0, "resources/images/loadingmenu/2.jpg");
-        this.loadingThree = new Picture(0, 0, "resources/images/loadingmenu/3.jpg");
-        this.loadingFour = new Picture(0, 0, "resources/images/loadingmenu/4.jpg");
-        this.loadingFive = new Picture(0, 0, "resources/images/loadingmenu/5.jpg");
-        this.loadingSix = new Picture(0, 0, "resources/images/loadingmenu/6.jpg");
-        this.loadingSeven = new Picture(0, 0, "resources/images/loadingmenu/7.jpg");
-        this.loadingEight = new Picture(0, 0, "resources/images/loadingmenu/8.jpg");
+        this.loadingZero = new Picture(0, 0, "resources/images/loading/0.jpg");
+        this.loadingOne = new Picture(0, 0, "resources/images/loading/1.jpg");
+        this.loadingTwo = new Picture(0, 0, "resources/images/loading/2.jpg");
+        this.loadingThree = new Picture(0, 0, "resources/images/loading/3.jpg");
+        this.loadingFour = new Picture(0, 0, "resources/images/loading/4.jpg");
+        this.loadingFive = new Picture(0, 0, "resources/images/loading/5.jpg");
+        this.loadingSix = new Picture(0, 0, "resources/images/loading/6.jpg");
+        this.loadingSeven = new Picture(0, 0, "resources/images/loading/7.jpg");
+        this.loadingEight = new Picture(0, 0, "resources/images/loading/8.jpg");
 
 
     }
 
     public void init() throws InterruptedException{
 
-        loadingOne.draw();
+        loadingZero.draw();
         Thread.sleep(1000);
 
-       /* loadingTwo.draw();
+        loadingOne.draw();
+        loadingZero.delete();
+        Thread.sleep(1000);
+
+        loadingTwo.draw();
         loadingOne.delete();
-        game.init();
         Thread.sleep(500);
 
         loadingThree.draw();
@@ -74,7 +79,7 @@ public class MenuEvent {
         loadingSeven.draw();
         loadingSix.delete();
         Thread.sleep(400);
-*/
+
         loadingEight.draw();
         loadingSeven.delete();
         Thread.sleep(400);
@@ -110,6 +115,7 @@ public class MenuEvent {
         System.out.println("loops has finished");
 
     }
+
 
     public void killSoundMenu(){
 
