@@ -16,8 +16,8 @@ public class Feature implements Hittable {
 
     public Feature(FeatureType featureType) {
         this.featureType = featureType;
-        this.pic1 = new Picture(x, y, featureType.getPic1());
-        this.pic2 = new Picture(x, y, featureType.getPic2());
+        this.pic1 = new Picture(x, y, featureType.getNormal());
+        this.pic2 = new Picture(x, y, featureType.getCaught());
     }
 
 
