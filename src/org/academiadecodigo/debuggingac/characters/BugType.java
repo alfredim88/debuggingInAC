@@ -1,9 +1,9 @@
 package org.academiadecodigo.debuggingac.characters;
 
 public enum BugType {
-    RED(2, 20, "resources/images/chars/red", "resources/images/chars/goomba.png"),
-    PURPLE(1, 10, "resources/images/chars/goomba.png", "resources/images/chars/goomba.png"),
-    GREEN(1, 20, "resources/images/chars/goomba.png", "resources/images/chars/goomba.png");
+    RED(2, 20, "resources/images/chars/red_normal.png", "resources/images/chars/red_hit.png"),
+    PURPLE(1, 10, "resources/images/chars/purple_normal.png", "resources/images/chars/purple_hit.png"),
+    GREEN(1, 20, "resources/images/chars/green_normal.png", "resources/images/chars/green_hit.png");
 
     private int speed;
     private int killPoints;
