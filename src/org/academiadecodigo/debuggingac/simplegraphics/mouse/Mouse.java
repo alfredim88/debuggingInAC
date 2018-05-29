@@ -32,9 +32,9 @@ public class Mouse implements MouseListener, MouseMotionListener {
         mouseEventArrayList = new ArrayList<>();
         pane = (JPanel) Canvas.getInstance().getFrame().getContentPane();
         if (isMac()) {
-            pane.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("resources/images/menu/cursor00.png").getImage(), new Point(44, 175), "idle"));
+            pane.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("/resources/images/cursor/idle.png").getImage(), new Point(44, 175), "idle"));
         }
-        pane.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("resources/images/menu/cursor00.png").getImage(), new Point(44, 175), "idle"));
+        pane.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("/resources/images/cursor/idle.png").getImage(), new Point(0, 0), "idle")); // 44 ; 175
 
     }
 
@@ -115,17 +115,17 @@ public class Mouse implements MouseListener, MouseMotionListener {
     @Override
     public void mousePressed(MouseEvent e) {
         if (isMac()) {
-            pane.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("resources/images/menu/cursor02.png").getImage(), new Point(44, 175), "hit"));
+            pane.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("/resources/images/cursor/hit.png").getImage(), new Point(44, 175), "hit"));
         }
-        pane.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("resources/images/menu/cursor02.png").getImage(), new Point(44, 175), "hit"));
+        pane.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("/resources/images/cursor/hit.png").getImage(), new Point(0, 0), "hit"));
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
         if (isMac()) {
-            pane.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("resources/images/menu/cursor01.png").getImage(), new Point(44, 175), "aim"));
+            pane.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("/resources/images/cursor/aim.png").getImage(), new Point(44, 175), "aim"));
         }
-        pane.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("resources/images/menu/cursor01.png").getImage(), new Point(44, 175), "aim"));
+        pane.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("/resources/images/cursor/aim.png").getImage(), new Point(0, 0), "aim"));
     }
 
     @Override

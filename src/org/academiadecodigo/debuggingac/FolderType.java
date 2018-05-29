@@ -2,14 +2,14 @@ package org.academiadecodigo.debuggingac;
 
 public enum FolderType {
 
-    CAR_CRASH("/resources/images/game/folder_arabian-nights.png"),
-    SNIPER_ELITE("/resources/images/Folders-PNG-File.png"),
-    GUESS_A_NUMBER("/resources/images/game/folder_guess-a-number.png"),
-    ARABIAN_NIGHT("/resources/images/game/folder_arabian-nights.png"),
-    HOTEL("/resources/images/game/folder_hotel.png"),
-    MONEY_IN_THE_BANK("/resources/images/game/folder_arabian-nights.png"),
-    ROCK_PAPER_SCISSORS("/resources/images/Folders-PNG-File.png"),
-    HELLO_WORLD("/resources/images/Folders-PNG-File.png");
+    CAR_CRASH("/resources/images/folders/carcrash.png"),
+    SNIPER_ELITE("/resources/images/folders/sniper.png"),
+    GUESS_A_NUMBER("/resources/images/folders/guessnumber.png"),
+    // ARABIAN_NIGHT("/resources/images/game/folder_arabian-nights.png"),
+    HOTEL("/resources/images/folders/hotel.png"),
+    MONEY_IN_THE_BANK("/resources/images/folders/bank.png"),
+    ROCK_PAPER_SCISSORS("/resources/images/folders/janken.png");
+    // HELLO_WORLD("/resources/images/Folders-PNG-File.png");
 
     private String folderPic;
 
