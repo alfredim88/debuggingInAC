@@ -4,6 +4,7 @@ import org.academiadecodigo.debuggingac.simplegraphics.pictures.Picture;
 
 public abstract class Char {
 
+    private BugType bugType;
     private boolean swattered;
     private int x = randomFolder();
     private int y = 500;
@@ -13,11 +14,8 @@ public abstract class Char {
     private long topTimer;
     private boolean reachTop;
 
-
-
-    public void hit() {
-
-        System.out.println("AUTCH!");
+    public Char(BugType bugType) {
+        this.bugType = bugType;
     }
 
     public void move(int speed) throws InterruptedException {
@@ -44,6 +42,10 @@ public abstract class Char {
                 pic1.delete();
             }
         }
+
+    }
+
+    public void hit() {
 
     }
 
