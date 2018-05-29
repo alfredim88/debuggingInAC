@@ -25,6 +25,7 @@ public class Bug implements Hittable {
     @Override
     public void hit() {
         pic1.delete();
+        swattered = true;
         System.out.println("AUTCH!");
     }
 
@@ -42,16 +43,13 @@ public class Bug implements Hittable {
             pic1.translate(0,-10);
 
             if (reachTop() == true) {
-
                 goingUp = false;
                 topTimer = System.currentTimeMillis();
-
             }
-
             return;
         }
 
-        if (System.currentTimeMillis() - topTimer > 3000) {
+        if (System.currentTimeMillis() - topTimer > 2000) {
             pic1.translate(0, 10);
 
             if (pic1.getY() >= 500){

@@ -98,11 +98,13 @@ public class Game implements Clickable {
             if (character instanceof Bug) {
 
                 Bug bug = (Bug) character;
-                bug.hit();
-                gameField.score.delete();
-                gameField.score.setText("" + score);
-                gameField.score.draw();
-                score += bug.getPoints();
+                if(!bug.isSwattered()) {
+                    bug.hit();
+                    gameField.score.delete();
+                    gameField.score.setText("" + score);
+                    gameField.score.draw();
+                    score += bug.getPoints();
+                }
                 break;
 
             }
@@ -125,6 +127,8 @@ public class Game implements Clickable {
                     gameOver();
                 }
             }
+            mouseY = 0;
+            mouseX = 0;
 
             Thread.sleep(10);
         }

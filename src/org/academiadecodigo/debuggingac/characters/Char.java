@@ -25,7 +25,6 @@ public abstract class Char {
             alivePic.translate(0,-10);
 
             if (reachTop() == true) {
-                System.out.println("top reached");
                 goingUp = false;
                 topTimer = System.currentTimeMillis();
 
