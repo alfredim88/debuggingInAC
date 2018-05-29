@@ -40,7 +40,7 @@ public class Bug implements Hittable {
     }
 
     @Override
-    public void move() throws InterruptedException {
+    public void move(){
 
         if (goingUp) {
 

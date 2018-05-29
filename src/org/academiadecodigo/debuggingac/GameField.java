@@ -10,7 +10,6 @@ public class GameField {
     private static final int textMarginTop = 28;
     private Text displayLives;
     private Text displayScore;
-
     Text score = new Text(994, textMarginTop, "0");
     Text lives = new Text(208, textMarginTop, "3");
 
@@ -43,6 +42,18 @@ public class GameField {
         displayScore.draw();
         score.draw();
 
+    }
+
+    public void updateScore(int score){
+        this.score.delete();
+        this.score.setText("" + score);
+        this.score.draw();
+    }
+
+    public void updateLives(int lives){
+        this.lives.delete();
+        this.lives.setText("" + lives);
+        this.lives.draw();
     }
 
 }
