@@ -47,9 +47,8 @@ public class MenuEvent {
         loadingOne.draw();
         Thread.sleep(1000);
 
-       /* loadingTwo.draw();
+        loadingTwo.draw();
         loadingOne.delete();
-        game.init();
         Thread.sleep(500);
 
         loadingThree.draw();
@@ -74,7 +73,7 @@ public class MenuEvent {
         loadingSeven.draw();
         loadingSix.delete();
         Thread.sleep(400);
-*/
+
         loadingEight.draw();
         loadingSeven.delete();
         Thread.sleep(400);
@@ -110,11 +109,7 @@ public class MenuEvent {
 
     }
 
-    public void mainMenu() throws InterruptedException{
 
-        mainMenuLoop(MENU_LOOPS);
-
-    }
     public void killSoundMenu(){
 
         menu.stop();
