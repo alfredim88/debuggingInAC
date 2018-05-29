@@ -1,12 +1,8 @@
 package org.academiadecodigo.debuggingac;
 
 import org.academiadecodigo.debuggingac.simplegraphics.graphics.Color;
-import org.academiadecodigo.debuggingac.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.debuggingac.simplegraphics.graphics.Text;
 import org.academiadecodigo.debuggingac.simplegraphics.pictures.Picture;
-import java.awt.*;
-import java.io.File;
-import java.io.FileInputStream;
 
 public class GameField {
 
