@@ -19,7 +19,12 @@ public class Feature implements Hittable {
 
 
     @Override
-    public void hit() {
+    public void hit() throws InterruptedException{
+        swattered = true;
+        this.pic1.delete();
+        this.pic2.draw();
+        Thread.sleep(500);
+        this.pic2.delete();
         System.out.println("feature Autch!");
     }
 
@@ -36,7 +41,10 @@ public class Feature implements Hittable {
         Thread.sleep(100);
         pic1.translate(0,30);
         Thread.sleep(100);
-        pic1.translate(0,50);
+
+        Thread.sleep(1500);
+
+        pic1.delete();
     }
 
     @Override
@@ -57,6 +65,11 @@ public class Feature implements Hittable {
     @Override
     public void delete() {
 
+    }
+
+    @Override
+    public boolean hasEnded() {
+        return false;
     }
 
     private int randomFolder(){

@@ -7,8 +7,7 @@ import org.academiadecodigo.debuggingac.simplegraphics.pictures.Picture;
 
 public class MenuEvent {
 
-    private static final int MENU_LOOPS = 1;
-
+    private int menuLoops = 1;
     private static Picture menuBG;
     private static Picture menuBG2;
     private static Picture tutorial;
@@ -86,7 +85,9 @@ public class MenuEvent {
 
     }
 
-    public void mainMenuLoop(int menuLoops) throws  InterruptedException {
+    public void mainMenuLoop() throws  InterruptedException {
+
+        System.out.println("Loops will start");
 
         while (menuLoops > 0) {
 
@@ -108,12 +109,12 @@ public class MenuEvent {
             Thread.sleep(150);
             menuLoops--;
 
-            Rectangle teste = new Rectangle(1036, 735, 1188 - 1036 , 784 - 735);
-            teste.draw();
-
         }
 
+        System.out.println("loops has finished");
+
     }
+
 
 
     public void killSoundMenu(){

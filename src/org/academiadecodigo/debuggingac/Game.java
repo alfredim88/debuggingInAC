@@ -12,7 +12,7 @@ import org.academiadecodigo.debuggingac.simplegraphics.keyboard.KeyboardHandler;
 
 public class Game implements Clickable {
     private static final int TOTAL_CHARACTERS = 30;
-    private GameField gameField;//private Swatter swatter;
+    private GameField gameField;
     private int mouseX;
     private int mouseY;
     private boolean quit;
@@ -30,7 +30,7 @@ public class Game implements Clickable {
     }
 
 
-    public void startGame() throws InterruptedException{
+    public void startGame() throws InterruptedException {
 
         gameField = new GameField();
         init();
@@ -66,24 +66,23 @@ public class Game implements Clickable {
 
     }
 
-    public void start() throws InterruptedException{
+    public void start() throws InterruptedException {
 
         System.out.println("it started allright");
+
+        //long time = System.currentTimeMillis();
 
         while (!finished && currentCharacter < TOTAL_CHARACTERS) {
 
             for (int i = 0; i < TOTAL_CHARACTERS; i++) {
+
                 showRandomCharacter();
                 //field.updateScore();
-
-
-                gameField.score.delete();
-                gameField.score.setText("" + score);
-                gameField.score.draw();
-
                 currentCharacter++;
 
+                Thread.sleep(100);
             }
+
         }
 
         //levelUp();
@@ -103,44 +102,49 @@ public class Game implements Clickable {
 
         //criar o movimento do boneco no local correto
 
-
-        if (character instanceof Bug) {
-
-            Bug bug = (Bug) character;
-
-            bug.move(bug.getBugType().getSpeed());
+        while (!character.hasEnded()) {
 
 
-            if (mouseX >= bug.getX() && mouseX <= bug.getOffsetX() || mouseX + 50 >= bug.getX() && mouseX <= bug.getOffsetX()
-                    && mouseY >= bug.getY() && mouseY <= bug.getOffsetY() || mouseY + 50 >= bug.getY() && mouseY <= bug.getOffsetY()) {
+            if (character instanceof Bug) {
 
-                character.hit();
+                Bug bug = (Bug) character;
 
-                score += bug.getPoints();
-                System.out.println("score! " + score);
-                return;
-            }
-        }
+                bug.move(bug.getBugType().getSpeed());
 
+                if (mouseX >= bug.getX() && mouseX <= bug.getOffsetX() || mouseX + 50 >= bug.getX() && mouseX <= bug.getOffsetX()
+                        && mouseY >= bug.getY() && mouseY <= bug.getOffsetY() || mouseY + 50 >= bug.getY() && mouseY <= bug.getOffsetY()) {
 
-        if (character instanceof Feature) {
-
-            Feature feature = (Feature) character;
-
-            feature.move(feature.getFeatureType().getSpeed());
-
-            if (mouseX >= feature.getX() && mouseX <= feature.getOffsetX() || mouseX +30 >= feature.getX() && mouseX <= feature.getOffsetX()
-                    && mouseY >= feature.getY() && mouseY <= feature.getOffsetY() || mouseY - 30 >= feature.getY() && mouseY <= feature.getOffsetY()) {
-
-                character.hit();
+                    gameField.score.delete();
+                    gameField.score.setText("" + score);
+                    gameField.score.draw();
+                    score += bug.getPoints();
+                }
             }
 
-            lives--;
 
-            if (lives == 0) {
-                gameOver();
+            if (character instanceof Feature) {
+
+                Feature feature = (Feature) character;
+
+                feature.move(feature.getFeatureType().getSpeed());
+
+                if (mouseX >= feature.getX() && mouseX <= feature.getOffsetX() || mouseX + 30 >= feature.getX() && mouseX <= feature.getOffsetX()
+                        && mouseY >= feature.getY() && mouseY <= feature.getOffsetY() || mouseY - 30 >= feature.getY() && mouseY <= feature.getOffsetY() && !feature.isSwattered()) {
+
+                    feature.hit();
+                    lives--;
+                    gameField.lives.delete();
+                    gameField.lives.setText("" + lives);
+                    gameField.lives.draw();
+
+                }
+
+                if (lives == 0) {
+                    gameOver();
+                }
             }
-            return;
+
+            Thread.sleep(10);
         }
     }
 
@@ -179,7 +183,7 @@ public class Game implements Clickable {
         private Keyboard key;
         private KeyboardEvent[] escKey;
 
-        Controller(){
+        Controller() {
             key = new Keyboard(this);
             escKey = new KeyboardEvent[2];
             createEvent();
