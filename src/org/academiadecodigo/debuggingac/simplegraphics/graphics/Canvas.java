@@ -37,7 +37,7 @@ public class Canvas {
         /**
          * Windows Cursor
          */
-        frame.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("resources/images/menu/cursor00.png").getImage(),new Point(0,0),"initial d"));
+       // frame.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("resources/images/menu/cursor00.png").getImage(),new Point(74, 172),"initial d"));
         /**
          * OSX Cursor
          */
