@@ -34,14 +34,6 @@ public class Canvas {
         frame.setLocation(LOCATION_OFFSET, LOCATION_OFFSET);
         frame.setSize(1200, 800);
         frame.setTitle("Debugging in <AC_>");
-        /**
-         * Windows Cursor
-         */
-       // frame.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("resources/images/menu/cursor00.png").getImage(),new Point(74, 172),"initial d"));
-        /**
-         * OSX Cursor
-         */
-        //frame.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("resources/images/menu/cursor00.png").getImage(), new Point(44, 175), "initial cursor"));
         frame.setVisible(true);
     }
 
