@@ -19,7 +19,9 @@ public class Mouse implements MouseListener, MouseMotionListener {
     MouseHandler handler;
     List<MouseEventType> mouseEventArrayList;
     private JPanel pane;
-    private static String OS = System.getProperty("os.name").toLowerCase();
+    String osName = System.getProperty("os.name").toLowerCase();
+    boolean isMacOs = osName.startsWith("mac");
+    boolean isUnix = osName.indexOf("nix") >= 0 || osName.indexOf("nux") >= 0 || osName.indexOf("aix") > 0;
 
     /**
      * @param handler the mouse handler
@@ -31,24 +33,13 @@ public class Mouse implements MouseListener, MouseMotionListener {
         this.handler = handler;
         mouseEventArrayList = new ArrayList<>();
         pane = (JPanel) Canvas.getInstance().getFrame().getContentPane();
-        if (isMac()) {
-            pane.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("/resources/images/cursor/idle.png").getImage(), new Point(44, 175), "idle"));
+        if (isMacOs || isUnix)
+        {
+            pane.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("resources/images/cursor/idle.png").getImage(), new Point(74, 172), "idle"));
         }
-        pane.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("/resources/images/cursor/idle.png").getImage(), new Point(0, 0), "idle")); // 44 ; 175
-
+        pane.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("resources/images/cursor/idle.png").getImage(), new Point(0, 0), "idle"));
+        System.out.println(osName);
     }
-
-    /*     public static boolean isWindows() {
-            return (OS.indexOf("win") >= 0);
-       }
-        public static boolean isUnix() {
-            return (OS.indexOf("nix") >= 0 || OS.indexOf("nux") >= 0 || OS.indexOf("aix") > 0 );
-        }*/
-
-    public static boolean isMac() {
-        return (OS.indexOf("mac") >= 0);
-    }
-
 
     /**
      * Add a new mouse event type listener
@@ -114,18 +105,20 @@ public class Mouse implements MouseListener, MouseMotionListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
-        if (isMac()) {
-            pane.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("/resources/images/cursor/hit.png").getImage(), new Point(44, 175), "hit"));
+        if (isMacOs || isUnix)
+        {
+            pane.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("resources/images/cursor/hit.png").getImage(), new Point(74, 172), "hit"));
         }
-        pane.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("/resources/images/cursor/hit.png").getImage(), new Point(0, 0), "hit"));
+        pane.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("resources/images/cursor/hit.png").getImage(), new Point(0, 0), "hit"));
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        if (isMac()) {
-            pane.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("/resources/images/cursor/aim.png").getImage(), new Point(44, 175), "aim"));
+        if (isMacOs || isUnix)
+        {
+            pane.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("resources/images/cursor/aim.png").getImage(), new Point(74, 172), "aim"));
         }
-        pane.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("/resources/images/cursor/aim.png").getImage(), new Point(0, 0), "aim"));
+        pane.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("resources/images/cursor/aim.png").getImage(), new Point(0, 0), "aim"));
     }
 
     @Override
