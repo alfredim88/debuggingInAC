@@ -2,8 +2,6 @@ package org.academiadecodigo.debuggingac.characters;
 
 public interface Hittable {
 
-    void move(int speed) throws InterruptedException;
-
     boolean hasEnded();
 
     int getOffsetX();
@@ -12,7 +10,13 @@ public interface Hittable {
 
     void hit() throws InterruptedException;
 
+    void move() throws InterruptedException;
+
     boolean isSwattered();
 
     void delete();
+
+    int getX();
+
+    int getY();
 }

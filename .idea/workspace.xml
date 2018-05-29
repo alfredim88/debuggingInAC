@@ -2,17 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9fd0582a-2bd4-4142-b0f6-675861f817cd" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/images/Folders-PNG-File.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/SuperMario.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/characters/Char.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/debuggingInAC/org/academiadecodigo/debuggingac/Game.class" afterPath="$PROJECT_DIR$/out/production/debuggingInAC/org/academiadecodigo/debuggingac/Game.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/debuggingInAC/org/academiadecodigo/debuggingac/GameField.class" afterPath="$PROJECT_DIR$/out/production/debuggingInAC/org/academiadecodigo/debuggingac/GameField.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/debuggingInAC/org/academiadecodigo/debuggingac/characters/Bug.class" afterPath="$PROJECT_DIR$/out/production/debuggingInAC/org/academiadecodigo/debuggingac/characters/Bug.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/debuggingInAC/org/academiadecodigo/debuggingac/characters/BugType.class" afterPath="$PROJECT_DIR$/out/production/debuggingInAC/org/academiadecodigo/debuggingac/characters/BugType.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/debuggingInAC/org/academiadecodigo/debuggingac/characters/FeatureType.class" afterPath="$PROJECT_DIR$/out/production/debuggingInAC/org/academiadecodigo/debuggingac/characters/FeatureType.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/debuggingInAC/org/academiadecodigo/debuggingac/characters/Feature.class" afterPath="$PROJECT_DIR$/out/production/debuggingInAC/org/academiadecodigo/debuggingac/characters/Feature.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/debuggingInAC/org/academiadecodigo/debuggingac/characters/Hittable.class" afterPath="$PROJECT_DIR$/out/production/debuggingInAC/org/academiadecodigo/debuggingac/characters/Hittable.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/Game.java" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/Game.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/GameField.java" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/GameField.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/characters/Bug.java" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/characters/Bug.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/characters/BugType.java" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/characters/BugType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/characters/FeatureType.java" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/characters/FeatureType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/menu/Menu.java" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/menu/Menu.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/characters/Feature.java" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/characters/Feature.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/characters/Hittable.java" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/characters/Hittable.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/menu/MenuEvent.java" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/menu/MenuEvent.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,32 +37,27 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Game.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Char.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/characters/Char.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="356">
+              <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+              <folding>
+                <element signature="method#delete#0;class#Char#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Game.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FeatureType.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/characters/FeatureType.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="44" lean-forward="false" selection-start-line="7" selection-start-column="44" selection-end-line="7" selection-end-column="44" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Picture.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/simplegraphics/pictures/Picture.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="159">
-              <caret line="55" column="0" lean-forward="false" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="387">
+              <caret line="103" column="41" lean-forward="true" selection-start-line="103" selection-start-column="41" selection-end-line="103" selection-end-column="41" />
+              <folding>
+                <element signature="e#1103#1104#0" expanded="true" />
+                <element signature="e#1151#1152#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -67,28 +65,8 @@
       <file leaf-file-name="Bug.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/characters/Bug.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
-              <caret line="42" column="34" lean-forward="false" selection-start-line="42" selection-start-column="34" selection-end-line="42" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CharactersFactory.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/characters/CharactersFactory.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Menu.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/menu/Menu.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="472">
-              <caret line="76" column="9" lean-forward="false" selection-start-line="76" selection-start-column="9" selection-end-line="76" selection-end-column="9" />
+            <state relative-caret-position="180">
+              <caret line="42" column="0" lean-forward="true" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -97,27 +75,55 @@
       <file leaf-file-name="Feature.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/characters/Feature.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="615">
-              <caret line="41" column="29" lean-forward="false" selection-start-line="41" selection-start-column="29" selection-end-line="41" selection-end-column="29" />
+            <state relative-caret-position="357">
+              <caret line="26" column="27" lean-forward="true" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="27" />
               <folding>
-                <element signature="e#1617#1618#0" expanded="true" />
-                <element signature="e#1645#1646#0" expanded="true" />
+                <element signature="e#1174#1175#0" expanded="true" />
+                <element signature="e#1206#1207#0" expanded="true" />
+                <element signature="e#1536#1537#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GameField.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Hittable.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/characters/Hittable.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="12" column="43" lean-forward="false" selection-start-line="12" selection-start-column="43" selection-end-line="12" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GameField.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/GameField.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+            <state relative-caret-position="130">
+              <caret line="31" column="9" lean-forward="true" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MenuEvent.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/menu/MenuEvent.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="17" column="40" lean-forward="true" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -131,15 +137,16 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/Swatter.java" />
-        <option value="$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/menu/MenuEvent.java" />
-        <option value="$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/characters/Hittable.java" />
-        <option value="$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/characters/Feature.java" />
-        <option value="$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/Game.java" />
         <option value="$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/menu/Menu.java" />
-        <option value="$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/characters/Bug.java" />
         <option value="$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/characters/FeatureType.java" />
         <option value="$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/characters/BugType.java" />
         <option value="$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/GameField.java" />
+        <option value="$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/menu/MenuEvent.java" />
+        <option value="$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/characters/Char.java" />
+        <option value="$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/characters/Hittable.java" />
+        <option value="$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/characters/Bug.java" />
+        <option value="$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/characters/Feature.java" />
+        <option value="$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/Game.java" />
       </list>
     </option>
   </component>
@@ -187,19 +194,6 @@
             <path>
               <item name="debuggingInAC" type="b2602c69:ProjectViewProjectNode" />
               <item name="debuggingInAC" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="debuggingInAC" type="b2602c69:ProjectViewProjectNode" />
-              <item name="debuggingInAC" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
-              <item name="chars" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="debuggingInAC" type="b2602c69:ProjectViewProjectNode" />
-              <item name="debuggingInAC" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -213,7 +207,7 @@
               <item name="debuggingInAC" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="debuggingac" type="462c0819:PsiDirectoryNode" />
-              <item name="characters" type="462c0819:PsiDirectoryNode" />
+              <item name="menu" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -231,6 +225,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources" />
       <recent name="$PROJECT_DIR$/resources/images" />
     </key>
   </component>
@@ -367,12 +362,12 @@
       <option name="presentableId" value="Default" />
       <updated>1527588261382</updated>
       <workItem from="1527588264163" duration="12188000" />
-      <workItem from="1527604749634" duration="916000" />
+      <workItem from="1527604749634" duration="6989000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13104000" />
+    <option name="totallyTimeSpent" value="19177000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="143" y="36" width="1566" height="963" extended-state="0" />
@@ -386,7 +381,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.421659" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27880183" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -430,7 +425,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1545">
           <caret line="111" column="54" lean-forward="true" selection-start-line="111" selection-start-column="54" selection-end-line="111" selection-end-column="54" />
-          <folding />
+          <folding>
+            <element signature="e#1103#1104#0" expanded="true" />
+            <element signature="e#1151#1152#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -447,8 +445,9 @@
         <state relative-caret-position="615">
           <caret line="41" column="29" lean-forward="true" selection-start-line="41" selection-start-column="29" selection-end-line="41" selection-end-column="29" />
           <folding>
-            <element signature="e#1617#1618#0" expanded="true" />
-            <element signature="e#1645#1646#0" expanded="true" />
+            <element signature="e#1174#1175#0" expanded="true" />
+            <element signature="e#1206#1207#0" expanded="true" />
+            <element signature="e#1536#1537#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -512,6 +511,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="178">
           <caret line="85" column="0" lean-forward="false" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -535,6 +535,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="382" column="30" lean-forward="false" selection-start-line="378" selection-start-column="25" selection-end-line="382" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -548,69 +549,10 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/characters/Hittable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="23" lean-forward="false" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/characters/Feature.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="41" column="29" lean-forward="false" selection-start-line="41" selection-start-column="29" selection-end-line="41" selection-end-column="29" />
-          <folding>
-            <element signature="e#1617#1618#0" expanded="true" />
-            <element signature="e#1645#1646#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/menu/Menu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="472">
-          <caret line="76" column="9" lean-forward="false" selection-start-line="76" selection-start-column="9" selection-end-line="76" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/characters/CharactersFactory.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/menu/MenuEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="37" column="82" lean-forward="true" selection-start-line="37" selection-start-column="82" selection-end-line="37" selection-end-column="82" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/simplegraphics/pictures/Picture.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="55" column="0" lean-forward="false" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/characters/Bug.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="42" column="34" lean-forward="false" selection-start-line="42" selection-start-column="34" selection-end-line="42" selection-end-column="34" />
           <folding />
         </state>
       </provider>
@@ -623,14 +565,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/Game.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/characters/FeatureType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -639,11 +573,105 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/simplegraphics/pictures/Picture.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="55" column="0" lean-forward="false" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/FolderType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="12" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/images/menu/menu_x1.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/GameField.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+        <state relative-caret-position="130">
+          <caret line="31" column="9" lean-forward="true" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/menu/MenuEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="17" column="40" lean-forward="true" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/characters/Char.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="356">
+          <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+          <folding>
+            <element signature="method#delete#0;class#Char#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/menu/Menu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="990">
+          <caret line="76" column="9" lean-forward="false" selection-start-line="76" selection-start-column="9" selection-end-line="76" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/characters/Feature.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="26" column="27" lean-forward="true" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="27" />
+          <folding>
+            <element signature="e#1174#1175#0" expanded="true" />
+            <element signature="e#1206#1207#0" expanded="true" />
+            <element signature="e#1536#1537#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/characters/Bug.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="42" column="0" lean-forward="true" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/characters/Hittable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="43" lean-forward="false" selection-start-line="12" selection-start-column="43" selection-end-line="12" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/debuggingac/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="387">
+          <caret line="103" column="41" lean-forward="true" selection-start-line="103" selection-start-column="41" selection-end-line="103" selection-end-column="41" />
+          <folding>
+            <element signature="e#1103#1104#0" expanded="true" />
+            <element signature="e#1151#1152#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

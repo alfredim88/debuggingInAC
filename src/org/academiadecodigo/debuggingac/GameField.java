@@ -5,10 +5,7 @@ import org.academiadecodigo.debuggingac.simplegraphics.graphics.Text;
 import org.academiadecodigo.debuggingac.simplegraphics.pictures.Picture;
 
 public class GameField {
-
-    private static final int PADDING = 10;
-    private static final int WIDTH = 1200;
-    private static final int HEIGHT = 800;
+    
     private static final int FOLDERS_PER_ROW = 6;
     private static final int PADDING_FOLDERS = 200;
     private static final int MARGIN_LEFT = 70;
@@ -22,7 +19,7 @@ public class GameField {
 
     public GameField() {
         //Game Window
-        background = new Picture(0,0,"resources/images/gameBG.png");
+        background = new Picture(0, 0, "resources/images/gameBG.png");
         background.getWidth();
         background.getHeight();
         background.draw();
@@ -44,7 +41,7 @@ public class GameField {
 
         //Grid for the folders
         for (int i = 0; i < FOLDERS_PER_ROW; i++) {
-            folderPic = new Picture( MARGIN_LEFT + (PADDING_FOLDERS * i),MARGIN_TOP,"resources/images/Folders-PNG-File.png");
+            folderPic = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), MARGIN_TOP, "resources/images/Folders-PNG-File.png");
             folderPic.draw();
         }
     }

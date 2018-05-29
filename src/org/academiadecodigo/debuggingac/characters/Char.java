@@ -2,10 +2,8 @@ package org.academiadecodigo.debuggingac.characters;
 
 import org.academiadecodigo.debuggingac.simplegraphics.pictures.Picture;
 
-public class Bug implements Hittable {
+public abstract class Char {
 
-    private int points;
-    private BugType bugType;
     private boolean swattered;
     private int x = randomFolder();
     private int y = 500;
@@ -13,28 +11,22 @@ public class Bug implements Hittable {
     private Picture pic2;
     private boolean goingUp;
     private long topTimer;
+    private boolean reachTop;
 
-    public Bug(BugType bugType) {
-        this.bugType = bugType;
-        this.pic1 = new Picture(x, y, bugType.getPic1());
-        this.pic2 = new Picture(x, y, bugType.getPic2());
-        this.points = bugType.getKillPoints();
-        goingUp = true;
-    }
 
-    @Override
+
     public void hit() {
 
         System.out.println("AUTCH!");
     }
 
-    @Override
+
     public boolean isSwattered() {
         return swattered;
     }
 
-    @Override
-    public void move() throws InterruptedException {
+
+    public void move(int speed) throws InterruptedException {
 
         if (goingUp) {
             System.out.println(pic1.getY());
@@ -51,15 +43,15 @@ public class Bug implements Hittable {
             return;
         }
 
-        if (System.currentTimeMillis() - topTimer > 3000) {
+        if (System.currentTimeMillis() - topTimer > 2000) {
             pic1.translate(0, 10);
-            System.out.println(pic1.getY());
 
-            if (pic1.getY() >= 500){
+            if (pic1.getY() == 500){
                 pic1.delete();
-                return;
-                }
             }
+        }
+
+
 
     }
 
@@ -69,23 +61,23 @@ public class Bug implements Hittable {
 
     }
 
-    @Override
+
     public boolean hasEnded() {
 
-        return !goingUp && pic1.getY() >= 500;
+        return reachTop && pic1.getX() == x;
     }
 
-    @Override
+
     public int getOffsetX() {
         return x + pic1.getMaxY();
     }
 
-    @Override
+
     public int getOffsetY() {
         return y + pic1.getMaxY();
     }
 
-    @Override
+
     public void delete() {
 
     }
@@ -94,21 +86,11 @@ public class Bug implements Hittable {
         return 100 + (200 * (int) (Math.random() * 6));
     }
 
-    public BugType getBugType() {
-        return bugType;
-    }
-
-    @Override
     public int getX() {
         return x;
     }
 
-    @Override
     public int getY() {
         return y;
-    }
-
-    public int getPoints() {
-        return points;
     }
 }
