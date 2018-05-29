@@ -16,8 +16,8 @@ public class Bug implements Hittable {
 
     public Bug(BugType bugType) {
         this.bugType = bugType;
-        this.pic1 = new Picture(x, y, bugType.getPic1());
-        this.pic2 = new Picture(x, y, bugType.getPic2());
+        this.pic1 = new Picture(x, y, bugType.getAlive());
+        this.pic2 = new Picture(x, y, bugType.getDead());
         this.points = bugType.getKillPoints();
         goingUp = true;
     }
