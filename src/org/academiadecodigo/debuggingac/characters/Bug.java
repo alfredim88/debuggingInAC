@@ -24,7 +24,7 @@ public class Bug implements Hittable {
 
     @Override
     public void hit() {
-
+        pic1.delete();
         System.out.println("AUTCH!");
     }
 

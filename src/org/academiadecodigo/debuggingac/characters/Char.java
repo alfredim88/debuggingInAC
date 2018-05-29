@@ -20,12 +20,6 @@ public abstract class Char {
         System.out.println("AUTCH!");
     }
 
-
-    public boolean isSwattered() {
-        return swattered;
-    }
-
-
     public void move(int speed) throws InterruptedException {
 
         if (goingUp) {
@@ -51,8 +45,6 @@ public abstract class Char {
             }
         }
 
-
-
     }
 
     public boolean reachTop(){
@@ -61,22 +53,22 @@ public abstract class Char {
 
     }
 
-
     public boolean hasEnded() {
 
         return reachTop && pic1.getX() == x;
     }
 
+    public boolean isSwattered() {
+        return swattered;
+    }
 
     public int getOffsetX() {
         return x + pic1.getMaxY();
     }
 
-
     public int getOffsetY() {
         return y + pic1.getMaxY();
     }
-
 
     public void delete() {
 

@@ -35,11 +35,11 @@ public class Game implements Clickable {
         init();
     }
 
-    public void menu() throws InterruptedException {
+    /*public void menu() throws InterruptedException {
         Menu menu = new Menu();
         menu.selection();
         init();
-    }
+    }*/
 
     public void init() throws InterruptedException {
 
