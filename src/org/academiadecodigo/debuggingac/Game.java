@@ -5,12 +5,15 @@ import org.academiadecodigo.debuggingac.characters.CharactersFactory;
 import org.academiadecodigo.debuggingac.characters.Feature;
 import org.academiadecodigo.debuggingac.characters.Hittable;
 import org.academiadecodigo.debuggingac.menu.Menu;
-import org.academiadecodigo.debuggingac.simplegraphics.keyboard.Keyboard;
-import org.academiadecodigo.debuggingac.simplegraphics.keyboard.KeyboardEvent;
-import org.academiadecodigo.debuggingac.simplegraphics.keyboard.KeyboardEventType;
-import org.academiadecodigo.debuggingac.simplegraphics.keyboard.KeyboardHandler;
+import org.academiadecodigo.debuggingac.simplegraphics.pictures.Picture;
 
 public class Game implements Clickable {
+
+
+    private static final int FOLDERS_PER_ROW = 6;
+    private static final int PADDING_FOLDERS = 200;
+    private static final int MARGIN_LEFT = 70;
+    private static final int MARGIN_TOP = 500;
     private static final int TOTAL_CHARACTERS = 5;
     private GameField gameField;
     private int mouseX;
@@ -22,28 +25,11 @@ public class Game implements Clickable {
     private int score = 0;
     private int currentCharacter = 0;
     private Hittable[] gameCharacters = new Hittable[TOTAL_CHARACTERS];
-
-
-    public Game() {
-        System.out.println("game start");
-    }
-
-
-    public void startGame() throws InterruptedException {
-
-        gameField = new GameField();
-        init();
-    }
-
-    public void menu() throws InterruptedException {
-        Menu menu = new Menu();
-        menu.selection();
-        init();
-    }
+    private Picture[] folderPic = new Picture[FOLDERS_PER_ROW];
 
     public void init() throws InterruptedException {
 
-        System.out.println("creating characters");
+        gameField = new GameField();
 
         CharactersFactory factory = new CharactersFactory();
 
@@ -59,7 +45,11 @@ public class Game implements Clickable {
             }
         }
 
-        System.out.println("chars created");
+        //Grid for the folders
+        for (int i = 0; i < FOLDERS_PER_ROW; i++) {
+            String folderPath = FolderType.getRandomFolder().getFolderPic();
+            folderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), MARGIN_TOP, "resources/images/folders/folder_arabian-nights.png");
+        }
 
         start();
 
@@ -67,7 +57,8 @@ public class Game implements Clickable {
 
     public void start() throws InterruptedException {
 
-        //long time = System.currentTimeMillis();
+        drawEverything();
+
 
         while (!finished && currentCharacter < TOTAL_CHARACTERS) {
 
@@ -90,57 +81,59 @@ public class Game implements Clickable {
 
             character.move();
 
-            if (mouseX >= character.getX() && mouseX <= character.getOffsetX() || mouseX + 50 >= character.getX() && mouseX <= character.getOffsetX()
-                    && mouseY >= character.getY() && mouseY <= character.getOffsetY() || mouseY + 50 >= character.getY() && mouseY <= character.getOffsetY()) {
+            if (mouseX >= character.getX() && mouseX <= character.getOffsetX()
+                    || mouseX + 50 >= character.getX() && mouseX <= character.getOffsetX()
+                    && mouseY >= character.getY() && mouseY <= character.getOffsetY()
+                    || mouseY + 50 >= character.getY() && mouseY <= character.getOffsetY()) {
+
+                if (character instanceof Bug) {
+
+                    Bug bug = (Bug) character;
+                    bug.hit();
+                    score += bug.getPoints();
+                    gameField.updateScore(score);
+                    return;
+                }
 
 
+                if (character instanceof Feature) {
 
-            if (character instanceof Bug) {
-
-                Bug bug = (Bug) character;
-                bug.hit();
-                gameField.score.delete();
-                gameField.score.setText("" + score);
-                gameField.score.draw();
-                score += bug.getPoints();
-                break;
-
-            }
-
-
-            if (character instanceof Feature) {
-
-                Feature feature = (Feature) character;
-
-                feature.hit();
-
+                    Feature feature = (Feature) character;
+                    feature.hit();
                     lives--;
-                    gameField.lives.delete();
-                    gameField.lives.setText("" + lives);
-                    gameField.lives.draw();
-
+                    gameField.updateScore(lives);
                 }
 
-                if (lives == 0) {
-                    gameOver();
-                }
             }
 
-            Thread.sleep(10);
+            if (lives == 0) {
+                gameOver();
+                return;
+            }
+
+            Thread.sleep(5);
+        }
+    }
+
+    public void gameOver() throws InterruptedException {
+        finished = true;
+        Picture gameOver = new Picture(0, 0, "resources/images/gameover.png");
+        gameOver.draw();
+        Thread.sleep(2000);
+    }
+
+    private void drawEverything() {
+
+        gameField.drawField();
+
+        for (int i = 0; i < TOTAL_CHARACTERS; i++) {
+            gameCharacters[i].drawCharacter();
         }
 
+        for (int i = 0; i < FOLDERS_PER_ROW; i++) {
+            folderPic[i].draw();
+        }
     }
-
-    private void gameOver() {
-        finished = true;
-        //gameOverMenu();
-
-    }
-
-    public int getScore() {
-        return score;
-    }
-
 
     @Override
     public void setX(int x) {
@@ -151,5 +144,6 @@ public class Game implements Clickable {
     public void setY(int y) {
         mouseY = y;
     }
+
 
 }
