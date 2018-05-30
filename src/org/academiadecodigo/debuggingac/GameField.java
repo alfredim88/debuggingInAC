@@ -6,6 +6,13 @@ import org.academiadecodigo.debuggingac.simplegraphics.pictures.Picture;
 
 public class GameField {
 
+<<<<<<< HEAD
+=======
+    private static final int FOLDERS_PER_ROW = 6;
+    private static final int PADDING_FOLDERS = 190;
+    private static final int MARGIN_LEFT = 0;
+    private static final int MARGIN_TOP = 500;
+>>>>>>> origin/monica
     private Picture background;
     private static final int textMarginTop = 28;
     private Text displayLives;
