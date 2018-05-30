@@ -4,7 +4,9 @@ public enum ButtonType {
     PLAY(326, 107, 875, 639),
     TUTORIAL(13, 735, 278, 784),
     CREDITS(1036, 735, 1188 , 784),
-    BACK(527, 716, 667, 784);
+    BACK(527, 716, 667, 784),
+    RESTART(360, 466, 583, 532),
+    QUIT(516, 466, 844, 532);
 
 
     private int startX;

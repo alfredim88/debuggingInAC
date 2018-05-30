@@ -1,8 +1,15 @@
 package org.academiadecodigo.debuggingac;
 
 import org.academiadecodigo.debuggingac.characters.*;
-import org.academiadecodigo.debuggingac.menu.Menu;
+import org.academiadecodigo.debuggingac.menu.*;
+import org.academiadecodigo.debuggingac.simplegraphics.keyboard.Keyboard;
+import org.academiadecodigo.debuggingac.simplegraphics.keyboard.KeyboardEvent;
+import org.academiadecodigo.debuggingac.simplegraphics.keyboard.KeyboardEventType;
+import org.academiadecodigo.debuggingac.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.debuggingac.simplegraphics.pictures.Picture;
+
+import javax.swing.plaf.basic.BasicTreeUI;
+import java.util.logging.Handler;
 
 
 public class Game implements Clickable {
@@ -23,6 +30,11 @@ public class Game implements Clickable {
     private int currentCharacter = 0;
     private Char[] gameCharacters = new Char[TOTAL_CHARACTERS];
     private Picture[] folderPic = new Picture[FOLDERS_PER_ROW];
+    private Buttons restartButton = ButtonFactory.getNewButton(ButtonType.RESTART);
+    private Buttons quitButton = ButtonFactory.getNewButton(ButtonType.QUIT);
+    private MenuEvent menuEvent = new MenuEvent();
+
+
 
     public void init() throws InterruptedException {
 
@@ -44,7 +56,7 @@ public class Game implements Clickable {
         //Grid for the folders
         for (int i = 0; i < FOLDERS_PER_ROW; i++) {
             String folderPath = FolderType.getRandomFolder().getFolderPic();
-            folderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), MARGIN_TOP, ""+folderPath);
+            folderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), MARGIN_TOP, "" + folderPath);
         }
 
         start();
@@ -92,10 +104,10 @@ public class Game implements Clickable {
                 Thread.sleep(50);
             }
 
-                if (lives == 0) {
-                    gameOver();
-                    return;
-                }
+            if (lives == 0) {
+                gameOver();
+                return;
+            }
 
             currentCharacter++;
             Thread.sleep(1000);
@@ -107,8 +119,36 @@ public class Game implements Clickable {
         finished = true;
         Picture gameOver = new Picture(0, 0, "resources/images/gameover.png");
         gameOver.draw();
-        Thread.sleep(2000);
+        Thread.sleep(1);
+        inGameMenu();
     }
+
+    //by Monica
+    public void inGameMenu() throws InterruptedException {
+
+
+        if (mouseX >= restartButton.getStartX() && mouseX <= restartButton.getEndX() &&
+                mouseY >= restartButton.getStartY() && mouseY <= restartButton.getEndY()) {
+
+            //gameOver.delete();
+            start();
+
+
+        }
+
+
+        if(mouseX >= quitButton.getStartX() && mouseX <= quitButton.getEndX() &&
+                mouseY >= quitButton.getStartY() && mouseY <= quitButton.getEndY()){
+
+            //gameOver.delete();
+            menuEvent.mainMenuLoop();
+
+        }
+
+
+    }
+
+
 
     private void drawEverything() {
 
@@ -132,6 +172,7 @@ public class Game implements Clickable {
     public void setY(int y) {
         mouseY = y;
     }
+
 
 
 }
