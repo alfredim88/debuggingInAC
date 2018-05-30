@@ -11,7 +11,7 @@ public class Game implements Clickable {
     private static final int PADDING_FOLDERS = 200;
     private static final int MARGIN_LEFT = 0;
     private static final int MARGIN_TOP = 500;
-    private static final int TOTAL_CHARACTERS = 30;
+    private static final int TOTAL_CHARACTERS = 10;
     private GameField gameField;
     private volatile int mouseX;
     private volatile int mouseY;

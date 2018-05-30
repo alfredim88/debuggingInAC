@@ -32,7 +32,7 @@ public class Menu implements Clickable{
 
     public void selection() throws InterruptedException {
 
-        // menuEvent.init();
+        menuEvent.init();
         menuEvent.mainMenuLoop();
 
         while (!startSelection) {
