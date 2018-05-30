@@ -67,9 +67,7 @@ public class Game implements Clickable {
                 //System.out.println("offset" + character.getOffsetX() + " " + character.getOffsetY());
 
                 if (mouseX >= character.getX() && mouseX <= character.getOffsetX()
-                        || mouseX + 50 >= character.getX() && mouseX <= character.getOffsetX()
-                        && mouseY >= character.getY() && mouseY <= character.getOffsetY()
-                        || mouseY + 50 >= character.getY() && mouseY <= character.getOffsetY()) {
+                        && mouseY >= character.getY() && mouseY <= character.getOffsetY()) {
 
                     character.hit();
                     currentCharacter++;
@@ -84,8 +82,11 @@ public class Game implements Clickable {
 
                     lives--;
                     gameField.updateLives(lives);
+                    mouseX = 0;
+                    mouseY = 0;
                     break;
                 }
+
                 Thread.sleep(50);
             }
 
