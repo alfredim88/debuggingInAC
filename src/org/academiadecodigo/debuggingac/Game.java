@@ -17,7 +17,6 @@ public class Game implements Clickable {
     private volatile int mouseY;
     private boolean quit;
     private boolean finished;
-    private boolean levelFinished = false;
     private int gameLevel = 1;
     private int lives = 3;
     private int score = 0;
@@ -56,48 +55,44 @@ public class Game implements Clickable {
 
         drawEverything();
 
-        while (!levelFinished && lives > 0) {
+        while (!finished && currentCharacter < TOTAL_CHARACTERS) {
 
-            while (!finished && currentCharacter < TOTAL_CHARACTERS) {
+            Char character = gameCharacters[currentCharacter];
 
-                Char character = gameCharacters[currentCharacter];
+            while (!character.hasEnded() && !character.isSwattered()) {
 
-                while (!character.hasEnded() && !character.isSwattered()) {
+                character.move();
 
-                    character.move();
+                if (mouseX >= character.getX() && mouseX <= character.getOffsetX()
+                    && mouseY >= character.getY() && mouseY <= character.getOffsetY()) {
 
-                    if (mouseX >= character.getX() && mouseX <= character.getOffsetX()
-                            && mouseY >= character.getY() && mouseY <= character.getOffsetY()) {
+                    character.hit();
 
-                        character.hit();
+                    if (character instanceof Bug) {
 
-                        if (character instanceof Bug) {
-
-                            Bug bug = (Bug) character;
-                            score += bug.getPoints();
-                            gameField.updateScore(score);
-                            break;
-                        }
-
-                        lives--;
-                        gameField.updateLives(lives);
+                        Bug bug = (Bug) character;
+                        score += bug.getPoints();
+                        gameField.updateScore(score);
                         break;
                     }
 
-                    Thread.sleep(50);
+                    lives--;
+                    gameField.updateLives(lives);
+                    break;
                 }
 
-                if (lives == 0) {
-                    finished = true;
-                    gameOver();
-                    return;
-                }
-                mouseX = 0;
-                mouseY = 0;
-                currentCharacter++;
-                Thread.sleep(1000);
-                levelFinished = true;
+                Thread.sleep(50);
             }
+
+            if (lives == 0) {
+                finished = true;
+                gameOver();
+                return;
+            }
+            mouseX = 0;
+            mouseY = 0;
+            currentCharacter++;
+            Thread.sleep(1000);
         }
 
     }
