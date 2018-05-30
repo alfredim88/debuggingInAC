@@ -4,6 +4,7 @@ import org.academiadecodigo.debuggingac.characters.*;
 import org.academiadecodigo.debuggingac.menu.Menu;
 import org.academiadecodigo.debuggingac.simplegraphics.pictures.Picture;
 
+
 public class Game implements Clickable {
 
     private static final int FOLDERS_PER_ROW = 6;

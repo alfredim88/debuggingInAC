@@ -30,7 +30,7 @@ public class MenuEvent {
         this.menuBG2 = new Picture(0,0,"resources/images/menu/menu_x2.png");
         this.tutorial = new Picture(0,0, "resources/images/menu/tutorial.png");
         this.credits = new Picture(0,0, "resources/images/menu/credits.png");
-        //this.loadingSound = new Audio("/sounds/boot.wav");
+        this.loadingSound = new Audio("/sounds/boot.wav");
         this.loadingZero = new Picture(0, 0, "resources/images/loading/0.jpg");
         this.loadingOne = new Picture(0, 0, "resources/images/loading/1.jpg");
         this.loadingTwo = new Picture(0, 0, "resources/images/loading/2.jpg");
@@ -69,8 +69,8 @@ public class MenuEvent {
         loadingFour.delete();
         Thread.sleep(400);
 
-        //loadingSound.start(true);
-        //Thread.sleep(1750);
+        loadingSound.start(true);
+        Thread.sleep(1750);
 
         loadingSix.draw();
         loadingFive.delete();
@@ -125,7 +125,7 @@ public class MenuEvent {
 
     public void soundMenu(){
 
-        menu = new Audio("/sounds/menubg.wav");
+        menu = new Audio("/resources/sounds/menubg.wav");
         menu.createLoop(5);
         menu.start(true);
 
