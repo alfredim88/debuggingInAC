@@ -22,9 +22,11 @@ public abstract class Char {
         pic1.draw();
     }
 
-    public void hit() {
+    public void hit() throws InterruptedException {
         pic1.delete();
         pic2.draw();
+        Thread.sleep(300);
+        pic2.delete();
         swattered = true;
         System.out.println("AUTCH!");
     }
@@ -38,6 +40,7 @@ public abstract class Char {
         if (goingUp) {
 
             pic1.translate(0,-10);
+            pic2.translate(0,-10);
 
             if (reachTop()) {
                 goingUp = false;
@@ -48,6 +51,7 @@ public abstract class Char {
 
         if (System.currentTimeMillis() - topTimer > 2000) {
             pic1.translate(0, 10);
+            pic2.translate(0,10);
 
             if (pic1.getY() >= 500){
                 pic1.delete();

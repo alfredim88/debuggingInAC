@@ -59,18 +59,15 @@ public class Game implements Clickable {
         while (!finished && currentCharacter < TOTAL_CHARACTERS) {
 
             Char character = gameCharacters[currentCharacter];
+            System.out.println(currentCharacter);
 
-            while (!character.hasEnded()) {
+            while (!character.hasEnded() && !character.isSwattered()) {
                 character.move();
 
-                //System.out.println(character.getX() + " " + character.getY());
-                //System.out.println("offset" + character.getOffsetX() + " " + character.getOffsetY());
-
                 if (mouseX >= character.getX() && mouseX <= character.getOffsetX()
-                        && mouseY >= character.getY() && mouseY <= character.getOffsetY()) {
+                    && mouseY >= character.getY() && mouseY <= character.getOffsetY()) {
 
                     character.hit();
-                    currentCharacter++;
 
                     if (character instanceof Bug) {
 
@@ -82,8 +79,6 @@ public class Game implements Clickable {
 
                     lives--;
                     gameField.updateLives(lives);
-                    mouseX = 0;
-                    mouseY = 0;
                     break;
                 }
 
@@ -95,6 +90,8 @@ public class Game implements Clickable {
                 gameOver();
                 return;
             }
+            mouseX = 0;
+            mouseY = 0;
             currentCharacter++;
             Thread.sleep(1000);
         }

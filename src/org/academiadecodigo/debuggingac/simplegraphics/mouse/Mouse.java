@@ -82,19 +82,6 @@ public class Mouse implements MouseListener, MouseMotionListener {
     @Override
     public void mouseMoved(MouseEvent e) {
 
-        /*if (handler == null) {
-            return;
-        }
-
-        Iterator<MouseEventType> iterator = mouseEventArrayList.iterator();
-        while (iterator.hasNext()) {
-            MouseEventType et = iterator.next();
-            if (et == MouseEventType.MOUSE_MOVED) {
-                handler.mouseMoved(new org.academiadecodigo.debuggingac.simplegraphics.mouse.MouseEvent(e.getX(), e.getY(), MouseEventType.MOUSE_MOVED));
-            }
-
-        }*/
-
     }
 
     @Override
