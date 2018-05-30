@@ -22,6 +22,8 @@ public class Mouse implements MouseListener, MouseMotionListener {
     String osName = System.getProperty("os.name").toLowerCase();
     boolean isMacOs = osName.startsWith("mac os x");
     boolean isUnix = osName.indexOf("nix") >= 0 || osName.indexOf("nux") >= 0 || osName.indexOf("aix") > 0;
+    private Cursor aim;
+    private Cursor hit;
 
 
     /**
@@ -29,18 +31,20 @@ public class Mouse implements MouseListener, MouseMotionListener {
      */
     public Mouse(MouseHandler handler) {
         Canvas.getInstance().addMouseListener(this);
-        Canvas.getInstance().addMouseMotionListener(this);
 
         this.handler = handler;
         mouseEventArrayList = new ArrayList<>();
         pane = (JPanel) Canvas.getInstance().getFrame().getContentPane();
 
-     /*   if (isMacOs || isUnix) {
-            pane.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("resources/images/cursor/idle.png").getImage(), new Point(74, 172), "idle"));
+        Point point;
+        if (isMacOs || isUnix) {
+            point = new Point(74, 172);
         } else {
-            pane.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("resources/images/cursor/idle.png").getImage(), new Point(0, 0), "idle"));
+            point = new Point(0, 0);
         }
-        System.out.println(osName);*/
+        aim = Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("resources/images/cursor/aim.png").getImage(), point, "aim");
+        hit = Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("resources/images/cursor/hit.png").getImage(), point, "hit");
+        pane.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("resources/images/cursor/idle.png").getImage(), point,"idle"));
     }
 
     /**
@@ -68,6 +72,34 @@ public class Mouse implements MouseListener, MouseMotionListener {
     @Override
     public void mouseClicked(MouseEvent e) {
 
+    }
+
+    /**
+     * @param e the event
+     * @see MouseHandler#mouseMoved(org.academiadecodigo.debuggingac.simplegraphics.mouse.MouseEvent)
+     */
+    @Override
+    public void mouseMoved(MouseEvent e) {
+
+        /*if (handler == null) {
+            return;
+        }
+
+        Iterator<MouseEventType> iterator = mouseEventArrayList.iterator();
+        while (iterator.hasNext()) {
+            MouseEventType et = iterator.next();
+            if (et == MouseEventType.MOUSE_MOVED) {
+                handler.mouseMoved(new org.academiadecodigo.debuggingac.simplegraphics.mouse.MouseEvent(e.getX(), e.getY(), MouseEventType.MOUSE_MOVED));
+            }
+
+        }*/
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        pane.setCursor(hit);
+
         if (handler == null) {
             return;
         }
@@ -80,47 +112,11 @@ public class Mouse implements MouseListener, MouseMotionListener {
             }
 
         }
-
-    }
-
-    /**
-     * @param e the event
-     * @see MouseHandler#mouseMoved(org.academiadecodigo.debuggingac.simplegraphics.mouse.MouseEvent)
-     */
-    @Override
-    public void mouseMoved(MouseEvent e) {
-
-        if (handler == null) {
-            return;
-        }
-
-        Iterator<MouseEventType> iterator = mouseEventArrayList.iterator();
-        while (iterator.hasNext()) {
-            MouseEventType et = iterator.next();
-            if (et == MouseEventType.MOUSE_MOVED) {
-                handler.mouseMoved(new org.academiadecodigo.debuggingac.simplegraphics.mouse.MouseEvent(e.getX(), e.getY(), MouseEventType.MOUSE_MOVED));
-            }
-
-        }
-
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-       /* if (isMacOs || isUnix) {
-            pane.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("resources/images/cursor/hit.png").getImage(), new Point(74, 172), "hit"));
-        } else {
-            pane.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("resources/images/cursor/hit.png").getImage(), new Point(0, 0), "hit"));
-        }*/
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-       /*if (isMacOs || isUnix) {
-            pane.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("resources/images/cursor/aim.png").getImage(), new Point(74, 172), "aim"));
-        } else {
-            pane.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("resources/images/cursor/aim.png").getImage(), new Point(0, 0), "aim"));
-        }*/
+        pane.setCursor(aim);
     }
 
     @Override
