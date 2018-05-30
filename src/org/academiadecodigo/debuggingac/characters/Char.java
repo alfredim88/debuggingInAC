@@ -24,6 +24,7 @@ public abstract class Char {
 
     public void hit() {
         pic1.delete();
+        pic2.draw();
         swattered = true;
         System.out.println("AUTCH!");
     }

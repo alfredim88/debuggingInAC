@@ -31,14 +31,13 @@ public class Game implements Clickable {
         CharactersFactory factory = new CharactersFactory();
 
         for (int i = 0; i < TOTAL_CHARACTERS; i++) {
+
             int random = (int) (Math.random() * 10);
 
             if (random > 2) {
                 gameCharacters[i] = factory.createBugs();
-                System.out.println("bug");
             } else {
                 gameCharacters[i] = factory.createFeatures();
-                System.out.println("feature");
             }
         }
 
@@ -73,12 +72,12 @@ public class Game implements Clickable {
                         || mouseY + 50 >= character.getY() && mouseY <= character.getOffsetY()) {
 
                     character.hit();
+
                     if (character instanceof Bug) {
 
                         Bug bug = (Bug) character;
                         score += bug.getPoints();
                         gameField.updateScore(score);
-                        System.out.println(character);
                         break;
                     }
 
@@ -117,8 +116,6 @@ public class Game implements Clickable {
 
         for (int i = 0; i < TOTAL_CHARACTERS; i++) {
             gameCharacters[i].drawCharacter();
-            System.out.println(gameCharacters[i].getX());
-            System.out.println("draw: " + i);
         }
 
         for (int i = 0; i < FOLDERS_PER_ROW; i++) {
