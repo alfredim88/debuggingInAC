@@ -1,5 +1,6 @@
 package org.academiadecodigo.debuggingac.characters;
 
+import org.academiadecodigo.debuggingac.Game;
 import org.academiadecodigo.debuggingac.simplegraphics.pictures.Picture;
 
 public abstract class Char {
@@ -10,7 +11,8 @@ public abstract class Char {
     private boolean goingUp = true;
     private long topTimer;
     private int x;
-    private int y = 500;
+    private int y = Game.getMarginTop()-15;
+    private int size = -33;
 
     public Char(String pic1, String pic2){
         this.x = Randomizer.randomFolder();
@@ -19,13 +21,18 @@ public abstract class Char {
     }
 
     public void drawCharacter(){
+        pic1.grow(size,size);
         pic1.draw();
-    }
+        }
 
-    public void hit() {
+    public void hit() throws InterruptedException {
         pic1.delete();
+        pic2.grow(size,size);
+        pic2.draw();
+        Thread.sleep(300);
+        pic2.delete();
         swattered = true;
-        System.out.println("AUTCH!");
+        System.out.println("OUCH!");
     }
 
     public boolean isSwattered() {
@@ -37,6 +44,7 @@ public abstract class Char {
         if (goingUp) {
 
             pic1.translate(0,-10);
+            pic2.translate(0,-10);
 
             if (reachTop()) {
                 goingUp = false;
@@ -47,8 +55,9 @@ public abstract class Char {
 
         if (System.currentTimeMillis() - topTimer > 2000) {
             pic1.translate(0, 10);
+            pic2.translate(0,10);
 
-            if (pic1.getY() >= 500){
+            if (pic1.getY() >= y){
                 pic1.delete();
             }
         }
@@ -57,13 +66,13 @@ public abstract class Char {
 
     public boolean reachTop(){
 
-        return pic1.getY() < 440;
+        return pic1.getY() < y - 60;
 
     }
 
     public boolean hasEnded() {
 
-        return !goingUp && pic1.getY() >= 500;
+        return !goingUp && pic1.getY() >= y;
     }
 
     public void delete() {

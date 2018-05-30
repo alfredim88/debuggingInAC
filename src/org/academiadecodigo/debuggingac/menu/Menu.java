@@ -20,7 +20,7 @@ public class Menu implements Clickable{
 
         menuEvent = new MenuEvent();
         //loading();
-        //menuEvent.soundMenu();
+
         play = ButtonFactory.getNewButton(ButtonType.PLAY);
         tutorial = ButtonFactory.getNewButton(ButtonType.TUTORIAL);
         credits = ButtonFactory.getNewButton(ButtonType.CREDITS);
@@ -33,6 +33,7 @@ public class Menu implements Clickable{
     public void selection() throws InterruptedException {
 
         menuEvent.init();
+        menuEvent.soundMenu();
         menuEvent.mainMenuLoop();
 
         while (!startSelection) {
@@ -53,7 +54,7 @@ public class Menu implements Clickable{
              */
             if ((mouseX >= play.getStartX() && mouseX <= play.getEndX()) &&
                     (mouseY >= play.getStartY() && mouseY <= play.getEndY())) {
-               // menuEvent.killSoundMenu();
+               menuEvent.killSoundMenu();
                 startSelection = true;
             }
             /*

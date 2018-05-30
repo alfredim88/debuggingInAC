@@ -1,9 +1,11 @@
 package org.academiadecodigo.debuggingac.characters;
 
+import org.academiadecodigo.debuggingac.Game;
+
 public class Randomizer {
 
     public static int randomFolder() {
-        return 100 + (200 * (int) (Math.random() * 6));
+        return  Game.getPaddingFolders() * (int) (Math.random() * Game.getFoldersPerRow());
     }
 
 }
