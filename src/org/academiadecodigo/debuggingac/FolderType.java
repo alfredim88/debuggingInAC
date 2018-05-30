@@ -5,7 +5,7 @@ public enum FolderType {
     CAR_CRASH("resources/images/folders/carcrash.png"),
     SNIPER_ELITE("resources/images/folders/sniper.png"),
     GUESS_A_NUMBER("resources/images/folders/guessnumber.png"),
-    ARABIAN_NIGHT("/resources/images/folders/arabian-nights.png"),
+    //ARABIAN_NIGHT("resources/images/folders/arabian-nights.png"),
     HOTEL("resources/images/folders/hotel.png"),
     MONEY_IN_THE_BANK("resources/images/folders/bank.png"),
     ROCK_PAPER_SCISSORS("resources/images/folders/janken.png");
