@@ -44,7 +44,7 @@ public class Game implements Clickable {
         //Grid for the folders
         for (int i = 0; i < FOLDERS_PER_ROW; i++) {
             String folderPath = FolderType.getRandomFolder().getFolderPic();
-            folderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), MARGIN_TOP, ""+folderPath);
+            folderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), MARGIN_TOP, "" + folderPath);
         }
 
         start();
@@ -72,6 +72,7 @@ public class Game implements Clickable {
                         || mouseY + 50 >= character.getY() && mouseY <= character.getOffsetY()) {
 
                     character.hit();
+                    currentCharacter++;
 
                     if (character instanceof Bug) {
 
@@ -81,22 +82,18 @@ public class Game implements Clickable {
                         break;
                     }
 
-
-                    if (character instanceof Feature) {
-                        lives--;
-                        gameField.updateLives(lives);
-                        break;
-                    }
-
+                    lives--;
+                    gameField.updateLives(lives);
+                    break;
                 }
                 Thread.sleep(50);
             }
 
-                if (lives == 0) {
-                    gameOver();
-                    return;
-                }
-
+            if (lives == 0) {
+                finished = true;
+                gameOver();
+                return;
+            }
             currentCharacter++;
             Thread.sleep(1000);
         }
