@@ -20,7 +20,7 @@ public class Menu implements Clickable{
 
         menuEvent = new MenuEvent();
         //loading();
-        //menuEvent.soundMenu();
+        menuEvent.soundMenu();
         play = ButtonFactory.getNewButton(ButtonType.PLAY);
         tutorial = ButtonFactory.getNewButton(ButtonType.TUTORIAL);
         credits = ButtonFactory.getNewButton(ButtonType.CREDITS);
@@ -53,7 +53,7 @@ public class Menu implements Clickable{
              */
             if ((mouseX >= play.getStartX() && mouseX <= play.getEndX()) &&
                     (mouseY >= play.getStartY() && mouseY <= play.getEndY())) {
-               // menuEvent.killSoundMenu();
+               menuEvent.killSoundMenu();
                 startSelection = true;
             }
             /*

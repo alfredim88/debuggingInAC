@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+
 /**
  * Container of shapes
  */
@@ -24,18 +25,26 @@ public class Canvas {
     private BufferedImage background;
     private JFrame frame;
     private CanvasComponent component;
+    /**
+     * fullscreen
+     */
+    GraphicsDevice device;
+    boolean fullscreen;
 
     private Canvas() {
         component = new CanvasComponent();
+        /**
+         * fullscreen
+         */
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        device = ge.getDefaultScreenDevice();
 
         frame = new JFrame();
         frame.add(component);
         frame.pack();
         frame.setLocation(LOCATION_OFFSET, LOCATION_OFFSET);
         frame.setSize(1200, 800);
-        //frame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
         frame.setTitle("Debugging in <AC_>");
-       //frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setVisible(true);
     }
 
@@ -81,13 +90,16 @@ public class Canvas {
 
     /**
      * Method that returns all the shapes that displayed in the canvas
+     *
      * @return ArrayList with all the shapes
      */
     public ArrayList<Shape> getShapes() {
         return shapes;
     }
+
     /**
      * Method that returns all the shapes in given area
+     *
      * @param x1 - beginning of x
      * @param y1 - beginning of y
      * @param x2 - end of x
@@ -98,7 +110,7 @@ public class Canvas {
 
         ArrayList<Shape> shapesInArea = new ArrayList<>();
 
-        for (Shape shape: shapes) {
+        for (Shape shape : shapes) {
             if (shape.getX() >= x1 && shape.getX() <= x2 &&
                     shape.getY() >= y1 && shape.getY() <= y2) {
                 shapesInArea.add(shape);
@@ -167,8 +179,33 @@ public class Canvas {
         frame.addKeyListener(handler);
     }
 
+    public void changeSize() {
+        if(!fullscreen) {
+            mainScreenTurnOn();
+            return;
+        }
+
+        mainScreenTurnOff();
+    }
+
+    private void mainScreenTurnOn() {
+        frame.dispose();
+        frame.setUndecorated(true);
+        device.setFullScreenWindow(frame);
+        fullscreen = true;
+    }
+
+    private void mainScreenTurnOff() {
+        fullscreen = false;
+        device.setFullScreenWindow(null);
+        frame.dispose();
+        frame.setUndecorated(false);
+        frame.setVisible(true);
+    }
+
     /**
      * Adds a mouse listener to the canvas
+     *
      * @param handler reference to the MouseListener object
      */
     public void addMouseListener(MouseListener handler) {
@@ -177,6 +214,7 @@ public class Canvas {
 
     /**
      * Adds a mouse motion listener to the canvas
+     *
      * @param handler reference to the MouseMotionListener object
      */
     public void addMouseMotionListener(MouseMotionListener handler) {
