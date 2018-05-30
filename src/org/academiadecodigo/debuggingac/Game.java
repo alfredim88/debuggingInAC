@@ -1,10 +1,14 @@
 package org.academiadecodigo.debuggingac;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import org.academiadecodigo.debuggingac.characters.Bug;
 import org.academiadecodigo.debuggingac.characters.CharactersFactory;
 import org.academiadecodigo.debuggingac.characters.Feature;
 import org.academiadecodigo.debuggingac.characters.Hittable;
+=======
+import org.academiadecodigo.debuggingac.characters.*;
+>>>>>>> parent of 42f88c0... Stuff
 =======
 import org.academiadecodigo.debuggingac.characters.*;
 >>>>>>> parent of 42f88c0... Stuff
@@ -14,6 +18,7 @@ import org.academiadecodigo.debuggingac.simplegraphics.pictures.Picture;
 
 public class Game implements Clickable {
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 
     private static final int FOLDERS_PER_ROW = 6;
@@ -25,10 +30,13 @@ public class Game implements Clickable {
     private int mouseX;
     private int mouseY;
 =======
+=======
+>>>>>>> parent of 42f88c0... Stuff
     private static final int FOLDERS_PER_ROW = 6;
     private static final int PADDING_FOLDERS = 200;
     private static final int MARGIN_LEFT = 0;
     private static final int MARGIN_TOP = 500;
+<<<<<<< HEAD
     private static final int TOTAL_CHARACTERS = 30;
     private GameField gameField;
     private volatile int mouseX;
@@ -37,12 +45,24 @@ public class Game implements Clickable {
     private boolean quit;
     private boolean finished;
     private boolean levelFinished = false;
+=======
+    private static final int TOTAL_CHARACTERS = 10;
+    private GameField gameField;
+    private volatile int mouseX;
+    private volatile int mouseY;
+    private boolean quit;
+    private boolean finished;
+>>>>>>> parent of 42f88c0... Stuff
     private int gameLevel = 1;
     private int lives = 3;
     private int score = 0;
     private int currentCharacter = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
     private Hittable[] gameCharacters = new Hittable[TOTAL_CHARACTERS];
+=======
+    private Char[] gameCharacters = new Char[TOTAL_CHARACTERS];
+>>>>>>> parent of 42f88c0... Stuff
 =======
     private Char[] gameCharacters = new Char[TOTAL_CHARACTERS];
 >>>>>>> parent of 42f88c0... Stuff
@@ -56,6 +76,7 @@ public class Game implements Clickable {
 
         for (int i = 0; i < TOTAL_CHARACTERS; i++) {
 <<<<<<< HEAD
+<<<<<<< HEAD
             int random = (int) (Math.random() * 10);
 
             if (random > -1) {
@@ -65,6 +86,8 @@ public class Game implements Clickable {
                 gameCharacters[i] = factory.createFeatures();
                 System.out.println("feature");
 =======
+=======
+>>>>>>> parent of 42f88c0... Stuff
 
             int random = (int) (Math.random() * 10);
 
@@ -72,6 +95,9 @@ public class Game implements Clickable {
                 gameCharacters[i] = factory.createBugs();
             } else {
                 gameCharacters[i] = factory.createFeatures();
+<<<<<<< HEAD
+>>>>>>> parent of 42f88c0... Stuff
+=======
 >>>>>>> parent of 42f88c0... Stuff
             }
         }
@@ -80,7 +106,11 @@ public class Game implements Clickable {
         for (int i = 0; i < FOLDERS_PER_ROW; i++) {
             String folderPath = FolderType.getRandomFolder().getFolderPic();
 <<<<<<< HEAD
+<<<<<<< HEAD
             folderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), MARGIN_TOP, "resources/images/folders/folder_arabian-nights.png");
+=======
+            folderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), MARGIN_TOP, "" + folderPath);
+>>>>>>> parent of 42f88c0... Stuff
 =======
             folderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), MARGIN_TOP, "" + folderPath);
 >>>>>>> parent of 42f88c0... Stuff
@@ -94,6 +124,7 @@ public class Game implements Clickable {
 
         drawEverything();
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 
@@ -196,6 +227,48 @@ public class Game implements Clickable {
                 Thread.sleep(1000);
                 levelFinished = true;
             }
+        }
+
+>>>>>>> parent of 42f88c0... Stuff
+=======
+        while (!finished && currentCharacter < TOTAL_CHARACTERS) {
+
+            Char character = gameCharacters[currentCharacter];
+
+            while (!character.hasEnded() && !character.isSwattered()) {
+
+                character.move();
+
+                if (mouseX >= character.getX() && mouseX <= character.getOffsetX()
+                    && mouseY >= character.getY() && mouseY <= character.getOffsetY()) {
+
+                    character.hit();
+
+                    if (character instanceof Bug) {
+
+                        Bug bug = (Bug) character;
+                        score += bug.getPoints();
+                        gameField.updateScore(score);
+                        break;
+                    }
+
+                    lives--;
+                    gameField.updateLives(lives);
+                    break;
+                }
+
+                Thread.sleep(50);
+            }
+
+            if (lives == 0) {
+                finished = true;
+                gameOver();
+                return;
+            }
+            mouseX = 0;
+            mouseY = 0;
+            currentCharacter++;
+            Thread.sleep(1000);
         }
 
 >>>>>>> parent of 42f88c0... Stuff

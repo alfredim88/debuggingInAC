@@ -6,6 +6,7 @@ public abstract class Char {
 
     private boolean swattered;
 <<<<<<< HEAD
+<<<<<<< HEAD
     private int x = randomFolder();
     private int y = 500;
     private Picture pic1;
@@ -23,6 +24,8 @@ public abstract class Char {
 
 
 =======
+=======
+>>>>>>> parent of 42f88c0... Stuff
     private Picture pic1;
     private Picture pic2;
     private boolean goingUp = true;
@@ -49,11 +52,15 @@ public abstract class Char {
         System.out.println("AUTCH!");
     }
 
+<<<<<<< HEAD
+>>>>>>> parent of 42f88c0... Stuff
+=======
 >>>>>>> parent of 42f88c0... Stuff
     public boolean isSwattered() {
         return swattered;
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 
     public void move(int speed) throws InterruptedException {
@@ -71,6 +78,8 @@ public abstract class Char {
             }
 
 =======
+=======
+>>>>>>> parent of 42f88c0... Stuff
     public void move(){
 
         if (goingUp) {
@@ -82,6 +91,9 @@ public abstract class Char {
                 goingUp = false;
                 topTimer = System.currentTimeMillis();
             }
+<<<<<<< HEAD
+>>>>>>> parent of 42f88c0... Stuff
+=======
 >>>>>>> parent of 42f88c0... Stuff
             return;
         }
@@ -89,8 +101,14 @@ public abstract class Char {
         if (System.currentTimeMillis() - topTimer > 2000) {
             pic1.translate(0, 10);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
             if (pic1.getY() == 500){
+=======
+            pic2.translate(0,10);
+
+            if (pic1.getY() >= 500){
+>>>>>>> parent of 42f88c0... Stuff
 =======
             pic2.translate(0,10);
 
@@ -101,8 +119,11 @@ public abstract class Char {
         }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> parent of 42f88c0... Stuff
 =======
 >>>>>>> parent of 42f88c0... Stuff
     }
@@ -113,6 +134,7 @@ public abstract class Char {
 
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 
     public boolean hasEnded() {
@@ -147,6 +169,8 @@ public abstract class Char {
         return y;
     }
 =======
+=======
+>>>>>>> parent of 42f88c0... Stuff
     public boolean hasEnded() {
 
         return !goingUp && pic1.getY() >= 500;
@@ -172,5 +196,8 @@ public abstract class Char {
         return pic1.getMaxY();
     }
 
+<<<<<<< HEAD
+>>>>>>> parent of 42f88c0... Stuff
+=======
 >>>>>>> parent of 42f88c0... Stuff
 }
