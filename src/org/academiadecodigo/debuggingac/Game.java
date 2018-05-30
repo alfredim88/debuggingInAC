@@ -7,11 +7,11 @@ import org.academiadecodigo.debuggingac.simplegraphics.pictures.Picture;
 
 public class Game implements Clickable {
 
-    private static final int FOLDERS_PER_ROW = 6;
-    private static final int PADDING_FOLDERS = 200;
+    private static final int FOLDERS_PER_ROW = 8;
+    private static final int PADDING_FOLDERS = 150;
     private static final int MARGIN_LEFT = 0;
-    private static final int MARGIN_TOP = 500;
-    private static final int TOTAL_CHARACTERS = 10;
+    private static final int MARGIN_TOP = 650;
+    private static final int TOTAL_CHARACTERS = 100;
     private GameField gameField;
     private volatile int mouseX;
     private volatile int mouseY;
@@ -44,7 +44,8 @@ public class Game implements Clickable {
         //Grid for the folders
         for (int i = 0; i < FOLDERS_PER_ROW; i++) {
             String folderPath = FolderType.getRandomFolder().getFolderPic();
-            folderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), MARGIN_TOP, "" + folderPath);
+            folderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), MARGIN_TOP,  folderPath);
+            folderPic[i].grow(15,15);
         }
 
         start();
@@ -115,6 +116,18 @@ public class Game implements Clickable {
         for (int i = 0; i < FOLDERS_PER_ROW; i++) {
             folderPic[i].draw();
         }
+}
+
+    public static int getFoldersPerRow() {
+        return FOLDERS_PER_ROW;
+    }
+
+    public static int getPaddingFolders() {
+        return PADDING_FOLDERS;
+    }
+
+    public static int getMarginTop() {
+        return MARGIN_TOP;
     }
 
     @Override
