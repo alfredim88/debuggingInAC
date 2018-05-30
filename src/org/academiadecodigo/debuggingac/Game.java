@@ -55,13 +55,12 @@ public class Game implements Clickable {
 
         drawEverything();
 
-
         while (!finished && currentCharacter < TOTAL_CHARACTERS) {
 
             Char character = gameCharacters[currentCharacter];
-            System.out.println(currentCharacter);
 
             while (!character.hasEnded() && !character.isSwattered()) {
+
                 character.move();
 
                 if (mouseX >= character.getX() && mouseX <= character.getOffsetX()
