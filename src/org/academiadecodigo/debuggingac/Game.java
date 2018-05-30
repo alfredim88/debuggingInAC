@@ -33,7 +33,7 @@ public class Game implements Clickable {
         for (int i = 0; i < TOTAL_CHARACTERS; i++) {
             int random = (int) (Math.random() * 10);
 
-            if (random > -1) {
+            if (random > 2) {
                 gameCharacters[i] = factory.createBugs();
                 System.out.println("bug");
             } else {
@@ -45,7 +45,7 @@ public class Game implements Clickable {
         //Grid for the folders
         for (int i = 0; i < FOLDERS_PER_ROW; i++) {
             String folderPath = FolderType.getRandomFolder().getFolderPic();
-            folderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), MARGIN_TOP, "resources/images/folders/hotel.png");
+            folderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), MARGIN_TOP, ""+folderPath);
         }
 
         start();
