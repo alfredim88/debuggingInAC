@@ -4,9 +4,9 @@ import org.academiadecodigo.debuggingac.simplegraphics.pictures.Picture;
 
 public enum FeatureType {
 
-    BABY(2, 1, "resources/images/chars/baby_normal.png", "resources/images/features/baby_hit.png"),
-    TOADETTE(1, 1, "resources/images/chars/toadette_normal.png", "resources/images/features/toadette_hit.png"),
-    GOOMBELA(2, 1, "resources/images/chars/goombela_normal.png", "resources/images/features/goombela_hit.png");
+    BABY(2, 1, "resources/images/chars/baby_normal.png", "resources/images/chars/baby_hit.png"),
+    TOADETTE(1, 1, "resources/images/chars/toadette_normal.png", "resources/images/chars/toadette_hit.png"),
+    GOOMBELA(2, 1, "resources/images/chars/goombela_normal.png", "resources/images/chars/goombela_hit.png");
 
     private int speed;
     private int livesLost;
