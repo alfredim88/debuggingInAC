@@ -7,7 +7,7 @@ import org.academiadecodigo.debuggingac.simplegraphics.pictures.Picture;
 
 public class MenuEvent {
 
-    private int menuLoops = 5;
+    private int menuLoops = 1;
     private static Picture menuBG;
     private static Picture menuBG2;
     private static Picture tutorial;
@@ -69,8 +69,8 @@ public class MenuEvent {
         loadingFour.delete();
         Thread.sleep(400);
 
-        loadingSound.start(true);
-        Thread.sleep(1750);
+        //loadingSound.start(true);
+        //Thread.sleep(1750);
 
         loadingSix.draw();
         loadingFive.delete();

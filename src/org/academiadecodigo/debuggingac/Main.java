@@ -5,6 +5,7 @@ import org.academiadecodigo.debuggingac.menu.Menu;
 public class Main {
     public static void main(String[] args) throws InterruptedException {
 
+        new Fullscreen();
         Swatter swatter = new Swatter();
 
         Menu menu = new Menu();
@@ -14,6 +15,6 @@ public class Main {
 
         Game game = new Game();
         swatter.setClickable(game);
-        game.startGame();
+        game.init();
     }
 }

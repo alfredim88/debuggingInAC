@@ -1,89 +1,27 @@
 package org.academiadecodigo.debuggingac;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> parent of b3a5e0b... new stuff
-import org.academiadecodigo.debuggingac.characters.Bug;
-import org.academiadecodigo.debuggingac.characters.CharactersFactory;
-import org.academiadecodigo.debuggingac.characters.Feature;
-import org.academiadecodigo.debuggingac.characters.Hittable;
-<<<<<<< HEAD
-=======
 import org.academiadecodigo.debuggingac.characters.*;
->>>>>>> parent of 42f88c0... Stuff
-=======
-import org.academiadecodigo.debuggingac.characters.*;
->>>>>>> parent of 42f88c0... Stuff
-=======
->>>>>>> parent of b3a5e0b... new stuff
 import org.academiadecodigo.debuggingac.menu.Menu;
 import org.academiadecodigo.debuggingac.simplegraphics.pictures.Picture;
 
 
 public class Game implements Clickable {
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-    private static final int FOLDERS_PER_ROW = 6;
-    private static final int PADDING_FOLDERS = 200;
-    private static final int MARGIN_LEFT = 70;
-    private static final int MARGIN_TOP = 500;
-    private static final int TOTAL_CHARACTERS = 5;
-    private GameField gameField;
-    private int mouseX;
-    private int mouseY;
-=======
-=======
->>>>>>> parent of 42f88c0... Stuff
-=======
-
->>>>>>> parent of b3a5e0b... new stuff
-    private static final int FOLDERS_PER_ROW = 6;
-    private static final int PADDING_FOLDERS = 200;
-    private static final int MARGIN_LEFT = 70;
-    private static final int MARGIN_TOP = 500;
-<<<<<<< HEAD
-<<<<<<< HEAD
-    private static final int TOTAL_CHARACTERS = 30;
+    private static final int FOLDERS_PER_ROW = 8;
+    private static final int PADDING_FOLDERS = 150;
+    private static final int MARGIN_LEFT = 0;
+    private static final int MARGIN_TOP = 650;
+    private static final int TOTAL_CHARACTERS = 100;
     private GameField gameField;
     private volatile int mouseX;
     private volatile int mouseY;
->>>>>>> parent of 42f88c0... Stuff
     private boolean quit;
     private boolean finished;
-    private boolean levelFinished = false;
-=======
-    private static final int TOTAL_CHARACTERS = 10;
-=======
-    private static final int TOTAL_CHARACTERS = 5;
->>>>>>> parent of b3a5e0b... new stuff
-    private GameField gameField;
-    private int mouseX;
-    private int mouseY;
-    private boolean quit;
-    private boolean finished;
->>>>>>> parent of 42f88c0... Stuff
     private int gameLevel = 1;
     private int lives = 3;
     private int score = 0;
     private int currentCharacter = 0;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    private Hittable[] gameCharacters = new Hittable[TOTAL_CHARACTERS];
-=======
     private Char[] gameCharacters = new Char[TOTAL_CHARACTERS];
->>>>>>> parent of 42f88c0... Stuff
-=======
-    private Char[] gameCharacters = new Char[TOTAL_CHARACTERS];
->>>>>>> parent of 42f88c0... Stuff
-=======
-    private Hittable[] gameCharacters = new Hittable[TOTAL_CHARACTERS];
->>>>>>> parent of b3a5e0b... new stuff
     private Picture[] folderPic = new Picture[FOLDERS_PER_ROW];
 
     public void init() throws InterruptedException {
@@ -93,57 +31,21 @@ public class Game implements Clickable {
         CharactersFactory factory = new CharactersFactory();
 
         for (int i = 0; i < TOTAL_CHARACTERS; i++) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
+
             int random = (int) (Math.random() * 10);
 
-            if (random > -1) {
+            if (random > 2) {
                 gameCharacters[i] = factory.createBugs();
-                System.out.println("bug");
             } else {
                 gameCharacters[i] = factory.createFeatures();
-                System.out.println("feature");
-=======
-=======
->>>>>>> parent of 42f88c0... Stuff
-
-=======
->>>>>>> parent of b3a5e0b... new stuff
-            int random = (int) (Math.random() * 10);
-
-            if (random > -1) {
-                gameCharacters[i] = factory.createBugs();
-                System.out.println("bug");
-            } else {
-                gameCharacters[i] = factory.createFeatures();
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> parent of 42f88c0... Stuff
-=======
->>>>>>> parent of 42f88c0... Stuff
-=======
-                System.out.println("feature");
->>>>>>> parent of b3a5e0b... new stuff
             }
         }
 
         //Grid for the folders
         for (int i = 0; i < FOLDERS_PER_ROW; i++) {
             String folderPath = FolderType.getRandomFolder().getFolderPic();
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-            folderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), MARGIN_TOP, "resources/images/folders/folder_arabian-nights.png");
-=======
-            folderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), MARGIN_TOP, "" + folderPath);
->>>>>>> parent of 42f88c0... Stuff
-=======
-            folderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), MARGIN_TOP, "" + folderPath);
->>>>>>> parent of 42f88c0... Stuff
-=======
-            folderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), MARGIN_TOP, "resources/images/folders/folder_arabian-nights.png");
->>>>>>> parent of b3a5e0b... new stuff
+            folderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), MARGIN_TOP,  folderPath);
+            folderPic[i].grow(15,15);
         }
 
         start();
@@ -154,174 +56,46 @@ public class Game implements Clickable {
 
         drawEverything();
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-
         while (!finished && currentCharacter < TOTAL_CHARACTERS) {
 
-            for (int i = 0; i < TOTAL_CHARACTERS; i++) {
+            Char character = gameCharacters[currentCharacter];
 
-                showRandomCharacter();
-                currentCharacter++;
-                Thread.sleep(1000);
-            }
+            while (!character.hasEnded() && !character.isSwattered()) {
 
-        }
+                character.move();
 
-    }
+                if (mouseX >= character.getX() && mouseX <= character.getOffsetX()
+                    && mouseY >= character.getY() && mouseY <= character.getOffsetY()) {
 
-    private void showRandomCharacter() throws InterruptedException {
+                    character.hit();
 
-        Hittable character = gameCharacters[currentCharacter];
+                    if (character instanceof Bug) {
 
-        while (!character.hasEnded()) {
-
-            character.move();
-
-            if (mouseX >= character.getX() && mouseX <= character.getOffsetX()
-                    || mouseX + 50 >= character.getX() && mouseX <= character.getOffsetX()
-                    && mouseY >= character.getY() && mouseY <= character.getOffsetY()
-                    || mouseY + 50 >= character.getY() && mouseY <= character.getOffsetY()) {
-
-                if (character instanceof Bug) {
-
-                    Bug bug = (Bug) character;
-                    bug.hit();
-                    score += bug.getPoints();
-                    gameField.updateScore(score);
-                    return;
-                }
-
-
-                if (character instanceof Feature) {
-
-                    Feature feature = (Feature) character;
-                    feature.hit();
-                    lives--;
-                    gameField.updateScore(lives);
-                }
-
-            }
-
-            if (lives == 0) {
-                gameOver();
-                return;
-            }
-
-            Thread.sleep(5);
-        }
-=======
-        while (!finished && currentCharacter < TOTAL_CHARACTERS) {
-=======
-        while (!levelFinished && lives > 0) {
->>>>>>> parent of 4724cfd... More stuff
-
-            while (!finished && currentCharacter < TOTAL_CHARACTERS) {
-
-                Char character = gameCharacters[currentCharacter];
-
-                while (!character.hasEnded() && !character.isSwattered()) {
-
-                    character.move();
-
-                    if (mouseX >= character.getX() && mouseX <= character.getOffsetX()
-                            && mouseY >= character.getY() && mouseY <= character.getOffsetY()) {
-
-                        character.hit();
-
-                        if (character instanceof Bug) {
-
-                            Bug bug = (Bug) character;
-                            score += bug.getPoints();
-                            gameField.updateScore(score);
-                            break;
-                        }
-
-                        lives--;
-                        gameField.updateLives(lives);
+                        Bug bug = (Bug) character;
+                        score += bug.getPoints();
+                        gameField.updateScore(score);
                         break;
                     }
 
-                    Thread.sleep(50);
-                }
-
-                if (lives == 0) {
-                    finished = true;
-                    gameOver();
-                    return;
-                }
-                mouseX = 0;
-                mouseY = 0;
-                currentCharacter++;
-                Thread.sleep(1000);
-                levelFinished = true;
-            }
-        }
-
->>>>>>> parent of 42f88c0... Stuff
-=======
-=======
-
->>>>>>> parent of b3a5e0b... new stuff
-        while (!finished && currentCharacter < TOTAL_CHARACTERS) {
-
-            for (int i = 0; i < TOTAL_CHARACTERS; i++) {
-
-                showRandomCharacter();
-                currentCharacter++;
-                Thread.sleep(1000);
-            }
-
-        }
-
-    }
-
-    private void showRandomCharacter() throws InterruptedException {
-
-        Hittable character = gameCharacters[currentCharacter];
-
-        while (!character.hasEnded()) {
-
-            character.move();
-
-            if (mouseX >= character.getX() && mouseX <= character.getOffsetX()
-                    || mouseX + 50 >= character.getX() && mouseX <= character.getOffsetX()
-                    && mouseY >= character.getY() && mouseY <= character.getOffsetY()
-                    || mouseY + 50 >= character.getY() && mouseY <= character.getOffsetY()) {
-
-                if (character instanceof Bug) {
-
-                    Bug bug = (Bug) character;
-                    bug.hit();
-                    score += bug.getPoints();
-                    gameField.updateScore(score);
-                    return;
-                }
-
-
-                if (character instanceof Feature) {
-
-                    Feature feature = (Feature) character;
-                    feature.hit();
                     lives--;
-                    gameField.updateScore(lives);
+                    gameField.updateLives(lives);
+                    break;
                 }
 
+                Thread.sleep(50);
             }
 
             if (lives == 0) {
+                finished = true;
                 gameOver();
                 return;
             }
-
-<<<<<<< HEAD
->>>>>>> parent of 42f88c0... Stuff
-=======
-            Thread.sleep(5);
+            mouseX = 0;
+            mouseY = 0;
+            currentCharacter++;
+            Thread.sleep(1000);
         }
->>>>>>> parent of b3a5e0b... new stuff
+
     }
 
     public void gameOver() throws InterruptedException {
@@ -342,6 +116,18 @@ public class Game implements Clickable {
         for (int i = 0; i < FOLDERS_PER_ROW; i++) {
             folderPic[i].draw();
         }
+}
+
+    public static int getFoldersPerRow() {
+        return FOLDERS_PER_ROW;
+    }
+
+    public static int getPaddingFolders() {
+        return PADDING_FOLDERS;
+    }
+
+    public static int getMarginTop() {
+        return MARGIN_TOP;
     }
 
     @Override
