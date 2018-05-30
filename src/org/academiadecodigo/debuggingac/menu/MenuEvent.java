@@ -69,8 +69,8 @@ public class MenuEvent {
         loadingFour.delete();
         Thread.sleep(400);
 
-        loadingSound.start(true);
-        Thread.sleep(1750);
+        //loadingSound.start(true);
+        //Thread.sleep(1750);
 
         loadingSix.draw();
         loadingFive.delete();
