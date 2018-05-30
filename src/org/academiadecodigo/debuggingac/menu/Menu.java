@@ -53,7 +53,7 @@ public class Menu implements Clickable{
              */
             if ((mouseX >= play.getStartX() && mouseX <= play.getEndX()) &&
                     (mouseY >= play.getStartY() && mouseY <= play.getEndY())) {
-               menuEvent.killSoundMenu();
+                menuEvent.killSoundMenu();
                 startSelection = true;
             }
             /*

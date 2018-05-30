@@ -1,23 +1,21 @@
 package org.academiadecodigo.debuggingac.characters;
 
-import org.academiadecodigo.debuggingac.simplegraphics.pictures.Picture;
-
 public enum FeatureType {
 
-    BABY(2, 1, "resources/images/chars/baby_normal.png", "resources/images/chars/baby_hit.png"),
-    TOADETTE(1, 1, "resources/images/chars/toadette_normal.png", "resources/images/chars/toadette_hit.png"),
-    GOOMBELA(2, 1, "resources/images/chars/goombela_normal.png", "resources/images/chars/goombela_hit.png");
+    BABY(2, 1, "resources/images/chars/baby_normal.png", "resources/images/features/baby_hit.png"),
+    TOADETTE(1, 1, "resources/images/chars/toadette_normal.png", "resources/images/features/toadette_hit.png"),
+    GOOMBELA(2, 1, "resources/images/chars/goombela_normal.png", "resources/images/features/goombela_hit.png");
 
     private int speed;
     private int livesLost;
-    private String alive;
-    private String dead;
+    private String normal;
+    private String caught;
 
-    FeatureType(int speed, int killPoints, String alive, String dead){
+    FeatureType(int speed, int killPoints, String normal, String caught){
         this.speed = speed;
         this.livesLost = killPoints;
-        this.alive = alive;
-        this.dead = dead;
+        this.normal = normal;
+        this.caught = caught;
     }
 
     public static FeatureType getRandomFeature(){
@@ -34,12 +32,11 @@ public enum FeatureType {
         return livesLost;
     }
 
-    public String getAlive() {
-        return alive;
+    public String getNormal() {
+        return normal;
     }
 
-    public String getDead() {
-        return dead;
+    public String getCaught() {
+        return caught;
     }
-
 }
