@@ -20,7 +20,7 @@ public class Mouse implements MouseListener, MouseMotionListener {
     List<MouseEventType> mouseEventArrayList;
     private JPanel pane;
     String osName = System.getProperty("os.name").toLowerCase();
-    boolean isMacOs = osName.startsWith("mac");
+    boolean isMacOs = osName.startsWith("mac os x");
     boolean isUnix = osName.indexOf("nix") >= 0 || osName.indexOf("nux") >= 0 || osName.indexOf("aix") > 0;
 
 
@@ -35,11 +35,11 @@ public class Mouse implements MouseListener, MouseMotionListener {
         mouseEventArrayList = new ArrayList<>();
         pane = (JPanel) Canvas.getInstance().getFrame().getContentPane();
 
-        if (isMacOs || isUnix)
-        {
+        if (isMacOs || isUnix) {
             pane.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("resources/images/cursor/idle.png").getImage(), new Point(74, 172), "idle"));
+        } else {
+            pane.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("resources/images/cursor/idle.png").getImage(), new Point(0, 0), "idle"));
         }
-        pane.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("resources/images/cursor/idle.png").getImage(), new Point(0, 0), "idle"));
         System.out.println(osName);
     }
 
@@ -107,20 +107,20 @@ public class Mouse implements MouseListener, MouseMotionListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
-        if (isMacOs || isUnix)
-        {
+        if (isMacOs || isUnix) {
             pane.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("resources/images/cursor/hit.png").getImage(), new Point(74, 172), "hit"));
+        } else {
+            pane.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("resources/images/cursor/hit.png").getImage(), new Point(0, 0), "hit"));
         }
-        pane.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("resources/images/cursor/hit.png").getImage(), new Point(0, 0), "hit"));
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        if (isMacOs || isUnix)
-        {
+        if (isMacOs || isUnix) {
             pane.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("resources/images/cursor/aim.png").getImage(), new Point(74, 172), "aim"));
+        } else {
+            pane.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("resources/images/cursor/aim.png").getImage(), new Point(0, 0), "aim"));
         }
-        pane.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("resources/images/cursor/aim.png").getImage(), new Point(0, 0), "aim"));
     }
 
     @Override
