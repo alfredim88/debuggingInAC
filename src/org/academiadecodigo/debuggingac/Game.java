@@ -36,6 +36,7 @@ public class Game implements Clickable {
 >>>>>>> parent of 42f88c0... Stuff
     private boolean quit;
     private boolean finished;
+    private boolean levelFinished = false;
     private int gameLevel = 1;
     private int lives = 3;
     private int score = 0;
@@ -94,6 +95,7 @@ public class Game implements Clickable {
         drawEverything();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
         while (!finished && currentCharacter < TOTAL_CHARACTERS) {
 
@@ -150,43 +152,50 @@ public class Game implements Clickable {
         }
 =======
         while (!finished && currentCharacter < TOTAL_CHARACTERS) {
+=======
+        while (!levelFinished && lives > 0) {
+>>>>>>> parent of 4724cfd... More stuff
 
-            Char character = gameCharacters[currentCharacter];
+            while (!finished && currentCharacter < TOTAL_CHARACTERS) {
 
-            while (!character.hasEnded() && !character.isSwattered()) {
+                Char character = gameCharacters[currentCharacter];
 
-                character.move();
+                while (!character.hasEnded() && !character.isSwattered()) {
 
-                if (mouseX >= character.getX() && mouseX <= character.getOffsetX()
-                    && mouseY >= character.getY() && mouseY <= character.getOffsetY()) {
+                    character.move();
 
-                    character.hit();
+                    if (mouseX >= character.getX() && mouseX <= character.getOffsetX()
+                            && mouseY >= character.getY() && mouseY <= character.getOffsetY()) {
 
-                    if (character instanceof Bug) {
+                        character.hit();
 
-                        Bug bug = (Bug) character;
-                        score += bug.getPoints();
-                        gameField.updateScore(score);
+                        if (character instanceof Bug) {
+
+                            Bug bug = (Bug) character;
+                            score += bug.getPoints();
+                            gameField.updateScore(score);
+                            break;
+                        }
+
+                        lives--;
+                        gameField.updateLives(lives);
                         break;
                     }
 
-                    lives--;
-                    gameField.updateLives(lives);
-                    break;
+                    Thread.sleep(50);
                 }
 
-                Thread.sleep(50);
+                if (lives == 0) {
+                    finished = true;
+                    gameOver();
+                    return;
+                }
+                mouseX = 0;
+                mouseY = 0;
+                currentCharacter++;
+                Thread.sleep(1000);
+                levelFinished = true;
             }
-
-            if (lives == 0) {
-                finished = true;
-                gameOver();
-                return;
-            }
-            mouseX = 0;
-            mouseY = 0;
-            currentCharacter++;
-            Thread.sleep(1000);
         }
 
 >>>>>>> parent of 42f88c0... Stuff
