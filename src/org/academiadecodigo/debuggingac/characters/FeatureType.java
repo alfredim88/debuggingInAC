@@ -1,5 +1,7 @@
 package org.academiadecodigo.debuggingac.characters;
 
+import org.academiadecodigo.debuggingac.simplegraphics.pictures.Picture;
+
 public enum FeatureType {
 
     BABY(2, 1, "resources/images/chars/baby_normal.png", "resources/images/features/baby_hit.png"),
@@ -8,14 +10,14 @@ public enum FeatureType {
 
     private int speed;
     private int livesLost;
-    private String normal;
-    private String caught;
+    private String alive;
+    private String dead;
 
-    FeatureType(int speed, int killPoints, String normal, String caught){
+    FeatureType(int speed, int killPoints, String alive, String dead){
         this.speed = speed;
         this.livesLost = killPoints;
-        this.normal = normal;
-        this.caught = caught;
+        this.alive = alive;
+        this.dead = dead;
     }
 
     public static FeatureType getRandomFeature(){
@@ -32,11 +34,12 @@ public enum FeatureType {
         return livesLost;
     }
 
-    public String getNormal() {
-        return normal;
+    public String getAlive() {
+        return alive;
     }
 
-    public String getCaught() {
-        return caught;
+    public String getDead() {
+        return dead;
     }
+
 }

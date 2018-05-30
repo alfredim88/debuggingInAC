@@ -4,85 +4,86 @@ import org.academiadecodigo.debuggingac.simplegraphics.pictures.Picture;
 
 public abstract class Char {
 
-    private BugType bugType;
     private boolean swattered;
-    private int x = randomFolder();
-    private int y = 500;
-    private Picture alivePic;
-    private Picture hitPic;
-    private boolean goingUp;
+    private Picture pic1;
+    private Picture pic2;
+    private boolean goingUp = true;
     private long topTimer;
-    private boolean reachTop;
+    private int x;
+    private int y = 500;
 
-    public Char(BugType bugType) {
-        this.bugType = bugType;
+    public Char(String pic1, String pic2){
+        this.x = Randomizer.randomFolder();
+        this.pic1 = new Picture(x,y,pic1);
+        this.pic2 = new Picture(x,y,pic2);
     }
 
-    public void move(int speed) throws InterruptedException {
-
-        if (goingUp) {
-            alivePic.draw();
-            alivePic.translate(0,-10);
-
-            if (reachTop() == true) {
-                goingUp = false;
-                topTimer = System.currentTimeMillis();
-
-            }
-
-            return;
-        }
-
-        if (System.currentTimeMillis() - topTimer > 2000) {
-            alivePic.translate(0, 10);
-
-            if (alivePic.getY() == 500){
-                alivePic.delete();
-            }
-        }
-
+    public void drawCharacter(){
+        pic1.draw();
     }
 
     public void hit() {
-
-    }
-
-    public boolean reachTop(){
-
-        return alivePic.getY() < 440;
-
-    }
-
-    public boolean hasEnded() {
-
-        return reachTop && alivePic.getX() == x;
+        pic1.delete();
+        swattered = true;
+        System.out.println("AUTCH!");
     }
 
     public boolean isSwattered() {
         return swattered;
     }
 
-    public int getOffsetX() {
-        return x + alivePic.getMaxY();
+    public void move(){
+
+        if (goingUp) {
+
+            pic1.translate(0,-10);
+
+            if (reachTop()) {
+                goingUp = false;
+                topTimer = System.currentTimeMillis();
+            }
+            return;
+        }
+
+        if (System.currentTimeMillis() - topTimer > 2000) {
+            pic1.translate(0, 10);
+
+            if (pic1.getY() >= 500){
+                pic1.delete();
+            }
+        }
+
     }
 
-    public int getOffsetY() {
-        return y + alivePic.getMaxY();
+    public boolean reachTop(){
+
+        return pic1.getY() < 440;
+
+    }
+
+    public boolean hasEnded() {
+
+        return !goingUp && pic1.getY() >= 500;
     }
 
     public void delete() {
 
     }
 
-    private int randomFolder() {
-        return 100 + (200 * (int) (Math.random() * 6));
+    public int getX(){
+        return pic1.getX();
     }
 
-    public int getX() {
-        return x;
+    public int getY(){
+        return pic1.getY();
     }
 
-    public int getY() {
-        return y;
+    public int getOffsetX() {
+        return pic1.getMaxX();
     }
+
+    public int getOffsetY() {
+        return pic1.getMaxY();
+    }
+
 }
