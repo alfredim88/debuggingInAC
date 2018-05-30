@@ -72,10 +72,10 @@ public class Game implements Clickable {
                         && mouseY >= character.getY() && mouseY <= character.getOffsetY()
                         || mouseY + 50 >= character.getY() && mouseY <= character.getOffsetY()) {
 
+                    character.hit();
                     if (character instanceof Bug) {
 
                         Bug bug = (Bug) character;
-                        bug.hit();
                         score += bug.getPoints();
                         gameField.updateScore(score);
                         System.out.println(character);
@@ -84,11 +84,9 @@ public class Game implements Clickable {
 
 
                     if (character instanceof Feature) {
-
-                        Feature feature = (Feature) character;
-                        feature.hit();
                         lives--;
-                        gameField.updateScore(lives);
+                        gameField.updateLives(lives);
+                        break;
                     }
 
                 }
