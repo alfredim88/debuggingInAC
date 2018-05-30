@@ -7,7 +7,7 @@ import org.academiadecodigo.debuggingac.simplegraphics.pictures.Picture;
 
 public class MenuEvent {
 
-    private int menuLoops = 1;
+    private int menuLoops = 5;
     private static Picture menuBG;
     private static Picture menuBG2;
     private static Picture tutorial;
