@@ -11,7 +11,7 @@ public abstract class Char {
     private boolean goingUp = true;
     private long topTimer;
     private int x;
-    private int y = Game.getRow1MarginTop()-15;
+    private int y = Game.getRowMarginTop()-15;
     private int size = -33;
     private int speed;
 

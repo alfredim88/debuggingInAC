@@ -5,6 +5,7 @@ import org.academiadecodigo.debuggingac.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.debuggingac.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.debuggingac.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.debuggingac.simplegraphics.keyboard.KeyboardHandler;
+import org.academiadecodigo.debuggingac.simplegraphics.pictures.Picture;
 
 public class Fullscreen implements KeyboardHandler {
 
