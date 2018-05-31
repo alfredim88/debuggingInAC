@@ -5,7 +5,7 @@ public class Feature extends Char {
     private FeatureType featureType;
 
     public Feature(FeatureType featureType) {
-        super(featureType.getAlive(), featureType.getDead());
+        super(featureType.getAlive(), featureType.getDead(), featureType.getSpeed());
         this.featureType = featureType;
     }
 

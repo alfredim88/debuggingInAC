@@ -1,7 +1,6 @@
 package org.academiadecodigo.debuggingac;
 
 import org.academiadecodigo.debuggingac.characters.*;
-import org.academiadecodigo.debuggingac.menu.Menu;
 import org.academiadecodigo.debuggingac.simplegraphics.pictures.Picture;
 
 
@@ -10,23 +9,32 @@ public class Game implements Clickable {
     private static final int FOLDERS_PER_ROW = 8;
     private static final int PADDING_FOLDERS = 150;
     private static final int MARGIN_LEFT = 0;
-    private static final int MARGIN_TOP = 650;
+    private static final int ROW_MARGIN_TOP =650;
     private static final int TOTAL_CHARACTERS = 100;
     private GameField gameField;
     private volatile int mouseX;
     private volatile int mouseY;
-    private boolean quit;
     private boolean finished;
-    private int gameLevel = 1;
+    private int time = 15;
+    private long startTime;
+    private long currentTime;
+    private int gameLevel = 3;
     private int lives = 3;
     private int score = 0;
     private int currentCharacter = 0;
     private Char[] gameCharacters = new Char[TOTAL_CHARACTERS];
-    private Picture[] folderPic = new Picture[FOLDERS_PER_ROW];
+    private Picture[] row1FolderPic = new Picture[FOLDERS_PER_ROW];
+    private Picture[] row2FolderPic = new Picture[FOLDERS_PER_ROW];
+    private Picture[] row3FolderPic = new Picture[FOLDERS_PER_ROW];
+
+    private String randomFolder(){
+        return FolderType.getRandomFolder().getFolderPic();
+    }
 
     public void init() throws InterruptedException {
 
         gameField = new GameField();
+
 
         CharactersFactory factory = new CharactersFactory();
 
@@ -34,7 +42,7 @@ public class Game implements Clickable {
 
             int random = (int) (Math.random() * 10);
 
-            if (random > 2) {
+            if (random > 1) {
                 gameCharacters[i] = factory.createBugs();
             } else {
                 gameCharacters[i] = factory.createFeatures();
@@ -43,26 +51,43 @@ public class Game implements Clickable {
 
         //Grid for the folders
         for (int i = 0; i < FOLDERS_PER_ROW; i++) {
-            String folderPath = FolderType.getRandomFolder().getFolderPic();
-            folderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), MARGIN_TOP,  folderPath);
-            folderPic[i].grow(15,15);
+
+
+
+            String folderPath = randomFolder();
+            row1FolderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), ROW_MARGIN_TOP,  folderPath);
+           // row1FolderPic[i].grow(15,15);
+
+            if(gameLevel > 1){
+                folderPath = randomFolder();
+                row2FolderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), ROW_MARGIN_TOP - 180,  folderPath);
+              //  row2FolderPic[i].grow(15,15);
+            }
+            folderPath = randomFolder();
+            if(gameLevel > 2){
+                row3FolderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), ROW_MARGIN_TOP - 360,  folderPath);
+              //  row3FolderPic[i].grow(15,15);
+            }
         }
-
         start();
-
     }
 
     public void start() throws InterruptedException {
 
+        startTime = System.currentTimeMillis();
+
+
         drawEverything();
+
 
         while (!finished && currentCharacter < TOTAL_CHARACTERS) {
 
             Char character = gameCharacters[currentCharacter];
 
             while (!character.hasEnded() && !character.isSwattered()) {
-
-                character.move();
+                currentTime = System.currentTimeMillis();
+               updateTime();
+                character.move(character.getSpeed());
 
                 if (mouseX >= character.getX() && mouseX <= character.getOffsetX()
                     && mouseY >= character.getY() && mouseY <= character.getOffsetY()) {
@@ -82,7 +107,7 @@ public class Game implements Clickable {
                     break;
                 }
 
-                Thread.sleep(50);
+                Thread.sleep(20);
             }
 
             if (lives == 0) {
@@ -98,23 +123,33 @@ public class Game implements Clickable {
 
     }
 
-    public void gameOver() throws InterruptedException {
+    public void gameOver() {
         finished = true;
         Picture gameOver = new Picture(0, 0, "resources/images/gameover.png");
         gameOver.draw();
-        Thread.sleep(2000);
     }
 
     private void drawEverything() {
 
         gameField.drawField();
+        gameField.updateTime(time);
+        gameField.updateLives(lives);
+        gameField.updateScore(score);
 
         for (int i = 0; i < TOTAL_CHARACTERS; i++) {
             gameCharacters[i].drawCharacter();
         }
 
         for (int i = 0; i < FOLDERS_PER_ROW; i++) {
-            folderPic[i].draw();
+            row1FolderPic[i].draw();
+
+            if(gameLevel > 1){
+                row2FolderPic[i].draw();
+            }
+
+            if (gameLevel > 2){
+                row3FolderPic[i].draw();
+            }
         }
 }
 
@@ -126,8 +161,32 @@ public class Game implements Clickable {
         return PADDING_FOLDERS;
     }
 
-    public static int getMarginTop() {
-        return MARGIN_TOP;
+    public static int getRow1MarginTop() {
+        return ROW_MARGIN_TOP;
+    }
+
+    private void updateTime(){
+
+        if(currentTime - startTime > 1000){
+            time--;
+            startTime = currentTime;
+            gameField.updateTime(time);
+
+            if(time < 1){
+                gameFinished();
+            }
+        }
+    }
+
+    private void gameFinished(){
+        if(score > 200){
+            finished = true;
+            System.out.println("level up");
+            //levelUpMenu()
+        } else {
+            finished = true;
+            gameOver();
+        }
     }
 
     @Override
@@ -139,6 +198,5 @@ public class Game implements Clickable {
     public void setY(int y) {
         mouseY = y;
     }
-
 
 }
