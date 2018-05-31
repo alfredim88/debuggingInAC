@@ -101,4 +101,12 @@ public abstract class Char {
     public static void setY(int y) {
         Char.y = y;
     }
+
+    public Picture getPic1() {
+        return pic1;
+    }
+
+    public Picture getPic2() {
+        return pic2;
+    }
 }

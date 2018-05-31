@@ -24,7 +24,7 @@ public class Game implements Clickable {
     private long startTime;
     private long currentTime;
     private int gameLevel = 1;
-    private int lives = 3;
+    private int lives = 1;
     private int score = 0;
     private int currentCharacter = 0;
     private int bugsInterval = 1000;
@@ -114,7 +114,17 @@ public class Game implements Clickable {
                     break;
                 }
 
+                mouseX = 0;
+                mouseY = 0;
+
                 Thread.sleep(30);
+            }
+
+            if(character instanceof Feature){
+
+                Feature feature = (Feature) character;
+                score = score + feature.getPointsWon();
+                gameField.updateScore(score);
             }
 
             if (lives == 0) {
@@ -161,14 +171,27 @@ public class Game implements Clickable {
 
     public void reset(){
         for (int i = 0; i < FOLDERS_PER_ROW; i++) {
+            row1FolderPic[i].delete();
             row2FolderPic[i].delete();
             row3FolderPic[i].delete();
         }
+
+        for (int j = 0; j < TOTAL_CHARACTERS; j++) {
+            gameCharactersRow3[j].getPic1().delete();
+            gameCharactersRow2[j].getPic1().delete();
+            gameCharactersRow1[j].getPic1().delete();
+            gameCharactersRow3[j].getPic2().delete();
+            gameCharactersRow2[j].getPic2().delete();
+            gameCharactersRow1[j].getPic2().delete();
+        }
+
+
         Char.setY(Game.getRowMarginTop()-15);
         finished = false;
         time = 99;
         lives = 3;
         score = 0;
+
     }
 
     private void drawEverything() {
