@@ -12,8 +12,8 @@ public class GameField {
     private Text displayScore;
     private Text displayTime;
 
-    Text time = new Text(550, textMarginTop, "");
-    Text score = new Text(994, textMarginTop, "");
+    Text time = new Text(647, textMarginTop, "");
+    Text score = new Text(1018, textMarginTop, "");
     Text lives = new Text(208, textMarginTop, "");
 
 
@@ -23,25 +23,12 @@ public class GameField {
         background.getWidth();
         background.getHeight();
 
-        //TIME TEXT
-        displayTime = new Text(400, textMarginTop, "TIME: ");
-        displayTime.setColor(Color.BLACK);
-        time.setColor(Color.BLACK);
-
-        //LIVES TEXT
+        displayTime = new Text(497, textMarginTop, "TIME: ");
         displayLives = new Text(28, textMarginTop, "LIVES: ");
-        displayLives.setColor(Color.BLACK);
-        lives.setColor(Color.BLACK);
-
-
-        //SCORE TEXT
-        displayScore = new Text(800, textMarginTop, "SCORE: ");
-        displayScore.setColor(Color.BLACK);
-        score.setColor(Color.BLACK);
-
+        displayScore = new Text(823, textMarginTop, "SCORE: ");
     }
 
-    public void drawField(){
+    public void drawField() {
         background.draw();
         displayLives.draw();
         lives.draw();
@@ -52,11 +39,11 @@ public class GameField {
 
     }
 
-    public void updateTime(int time){
+    public void updateTime(int time) {
 
         this.time.delete();
 
-        if(time >= 10){
+        if (time >= 10) {
             this.time.setText("" + time);
             this.time.draw();
         } else {
@@ -65,13 +52,13 @@ public class GameField {
         }
     }
 
-    public void updateScore(int score){
+    public void updateScore(int score) {
         this.score.delete();
         this.score.setText(scoreToText(score));
         this.score.draw();
     }
 
-    public void updateLives(int lives){
+    public void updateLives(int lives) {
         this.lives.delete();
         this.lives.setText("" + lives);
         this.lives.draw();
@@ -79,7 +66,6 @@ public class GameField {
 
     private String scoreToText(int score) {
 
-        System.out.println((score+"").length());
 
         int numberSize = 5;
         int padSize = numberSize - Integer.toString(score).length();

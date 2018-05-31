@@ -15,7 +15,7 @@ public class Game implements Clickable {
     private volatile int mouseX;
     private volatile int mouseY;
     private boolean finished;
-    private int time = 30;
+    private int time = 99;
     private long startTime;
     private long currentTime;
     private int gameLevel = 1;
@@ -148,7 +148,7 @@ public class Game implements Clickable {
         return PADDING_FOLDERS;
     }
 
-    public static int getRow1MarginTop() {
+    public static int getRowMarginTop() {
         return ROW_MARGIN_TOP;
     }
 

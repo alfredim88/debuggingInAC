@@ -27,7 +27,7 @@ public class Canvas {
     GraphicsDevice device;
     boolean fullscreen;
 
-    
+
     private Canvas() {
         component = new CanvasComponent();
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
