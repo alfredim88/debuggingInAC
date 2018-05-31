@@ -9,21 +9,18 @@ public class Game implements Clickable {
     private static final int FOLDERS_PER_ROW = 8;
     private static final int PADDING_FOLDERS = 150;
     private static final int MARGIN_LEFT = 0;
-    private static final int ROW1_MARGIN_TOP =650;
-    private static final int ROW2_MARGIN_TOP = ROW1_MARGIN_TOP-180;
-    private static final int ROW3_MARGIN_TOP = ROW2_MARGIN_TOP-180;
+    private static final int ROW_MARGIN_TOP =650;
     private static final int TOTAL_CHARACTERS = 100;
     private GameField gameField;
     private volatile int mouseX;
     private volatile int mouseY;
-    private boolean quit;
     private boolean finished;
-    private int time = 40;
+    private int time = 99;
     private long startTime;
     private long currentTime;
     private int gameLevel = 3;
-    private int lives = 4;
-    private int score = 0;
+    private int lives = 3;
+    private int score = 00000;
     private int currentCharacter = 0;
     private Char[] gameCharacters = new Char[TOTAL_CHARACTERS];
     private Picture[] row1FolderPic = new Picture[FOLDERS_PER_ROW];
@@ -37,6 +34,7 @@ public class Game implements Clickable {
     public void init() throws InterruptedException {
 
         gameField = new GameField();
+
 
         CharactersFactory factory = new CharactersFactory();
 
@@ -57,18 +55,18 @@ public class Game implements Clickable {
 
 
             String folderPath = randomFolder();
-            row1FolderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), ROW1_MARGIN_TOP,  folderPath);
-            row1FolderPic[i].grow(15,15);
+            row1FolderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), ROW_MARGIN_TOP,  folderPath);
+           // row1FolderPic[i].grow(15,15);
 
             if(gameLevel > 1){
                 folderPath = randomFolder();
-                row2FolderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), ROW2_MARGIN_TOP,  folderPath);
-                row2FolderPic[i].grow(15,15);
+                row2FolderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), ROW_MARGIN_TOP - 180,  folderPath);
+              //  row2FolderPic[i].grow(15,15);
             }
             folderPath = randomFolder();
             if(gameLevel > 2){
-                row3FolderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), ROW3_MARGIN_TOP,  folderPath);
-                row3FolderPic[i].grow(15,15);
+                row3FolderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), ROW_MARGIN_TOP - 360,  folderPath);
+              //  row3FolderPic[i].grow(15,15);
             }
         }
         start();
@@ -78,7 +76,9 @@ public class Game implements Clickable {
 
         startTime = System.currentTimeMillis();
 
+
         drawEverything();
+
 
         while (!finished && currentCharacter < TOTAL_CHARACTERS) {
 
@@ -86,7 +86,7 @@ public class Game implements Clickable {
 
             while (!character.hasEnded() && !character.isSwattered()) {
                 currentTime = System.currentTimeMillis();
-                updateTime();
+               updateTime();
                 character.move(character.getSpeed());
 
                 if (mouseX >= character.getX() && mouseX <= character.getOffsetX()
@@ -132,6 +132,9 @@ public class Game implements Clickable {
     private void drawEverything() {
 
         gameField.drawField();
+        gameField.updateTime(time);
+        gameField.updateLives(lives);
+        gameField.updateScore(score);
 
         for (int i = 0; i < TOTAL_CHARACTERS; i++) {
             gameCharacters[i].drawCharacter();
@@ -159,7 +162,7 @@ public class Game implements Clickable {
     }
 
     public static int getRow1MarginTop() {
-        return ROW1_MARGIN_TOP;
+        return ROW_MARGIN_TOP;
     }
 
     private void updateTime(){
@@ -196,5 +199,7 @@ public class Game implements Clickable {
         mouseY = y;
     }
 
-
+    public int getTime() {
+        return time;
+    }
 }

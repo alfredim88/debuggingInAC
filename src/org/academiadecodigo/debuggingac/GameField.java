@@ -12,9 +12,9 @@ public class GameField {
     private Text displayScore;
     private Text displayTime;
 
-    Text time = new Text(550, textMarginTop, "40");
-    Text score = new Text(994, textMarginTop, "0");
-    Text lives = new Text(208, textMarginTop, "3");
+    Text time = new Text(550, textMarginTop, "");
+    Text score = new Text(994, textMarginTop, "");
+    Text lives = new Text(208, textMarginTop, "");
 
 
     public GameField() {
