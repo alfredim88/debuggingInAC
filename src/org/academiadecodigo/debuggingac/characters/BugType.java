@@ -1,7 +1,5 @@
 package org.academiadecodigo.debuggingac.characters;
 
-import org.academiadecodigo.debuggingac.simplegraphics.pictures.Picture;
-
 public enum BugType {
     RED(2, 20, "resources/images/chars/red_normal.png", "resources/images/chars/red_hit.png"),
     PURPLE(1, 10, "resources/images/chars/purple_normal.png", "resources/images/chars/purple_hit.png"),
