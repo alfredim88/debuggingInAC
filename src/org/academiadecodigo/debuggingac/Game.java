@@ -218,7 +218,7 @@ public class Game implements Clickable {
     }
 
     private void levelUp() throws InterruptedException{
-        if (score > 19 * gameLevel) {
+        if (score > 199 * gameLevel) {
             time += 20;
             gameLevel++;
             bugsInterval /= 2;
