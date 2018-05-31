@@ -1,8 +1,6 @@
 package org.academiadecodigo.debuggingac.menu;
 
-import org.academiadecodigo.debuggingac.Game;
 import org.academiadecodigo.debuggingac.audio.Audio;
-import org.academiadecodigo.debuggingac.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.debuggingac.simplegraphics.pictures.Picture;
 
 public class MenuEvent {
@@ -30,7 +28,7 @@ public class MenuEvent {
         this.menuBG2 = new Picture(0,0,"resources/images/menu/menu_x2.png");
         this.tutorial = new Picture(0,0, "resources/images/menu/tutorial.png");
         this.credits = new Picture(0,0, "resources/images/menu/credits.png");
-        this.loadingSound = new Audio("/resources/sounds/boot.wav");
+        this.loadingSound = new Audio("resources/sounds/boot.wav");
         this.loadingZero = new Picture(0, 0, "resources/images/loading/0.jpg");
         this.loadingOne = new Picture(0, 0, "resources/images/loading/1.jpg");
         this.loadingTwo = new Picture(0, 0, "resources/images/loading/2.jpg");
@@ -88,8 +86,6 @@ public class MenuEvent {
 
     public void mainMenuLoop() throws  InterruptedException {
 
-        System.out.println("Loops will start");
-
         while (menuLoops > 0) {
 
             menuBG2.draw();
@@ -111,8 +107,6 @@ public class MenuEvent {
             menuLoops--;
 
         }
-
-        System.out.println("loops has finished");
 
     }
 

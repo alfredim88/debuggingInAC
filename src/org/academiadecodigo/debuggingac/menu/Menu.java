@@ -33,7 +33,7 @@ public class Menu implements Clickable{
     public void selection() throws InterruptedException {
 
         menuEvent.init();
-        menuEvent.soundMenu();
+        //menuEvent.soundMenu();
         menuEvent.mainMenuLoop();
 
         while (!startSelection) {
@@ -54,7 +54,7 @@ public class Menu implements Clickable{
              */
             if ((mouseX >= play.getStartX() && mouseX <= play.getEndX()) &&
                     (mouseY >= play.getStartY() && mouseY <= play.getEndY())) {
-               menuEvent.killSoundMenu();
+               //menuEvent.killSoundMenu();
                 startSelection = true;
             }
             /*

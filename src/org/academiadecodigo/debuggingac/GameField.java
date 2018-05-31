@@ -10,6 +10,9 @@ public class GameField {
     private static final int textMarginTop = 28;
     private Text displayLives;
     private Text displayScore;
+    private Text displayTime;
+
+    Text time = new Text(550, textMarginTop, "40");
     Text score = new Text(994, textMarginTop, "0");
     Text lives = new Text(208, textMarginTop, "3");
 
@@ -21,6 +24,11 @@ public class GameField {
         background.getHeight();
 
         //gameWindow.draw();
+
+        //TIME TEXT
+        displayTime = new Text(400, textMarginTop, "TIME: ");
+        displayTime.setColor(Color.BLACK);
+        time.setColor(Color.BLACK);
 
         //LIVES TEXT
         displayLives = new Text(28, textMarginTop, "LIVES: ");
@@ -41,7 +49,15 @@ public class GameField {
         lives.draw();
         displayScore.draw();
         score.draw();
+        displayTime.draw();
+        time.draw();
 
+    }
+
+    public void updateTime(int time){
+        this.time.delete();
+        this.time.setText("" + time);
+        this.time.draw();
     }
 
     public void updateScore(int score){
