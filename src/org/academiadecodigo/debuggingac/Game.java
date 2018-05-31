@@ -179,7 +179,7 @@ public class Game implements Clickable {
     }
 
     private void levelUp(){
-        if(score > 20* gameLevel){
+        if(score > 199 * gameLevel){
             time += 20;
             gameLevel++;
             System.out.println("level up");
