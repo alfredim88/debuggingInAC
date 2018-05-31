@@ -52,19 +52,11 @@ public class Game implements Clickable {
         //Grid for the folders
         for (int i = 0; i < FOLDERS_PER_ROW; i++) {
 
-
-
             String folderPath = randomFolder();
             row1FolderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), ROW_MARGIN_TOP,  folderPath);
+            row2FolderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), ROW_MARGIN_TOP - 180,  folderPath);
+            row3FolderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), ROW_MARGIN_TOP - 360,  folderPath);
 
-            if(gameLevel > 1){
-                folderPath = randomFolder();
-                row2FolderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), ROW_MARGIN_TOP - 180,  folderPath);
-            }
-            folderPath = randomFolder();
-            if(gameLevel > 2){
-                row3FolderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), ROW_MARGIN_TOP - 360,  folderPath);
-            }
         }
         start();
     }
@@ -82,9 +74,14 @@ public class Game implements Clickable {
             Char character = gameCharacters[currentCharacter];
 
             while (!character.hasEnded() && !character.isSwattered()) {
+
+                if(finished){
+                    break;
+                }
+
                 currentTime = System.currentTimeMillis();
-               updateTime();
-               levelUp();
+                updateTime();
+                levelUp();
                 character.move(character.getSpeed());
 
                 if (mouseX >= character.getX() && mouseX <= character.getOffsetX()
@@ -105,7 +102,7 @@ public class Game implements Clickable {
                     break;
                 }
 
-                Thread.sleep(10);
+                Thread.sleep(30);
             }
 
             if (lives == 0) {
@@ -140,14 +137,6 @@ public class Game implements Clickable {
 
         for (int i = 0; i < FOLDERS_PER_ROW; i++) {
             row1FolderPic[i].draw();
-
-            if(gameLevel > 1){
-                row2FolderPic[i].draw();
-            }
-
-            if (gameLevel > 2){
-                row3FolderPic[i].draw();
-            }
         }
 }
 
@@ -178,11 +167,22 @@ public class Game implements Clickable {
         }
     }
 
-    private void levelUp(){
-        if(score > 199 * gameLevel){
+    private void levelUp() {
+        if (score > 199 * gameLevel) {
             time += 20;
             gameLevel++;
-            System.out.println("level up");
+
+            for (int i = 0; i < FOLDERS_PER_ROW; i++) {
+
+                if (gameLevel > 1) {
+                    row2FolderPic[i].draw();
+                }
+
+                if (gameLevel > 2) {
+                    row3FolderPic[i].draw();
+                }
+                System.out.println("level up");
+            }
         }
     }
 
