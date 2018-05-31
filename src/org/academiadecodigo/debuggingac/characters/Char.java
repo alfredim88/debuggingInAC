@@ -11,9 +11,10 @@ public abstract class Char {
     private boolean goingUp = true;
     private long topTimer;
     private int x;
-    private int y = Game.getRowMarginTop()-15;
+    private static int y = Game.getRowMarginTop()-15;
     private int size = -33;
     private int speed;
+    private int initialPosition;
 
     public Char(String pic1, String pic2, int speed){
         this.x = Randomizer.randomFolder();
@@ -40,7 +41,9 @@ public abstract class Char {
         return swattered;
     }
 
-    public void move(int speed){
+    public void move(int speed, int initialPosition){
+
+        this.initialPosition = initialPosition;
 
         if (goingUp) {
 
@@ -58,26 +61,21 @@ public abstract class Char {
             pic1.translate(0, 10);
             pic2.translate(0,10);
 
-            if (pic1.getY() >= y){
+            if (pic1.getY() >= initialPosition){
                 pic1.delete();
             }
         }
-
     }
 
     public boolean reachTop(){
 
-        return pic1.getY() < y - 40;
+        return pic1.getY() < initialPosition - 60;
 
     }
 
     public boolean hasEnded() {
 
-        return !goingUp && pic1.getY() >= y;
-    }
-
-    public void delete() {
-
+        return !goingUp && pic1.getY() >= initialPosition;
     }
 
     public int getX(){
@@ -98,5 +96,9 @@ public abstract class Char {
 
     public int getSpeed() {
         return speed;
+    }
+
+    public static void setY(int y) {
+        Char.y = y;
     }
 }
