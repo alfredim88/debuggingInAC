@@ -12,7 +12,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-
 /**
  * Container of shapes
  */
@@ -28,18 +27,18 @@ public class Canvas {
     GraphicsDevice device;
     boolean fullscreen;
 
-
+    
     private Canvas() {
         component = new CanvasComponent();
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         device = ge.getDefaultScreenDevice();
-       Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 
         frame = new JFrame();
         frame.add(component);
         frame.pack();
         frame.setSize(1200, 800);
-        frame.setLocation(dim.width/2-frame.getSize().width/2, dim.height/2-frame.getSize().height/2);
+        frame.setLocation(dim.width / 2 - frame.getSize().width / 2, dim.height / 2 - frame.getSize().height / 2);
         frame.setTitle("Debugging in <AC_>");
         frame.setResizable(false);
         frame.setVisible(true);
@@ -177,7 +176,7 @@ public class Canvas {
     }
 
     public void changeSize() {
-        if(!fullscreen) {
+        if (!fullscreen) {
             mainScreenTurnOn();
             return;
         }
