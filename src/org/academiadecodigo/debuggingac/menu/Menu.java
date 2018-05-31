@@ -15,6 +15,12 @@ public class Menu implements Clickable{
     private Buttons back;
     private boolean startSelection;
     private boolean secondaryMenu;
+    private static String OS = System.getProperty("os.name").toLowerCase();
+    public static boolean isUnix() {
+
+        return (OS.indexOf("nix") >= 0 || OS.indexOf("nux") >= 0 || OS.indexOf("aix") > 0 );
+
+    }
 
     public Menu() throws InterruptedException {
 
@@ -33,7 +39,11 @@ public class Menu implements Clickable{
     public void selection() throws InterruptedException {
 
         menuEvent.init();
-        //menuEvent.soundMenu();
+        if (isUnix()) {
+            //menuEvent.soundMenu();
+        } else {
+            menuEvent.soundMenu();
+        }
         menuEvent.mainMenuLoop();
 
         while (!startSelection) {
@@ -78,13 +88,6 @@ public class Menu implements Clickable{
         }
     }
 
-   /* private void loading() throws InterruptedException {
-
-        //menuEvent.init();
-        menuEvent.soundMenu();
-        mainMenu();
-
-    }*/
     private void tutorial() {
 
         menuEvent.tutorial();
