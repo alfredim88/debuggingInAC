@@ -1,39 +1,41 @@
 package org.academiadecodigo.debuggingac;
 
 import org.academiadecodigo.debuggingac.characters.*;
-import org.academiadecodigo.debuggingac.menu.*;
-import org.academiadecodigo.debuggingac.simplegraphics.keyboard.Keyboard;
-import org.academiadecodigo.debuggingac.simplegraphics.keyboard.KeyboardEvent;
-import org.academiadecodigo.debuggingac.simplegraphics.keyboard.KeyboardEventType;
-import org.academiadecodigo.debuggingac.simplegraphics.keyboard.KeyboardHandler;
+import org.academiadecodigo.debuggingac.menu.ButtonFactory;
+import org.academiadecodigo.debuggingac.menu.ButtonType;
+import org.academiadecodigo.debuggingac.menu.Buttons;
+import org.academiadecodigo.debuggingac.menu.MenuEvent;
 import org.academiadecodigo.debuggingac.simplegraphics.pictures.Picture;
-
-import javax.swing.plaf.basic.BasicTreeUI;
-import java.util.logging.Handler;
 
 
 public class Game implements Clickable {
 
-    private static final int FOLDERS_PER_ROW = 6;
-    private static final int PADDING_FOLDERS = 200;
+    private static final int FOLDERS_PER_ROW = 8;
+    private static final int PADDING_FOLDERS = 150;
     private static final int MARGIN_LEFT = 0;
-    private static final int MARGIN_TOP = 500;
-    private static final int TOTAL_CHARACTERS = 10;
+    private static final int ROW1_MARGIN_TOP = 650;
+    private static final int ROW2_MARGIN_TOP = 400;
+    private static final int ROW3_MARGIN_TOP = 150;
+    private static final int TOTAL_CHARACTERS = 100;
     private GameField gameField;
     private volatile int mouseX;
     private volatile int mouseY;
     private boolean quit;
     private boolean finished;
+    private int time = 40;
+    private long startTime;
+    private long currentTime;
     private int gameLevel = 1;
     private int lives = 3;
     private int score = 0;
     private int currentCharacter = 0;
     private Char[] gameCharacters = new Char[TOTAL_CHARACTERS];
-    private Picture[] folderPic = new Picture[FOLDERS_PER_ROW];
+    private Picture[] row1FolderPic = new Picture[FOLDERS_PER_ROW];
+    private Picture[] row2FolderPic = new Picture[FOLDERS_PER_ROW];
+    private Picture[] row3FolderPic = new Picture[FOLDERS_PER_ROW];
     private Buttons restartButton = ButtonFactory.getNewButton(ButtonType.RESTART);
     private Buttons quitButton = ButtonFactory.getNewButton(ButtonType.QUIT);
     private MenuEvent menuEvent = new MenuEvent();
-
 
 
     public void init() throws InterruptedException {
@@ -46,7 +48,7 @@ public class Game implements Clickable {
 
             int random = (int) (Math.random() * 10);
 
-            if (random > 2) {
+            if (random > 1) {
                 gameCharacters[i] = factory.createBugs();
             } else {
                 gameCharacters[i] = factory.createFeatures();
@@ -55,26 +57,39 @@ public class Game implements Clickable {
 
         //Grid for the folders
         for (int i = 0; i < FOLDERS_PER_ROW; i++) {
+
             String folderPath = FolderType.getRandomFolder().getFolderPic();
-            folderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), MARGIN_TOP, "" + folderPath);
+
+            row1FolderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), ROW1_MARGIN_TOP,  folderPath);
+            row1FolderPic[i].grow(15,15);
+
+            if(gameLevel > 1){
+                row2FolderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), ROW2_MARGIN_TOP,  folderPath);
+                row2FolderPic[i].grow(15,15);
+            }
+
+            if(gameLevel > 2){
+                row3FolderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), ROW2_MARGIN_TOP,  folderPath);
+                row3FolderPic[i].grow(15,15);
+            }
         }
-
         start();
-
     }
 
     public void start() throws InterruptedException {
 
-        drawEverything();
+        startTime = System.currentTimeMillis();
 
+        drawEverything();
 
         while (!finished && currentCharacter < TOTAL_CHARACTERS) {
 
             Char character = gameCharacters[currentCharacter];
-            System.out.println(currentCharacter);
 
             while (!character.hasEnded() && !character.isSwattered()) {
-                character.move();
+                currentTime = System.currentTimeMillis();
+                updateTime();
+                character.move(character.getSpeed());
 
                 if (mouseX >= character.getX() && mouseX <= character.getOffsetX()
                     && mouseY >= character.getY() && mouseY <= character.getOffsetY()) {
@@ -94,7 +109,7 @@ public class Game implements Clickable {
                     break;
                 }
 
-                Thread.sleep(50);
+                Thread.sleep(20);
             }
 
             if (lives == 0) {
@@ -117,17 +132,17 @@ public class Game implements Clickable {
         Picture gameOver = new Picture(0, 0, "resources/images/gameover.png");
         gameOver.draw();
         Thread.sleep(1);
-        inGameMenu();
+        inGameMenu(gameOver);
     }
 
     //by Monica
-    public void inGameMenu() throws InterruptedException {
+    public void inGameMenu(Picture gameOver) throws InterruptedException {
 
 
         if (mouseX >= restartButton.getStartX() && mouseX <= restartButton.getEndX() &&
                 mouseY >= restartButton.getStartY() && mouseY <= restartButton.getEndY()) {
 
-            //gameOver.delete();
+            gameOver.delete();
             start();
 
 
@@ -156,7 +171,51 @@ public class Game implements Clickable {
         }
 
         for (int i = 0; i < FOLDERS_PER_ROW; i++) {
-            folderPic[i].draw();
+            row1FolderPic[i].draw();
+
+            if(gameLevel > 1){
+                row2FolderPic[i].draw();
+            }
+
+            if (gameLevel > 2){
+                row3FolderPic[i].draw();
+            }
+        }
+}
+
+    public static int getFoldersPerRow() {
+        return FOLDERS_PER_ROW;
+    }
+
+    public static int getPaddingFolders() {
+        return PADDING_FOLDERS;
+    }
+
+    public static int getRow1MarginTop() {
+        return ROW1_MARGIN_TOP;
+    }
+
+    private void updateTime() throws InterruptedException{
+
+        if(currentTime - startTime > 1000){
+            time--;
+            startTime = currentTime;
+            gameField.updateTime(time);
+
+            if(time < 1){
+                gameFinished();
+            }
+        }
+    }
+
+    private void gameFinished() throws InterruptedException{
+        if(score > 200){
+            finished = true;
+            System.out.println("level up");
+            //levelUpMenu()
+        } else {
+            finished = true;
+            gameOver();
         }
     }
 

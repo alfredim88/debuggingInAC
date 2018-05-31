@@ -1,5 +1,6 @@
 package org.academiadecodigo.debuggingac.characters;
 
+import org.academiadecodigo.debuggingac.Game;
 import org.academiadecodigo.debuggingac.simplegraphics.pictures.Picture;
 
 public abstract class Char {
@@ -10,32 +11,36 @@ public abstract class Char {
     private boolean goingUp = true;
     private long topTimer;
     private int x;
-    private int y = 500;
+    private int y = Game.getRow1MarginTop()-15;
+    private int size = -33;
+    private int speed;
 
-    public Char(String pic1, String pic2){
+    public Char(String pic1, String pic2, int speed){
         this.x = Randomizer.randomFolder();
         this.pic1 = new Picture(x,y,pic1);
         this.pic2 = new Picture(x,y,pic2);
+        this.speed = speed;
     }
 
     public void drawCharacter(){
+        pic1.grow(size,size);
         pic1.draw();
-    }
+        }
 
     public void hit() throws InterruptedException {
         pic1.delete();
+        pic2.grow(size,size);
         pic2.draw();
         Thread.sleep(300);
         pic2.delete();
         swattered = true;
-        System.out.println("AUTCH!");
     }
 
     public boolean isSwattered() {
         return swattered;
     }
 
-    public void move(){
+    public void move(int speed){
 
         if (goingUp) {
 
@@ -49,11 +54,11 @@ public abstract class Char {
             return;
         }
 
-        if (System.currentTimeMillis() - topTimer > 2000) {
+        if (System.currentTimeMillis() - topTimer > 1000/speed) {
             pic1.translate(0, 10);
             pic2.translate(0,10);
 
-            if (pic1.getY() >= 500){
+            if (pic1.getY() >= y){
                 pic1.delete();
             }
         }
@@ -62,13 +67,13 @@ public abstract class Char {
 
     public boolean reachTop(){
 
-        return pic1.getY() < 440;
+        return pic1.getY() < y - 40;
 
     }
 
     public boolean hasEnded() {
 
-        return !goingUp && pic1.getY() >= 500;
+        return !goingUp && pic1.getY() >= y;
     }
 
     public void delete() {
@@ -91,4 +96,7 @@ public abstract class Char {
         return pic1.getMaxY();
     }
 
+    public int getSpeed() {
+        return speed;
+    }
 }

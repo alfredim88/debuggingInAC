@@ -6,7 +6,7 @@ public class Bug extends Char {
     private BugType bugType;
 
     public Bug(BugType bugType) {
-        super(bugType.getAlive(), bugType.getDead());
+        super(bugType.getAlive(), bugType.getDead(), bugType.getSpeed());
         this.bugType = bugType;
         this.points = bugType.getKillPoints();
     }
