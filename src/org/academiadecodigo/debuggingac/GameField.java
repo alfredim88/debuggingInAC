@@ -23,8 +23,6 @@ public class GameField {
         background.getWidth();
         background.getHeight();
 
-        //gameWindow.draw();
-
         //TIME TEXT
         displayTime = new Text(400, textMarginTop, "TIME: ");
         displayTime.setColor(Color.BLACK);
@@ -55,14 +53,21 @@ public class GameField {
     }
 
     public void updateTime(int time){
+
         this.time.delete();
-        this.time.setText("" + time);
-        this.time.draw();
+
+        if(time >= 10){
+            this.time.setText("" + time);
+            this.time.draw();
+        } else {
+            this.time.setText("0" + time);
+            this.time.draw();
+        }
     }
 
     public void updateScore(int score){
         this.score.delete();
-        this.score.setText("" + score);
+        this.score.setText(scoreToText(score));
         this.score.draw();
     }
 
@@ -70,6 +75,25 @@ public class GameField {
         this.lives.delete();
         this.lives.setText("" + lives);
         this.lives.draw();
+    }
+
+    private String scoreToText(int score) {
+
+        System.out.println((score+"").length());
+
+        int numberSize = 5;
+        int padSize = numberSize - Integer.toString(score).length();
+
+        String paddedNumber = "";
+
+        for (int i = 0; i < padSize; i++) {
+            paddedNumber += "0";
+        }
+
+        paddedNumber += Integer.toString(score);
+
+        return paddedNumber;
+
     }
 
 }

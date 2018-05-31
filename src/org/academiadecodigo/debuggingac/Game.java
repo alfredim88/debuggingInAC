@@ -15,12 +15,12 @@ public class Game implements Clickable {
     private volatile int mouseX;
     private volatile int mouseY;
     private boolean finished;
-    private int time = 99;
+    private int time = 15;
     private long startTime;
     private long currentTime;
     private int gameLevel = 3;
     private int lives = 3;
-    private int score = 00000;
+    private int score = 0;
     private int currentCharacter = 0;
     private Char[] gameCharacters = new Char[TOTAL_CHARACTERS];
     private Picture[] row1FolderPic = new Picture[FOLDERS_PER_ROW];
@@ -199,7 +199,4 @@ public class Game implements Clickable {
         mouseY = y;
     }
 
-    public int getTime() {
-        return time;
-    }
 }
