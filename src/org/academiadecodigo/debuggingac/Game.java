@@ -15,10 +15,10 @@ public class Game implements Clickable {
     private volatile int mouseX;
     private volatile int mouseY;
     private boolean finished;
-    private int time = 15;
+    private int time = 30;
     private long startTime;
     private long currentTime;
-    private int gameLevel = 3;
+    private int gameLevel = 1;
     private int lives = 3;
     private int score = 0;
     private int currentCharacter = 0;
@@ -56,17 +56,14 @@ public class Game implements Clickable {
 
             String folderPath = randomFolder();
             row1FolderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), ROW_MARGIN_TOP,  folderPath);
-           // row1FolderPic[i].grow(15,15);
 
             if(gameLevel > 1){
                 folderPath = randomFolder();
                 row2FolderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), ROW_MARGIN_TOP - 180,  folderPath);
-              //  row2FolderPic[i].grow(15,15);
             }
             folderPath = randomFolder();
             if(gameLevel > 2){
                 row3FolderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), ROW_MARGIN_TOP - 360,  folderPath);
-              //  row3FolderPic[i].grow(15,15);
             }
         }
         start();
@@ -87,6 +84,7 @@ public class Game implements Clickable {
             while (!character.hasEnded() && !character.isSwattered()) {
                 currentTime = System.currentTimeMillis();
                updateTime();
+               levelUp();
                 character.move(character.getSpeed());
 
                 if (mouseX >= character.getX() && mouseX <= character.getOffsetX()
@@ -172,20 +170,19 @@ public class Game implements Clickable {
             startTime = currentTime;
             gameField.updateTime(time);
 
-            if(time < 1){
-                gameFinished();
+            if(time <= 0){
+                finished = true;
+                gameOver();
+               // gameFinished();
             }
         }
     }
 
-    private void gameFinished(){
-        if(score > 200){
-            finished = true;
+    private void levelUp(){
+        if(score > 20* gameLevel){
+            time += 20;
+            gameLevel++;
             System.out.println("level up");
-            //levelUpMenu()
-        } else {
-            finished = true;
-            gameOver();
         }
     }
 

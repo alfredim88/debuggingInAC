@@ -21,6 +21,12 @@ public class MenuEvent {
     private static Picture loadingSeven;
     private static Picture loadingEight;
     private static Audio loadingSound;
+    private static String OS = System.getProperty("os.name").toLowerCase();
+    public static boolean isUnix() {
+
+        return (OS.indexOf("nix") >= 0 || OS.indexOf("nux") >= 0 || OS.indexOf("aix") > 0 );
+
+    }
 
     public MenuEvent() {
 
@@ -28,7 +34,7 @@ public class MenuEvent {
         this.menuBG2 = new Picture(0,0,"resources/images/menu/menu_x2.png");
         this.tutorial = new Picture(0,0, "resources/images/menu/tutorial.png");
         this.credits = new Picture(0,0, "resources/images/menu/credits.png");
-        this.loadingSound = new Audio("resources/sounds/boot.wav");
+        this.loadingSound = new Audio("/resources/sounds/boot.wav");
         this.loadingZero = new Picture(0, 0, "resources/images/loading/0.jpg");
         this.loadingOne = new Picture(0, 0, "resources/images/loading/1.jpg");
         this.loadingTwo = new Picture(0, 0, "resources/images/loading/2.jpg");
@@ -67,8 +73,14 @@ public class MenuEvent {
         loadingFour.delete();
         Thread.sleep(400);
 
-        //loadingSound.start(true);
-        //Thread.sleep(1750);
+        if (isUnix()) {
+            //loadingSound.start(true);
+            //Thread.sleep(1750);
+        } else {
+            loadingSound.start(true);
+            Thread.sleep(1750);
+        }
+
 
         loadingSix.draw();
         loadingFive.delete();
