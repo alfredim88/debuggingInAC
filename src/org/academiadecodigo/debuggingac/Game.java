@@ -5,7 +5,6 @@ import org.academiadecodigo.debuggingac.characters.*;
 import org.academiadecodigo.debuggingac.menu.ButtonFactory;
 import org.academiadecodigo.debuggingac.menu.ButtonType;
 import org.academiadecodigo.debuggingac.menu.Buttons;
-import org.academiadecodigo.debuggingac.menu.MenuEvent;
 import org.academiadecodigo.debuggingac.simplegraphics.pictures.Picture;
 
 
@@ -15,7 +14,8 @@ public class Game implements Clickable {
     private static final int PADDING_FOLDERS = 150;
     private static final int MARGIN_LEFT = 0;
     private static final int ROW_MARGIN_TOP = 650;
-    private static final int TOTAL_CHARACTERS = 100;
+    private static final int TOTAL_CHARACTERS = 500;
+    private static final int LEVELUP_SCORE = 199;
     private GameField gameField;
     private CharactersFactory factory = new CharactersFactory();
     private volatile int mouseX;
@@ -24,8 +24,8 @@ public class Game implements Clickable {
     private int time = 30;
     private long startTime;
     private long currentTime;
-    private int gameLevel = 3;
-    private int lives = 1;
+    private int gameLevel = 1;
+    private int lives = 3;
     private int score = 0;
     private int currentCharacter = 0;
     private int bugsInterval = 1000;
@@ -39,14 +39,22 @@ public class Game implements Clickable {
     private Buttons restartButton = ButtonFactory.getNewButton(ButtonType.RESTART);
     private Buttons quitButton = ButtonFactory.getNewButton(ButtonType.QUIT);
     private static Audio loadingSound;
-    private String randomFolder(){
+    private static Audio gameOverSound;
+    private static Audio dieSound;
+    private static Audio levelupSound;
+    private static Audio oneSecSound;
+    private static Audio twoSecSound;
+    private static Audio featureSound;
+
+    private String randomFolder() {
         return FolderType.getRandomFolder().getFolderPic();
     }
 
     public void init() throws InterruptedException {
 
-        if(gameField == null){
-        gameField = new GameField();}
+        if (gameField == null) {
+            gameField = new GameField();
+        }
 
         createChars();
         createFolders();
@@ -55,11 +63,21 @@ public class Game implements Clickable {
 
     public void start() throws InterruptedException {
         this.loadingSound = new Audio("/resources/sounds/music.wav");
+        this.oneSecSound = new Audio("/resources/sounds/1.wav");
+        this.twoSecSound = new Audio("/resources/sounds/2.wav");
         startTime = System.currentTimeMillis();
 
         Picture getReadyImage = new Picture(0, 0, "resources/images/ready_bg.png");
         getReadyImage.draw();
-        Thread.sleep(3000);
+        Thread.sleep(1000);
+        oneSecSound.start(true);
+        Thread.sleep(1000);
+        oneSecSound.start(true);
+        Thread.sleep(1000);
+        twoSecSound.start(true);
+        Thread.sleep(300);
+
+        // Thread.sleep(3000);
         getReadyImage.delete();
         drawEverything();
         loadingSound.start(true);
@@ -70,7 +88,7 @@ public class Game implements Clickable {
 
             while (!character.hasEnded() && !character.isSwattered()) {
 
-                if(finished){
+                if (finished) {
                     break;
                 }
 
@@ -80,13 +98,13 @@ public class Game implements Clickable {
                 character.move(character.getSpeed() + gameLevel, initialBugPosition);
 
                 if (mouseX >= character.getX() && mouseX <= character.getOffsetX()
-                    && mouseY >= character.getY() && mouseY <= character.getOffsetY()) {
+                        && mouseY >= character.getY() && mouseY <= character.getOffsetY()) {
 
                     character.hit();
 
                     if (character instanceof Bug) {
                         Bug bug = (Bug) character;
-                        bugHitted(bug);
+                        bugHit(bug);
                         break;
                     }
 
@@ -98,7 +116,7 @@ public class Game implements Clickable {
                 Thread.sleep(30);
             }
 
-         featureNotHitted(character);
+            featureNotHit(character);
 
             if (lives == 0) {
                 finished = true;
@@ -112,16 +130,21 @@ public class Game implements Clickable {
 
     }
 
-    public void gameOver() throws InterruptedException{
+    public void gameOver() throws InterruptedException {
+        this.gameOverSound = new Audio("/resources/sounds/gameover.wav");
+        this.dieSound = new Audio("/resources/sounds/die.wav");
         finished = true;
+        this.loadingSound.stop();
         Picture gameOver = new Picture(0, 0, "resources/images/gameover.png");
+        this.gameOverSound.start(true);
+        this.dieSound.start(true);
         gameOver.draw();
         inGameMenu(gameOver);
     }
 
     public void inGameMenu(Picture gameOver) throws InterruptedException {
 
-        while(true){
+        while (true) {
 
             if (mouseX >= restartButton.getStartX() && mouseX <= restartButton.getEndX() &&
                     mouseY >= restartButton.getStartY() && mouseY <= restartButton.getEndY()) {
@@ -131,15 +154,15 @@ public class Game implements Clickable {
                 init();
             }
 
-            if(mouseX >= quitButton.getStartX() && mouseX <= quitButton.getEndX() &&
-                    mouseY >= quitButton.getStartY() && mouseY <= quitButton.getEndY()){
+            if (mouseX >= quitButton.getStartX() && mouseX <= quitButton.getEndX() &&
+                    mouseY >= quitButton.getStartY() && mouseY <= quitButton.getEndY()) {
 
                 System.exit(0);
             }
         }
     }
 
-    public void reset(){
+    public void reset() {
         for (int i = 0; i < FOLDERS_PER_ROW; i++) {
             row1FolderPic[i].delete();
             row2FolderPic[i].delete();
@@ -156,7 +179,7 @@ public class Game implements Clickable {
         }
 
 
-        Char.setY(Game.getRowMarginTop()-15);
+        Char.setY(Game.getRowMarginTop() - 15);
         finished = false;
         time = 30;
         lives = 3;
@@ -165,14 +188,14 @@ public class Game implements Clickable {
 
     }
 
-    private void resetMouse(){
+    private void resetMouse() {
         mouseX = 0;
         mouseY = 0;
     }
 
-    private void bugHitted(Bug bug){
-            score += bug.getPoints();
-            gameField.updateScore(score);
+    private void bugHit(Bug bug) {
+        score += bug.getPoints();
+        gameField.updateScore(score);
     }
 
     private void drawEverything() {
@@ -189,7 +212,7 @@ public class Game implements Clickable {
         for (int i = 0; i < FOLDERS_PER_ROW; i++) {
             row1FolderPic[i].draw();
         }
-}
+    }
 
     public static int getFoldersPerRow() {
         return FOLDERS_PER_ROW;
@@ -203,77 +226,86 @@ public class Game implements Clickable {
         return ROW_MARGIN_TOP;
     }
 
-    private void updateTime() throws InterruptedException{
+    private void updateTime() throws InterruptedException {
 
-        if(currentTime - startTime > 1000){
+        if (currentTime - startTime > 1000) {
             time--;
             startTime = currentTime;
             gameField.updateTime(time);
 
-            if(time <= 0){
+            if (time <= 0) {
                 finished = true;
                 gameOver();
             }
         }
     }
 
-    private void levelUp() throws InterruptedException{
-        if (score > 199 * gameLevel) {
+    private void levelUp() throws InterruptedException {
+
+        this.levelupSound = new Audio("/resources/sounds/level.wav");
+
+
+        if (score > LEVELUP_SCORE * gameLevel) {
             time += 20;
             gameLevel++;
             bugsInterval /= 2;
             Picture levelUpImage = new Picture(0, 0, "resources/images/levelup.png");
             levelUpImage.draw();
+            loadingSound.stop();
+            levelupSound.start(true);
 
-                if (gameLevel == 2) {
+            if (gameLevel == 2) {
 
-                    for (int i = 0; i < TOTAL_CHARACTERS; i++) {
+                for (int i = 0; i < TOTAL_CHARACTERS; i++) {
 
-                        int random = (int) (Math.random() * 10);
+                    int random = (int) (Math.random() * 10);
 
-                        if (random > 1) {
-                            Char.setY(ROW_MARGIN_TOP - 195);
-                            gameCharactersRow2[i] = factory.createBugs();
-                        } else {
-                            Char.setY(ROW_MARGIN_TOP - 195);
-                            gameCharactersRow2[i] = factory.createFeatures();
-                        }
-                    }
-
-                }
-
-                if (gameLevel == 3) {
-
-                    for (int i = 0; i < TOTAL_CHARACTERS; i++) {
-
-                        int random = (int) (Math.random() * 10);
-
-                        if (random > 1) {
-                            Char.setY(ROW_MARGIN_TOP - 375);
-                            gameCharactersRow3[i] = factory.createBugs();
-                        } else {
-                            Char.setY(ROW_MARGIN_TOP - 375);
-                            gameCharactersRow3[i] = factory.createFeatures();
-                        }
+                    if (random > 1) {
+                        Char.setY(ROW_MARGIN_TOP - 195);
+                        gameCharactersRow2[i] = factory.createBugs();
+                    } else {
+                        Char.setY(ROW_MARGIN_TOP - 195);
+                        gameCharactersRow2[i] = factory.createFeatures();
                     }
                 }
+
+            }
+
+            if (gameLevel == 3) {
+
+                for (int i = 0; i < TOTAL_CHARACTERS; i++) {
+
+                    int random = (int) (Math.random() * 10);
+
+                    if (random > 1) {
+                        Char.setY(ROW_MARGIN_TOP - 375);
+                        gameCharactersRow3[i] = factory.createBugs();
+                    } else {
+                        Char.setY(ROW_MARGIN_TOP - 375);
+                        gameCharactersRow3[i] = factory.createFeatures();
+                    }
+                }
+            }
             Thread.sleep(2000);
             levelUpImage.delete();
+            loadingSound.start(true);
             drawFolders();
             Thread.sleep(500);
-            }
+        }
     }
 
-    private void featureNotHitted(Char character){
-        if(character instanceof Feature){
+    private void featureNotHit(Char character) {
+        this.featureSound = new Audio("/resources/sounds/coin.wav");
+        if (character instanceof Feature) {
 
+            featureSound.start(true);
             Feature feature = (Feature) character;
             score = score + feature.getPointsWon();
             gameField.updateScore(score);
         }
     }
 
-    private void createChars(){
+    private void createChars() {
         for (int i = 0; i < TOTAL_CHARACTERS; i++) {
 
             int random = (int) (Math.random() * 10);
@@ -290,29 +322,29 @@ public class Game implements Clickable {
         }
     }
 
-    private void createFolders(){
+    private void createFolders() {
         for (int i = 0; i < FOLDERS_PER_ROW; i++) {
 
             String folderPath = randomFolder();
-            row1FolderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), ROW_MARGIN_TOP,  folderPath);
+            row1FolderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), ROW_MARGIN_TOP, folderPath);
             folderPath = randomFolder();
-            row2FolderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), ROW_MARGIN_TOP - 180,  folderPath);
+            row2FolderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), ROW_MARGIN_TOP - 180, folderPath);
             folderPath = randomFolder();
-            row3FolderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), ROW_MARGIN_TOP - 360,  folderPath);
+            row3FolderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), ROW_MARGIN_TOP - 360, folderPath);
 
         }
     }
 
-    private Char chooseCharToMove(){
+    private Char chooseCharToMove() {
         int switcher = gameLevel;
 
-        if(gameLevel > 3){
+        if (gameLevel > 3) {
             switcher = 3;
         }
 
         int randomRow = (int) (Math.random() * switcher);
         Char character;
-        switch (randomRow){
+        switch (randomRow) {
 
             case 0:
                 character = gameCharactersRow1[currentCharacter];
@@ -323,14 +355,14 @@ public class Game implements Clickable {
             case 2:
                 character = gameCharactersRow3[currentCharacter];
                 break;
-                default:
-                    character = gameCharactersRow1[currentCharacter];
+            default:
+                character = gameCharactersRow1[currentCharacter];
         }
 
         return character;
     }
 
-    private void drawFolders(){
+    private void drawFolders() {
         if (gameLevel == 2) {
 
             for (int i = 0; i < TOTAL_CHARACTERS; i++) {
@@ -344,8 +376,8 @@ public class Game implements Clickable {
         if (gameLevel == 3) {
 
             for (int i = 0; i < TOTAL_CHARACTERS; i++) {
-                    gameCharactersRow3[i].drawCharacter();
-                }
+                gameCharactersRow3[i].drawCharacter();
+            }
 
             for (int i = 0; i < FOLDERS_PER_ROW; i++) {
                 row3FolderPic[i].draw();
