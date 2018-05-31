@@ -107,7 +107,7 @@ public class Game implements Clickable {
                     break;
                 }
 
-                Thread.sleep(20);
+                Thread.sleep(10);
             }
 
             if (lives == 0) {
@@ -118,7 +118,7 @@ public class Game implements Clickable {
             mouseX = 0;
             mouseY = 0;
             currentCharacter++;
-            Thread.sleep(1000);
+            Thread.sleep(1000/gameLevel);
         }
 
     }
