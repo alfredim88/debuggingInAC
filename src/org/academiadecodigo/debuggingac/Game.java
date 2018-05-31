@@ -13,17 +13,17 @@ public class Game implements Clickable {
     private static final int FOLDERS_PER_ROW = 8;
     private static final int PADDING_FOLDERS = 150;
     private static final int MARGIN_LEFT = 0;
-    private static final int ROW_MARGIN_TOP =650;
+    private static final int ROW_MARGIN_TOP = 650;
     private static final int TOTAL_CHARACTERS = 100;
     private GameField gameField;
     private CharactersFactory factory = new CharactersFactory();
     private volatile int mouseX;
     private volatile int mouseY;
     private boolean finished;
-    private int time = 99;
+    private int time = 30;
     private long startTime;
     private long currentTime;
-    private int gameLevel = 1;
+    private int gameLevel = 3;
     private int lives = 1;
     private int score = 0;
     private int currentCharacter = 0;
@@ -157,7 +157,7 @@ public class Game implements Clickable {
 
         Char.setY(Game.getRowMarginTop()-15);
         finished = false;
-        time = 99;
+        time = 30;
         lives = 3;
         score = 0;
         gameLevel = 1;
@@ -294,7 +294,9 @@ public class Game implements Clickable {
 
             String folderPath = randomFolder();
             row1FolderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), ROW_MARGIN_TOP,  folderPath);
+            folderPath = randomFolder();
             row2FolderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), ROW_MARGIN_TOP - 180,  folderPath);
+            folderPath = randomFolder();
             row3FolderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), ROW_MARGIN_TOP - 360,  folderPath);
 
         }
