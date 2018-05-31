@@ -51,11 +51,11 @@ public class MenuEvent {
     public void init() throws InterruptedException{
 
         loadingZero.draw();
-        Thread.sleep(1000);
+        Thread.sleep(500);
 
         loadingOne.draw();
         loadingZero.delete();
-        Thread.sleep(1000);
+        Thread.sleep(500);
 
         loadingTwo.draw();
         loadingOne.delete();
@@ -63,7 +63,7 @@ public class MenuEvent {
 
         loadingThree.draw();
         loadingTwo.delete();
-        Thread.sleep(800);
+        Thread.sleep(500);
 
         loadingFour.draw();
         loadingThree.delete();
@@ -78,7 +78,7 @@ public class MenuEvent {
             //Thread.sleep(1750);
         } else {
             loadingSound.start(true);
-            Thread.sleep(1750);
+            Thread.sleep(100);
         }
 
 

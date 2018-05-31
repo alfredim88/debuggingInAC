@@ -47,30 +47,8 @@ public class Game implements Clickable {
         if(gameField == null){
         gameField = new GameField();}
 
-        for (int i = 0; i < TOTAL_CHARACTERS; i++) {
-
-            int random = (int) (Math.random() * 10);
-
-            if (random > 1) {
-                gameCharactersRow1[i] = factory.createBugs();
-                gameCharactersRow2[i] = factory.createBugs();
-                gameCharactersRow3[i] = factory.createBugs();
-            } else {
-                gameCharactersRow1[i] = factory.createFeatures();
-                gameCharactersRow2[i] = factory.createFeatures();
-                gameCharactersRow3[i] = factory.createFeatures();
-            }
-        }
-
-        //Grid for the folders
-        for (int i = 0; i < FOLDERS_PER_ROW; i++) {
-
-            String folderPath = randomFolder();
-            row1FolderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), ROW_MARGIN_TOP,  folderPath);
-            row2FolderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), ROW_MARGIN_TOP - 180,  folderPath);
-            row3FolderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), ROW_MARGIN_TOP - 360,  folderPath);
-
-        }
+        createChars();
+        createFolders();
         start();
     }
 
@@ -78,6 +56,10 @@ public class Game implements Clickable {
 
         startTime = System.currentTimeMillis();
 
+        Picture getReadyImage = new Picture(0, 0, "resources/images/ready_bg.png");
+        getReadyImage.draw();
+        Thread.sleep(3000);
+        getReadyImage.delete();
         drawEverything();
 
         while (!finished && currentCharacter < TOTAL_CHARACTERS) {
@@ -94,7 +76,7 @@ public class Game implements Clickable {
                 currentTime = System.currentTimeMillis();
                 updateTime();
                 levelUp();
-                character.move(character.getSpeed(), initialBugPosition);
+                character.move(character.getSpeed() + gameLevel, initialBugPosition);
 
                 if (mouseX >= character.getX() && mouseX <= character.getOffsetX()
                     && mouseY >= character.getY() && mouseY <= character.getOffsetY()) {
@@ -102,10 +84,8 @@ public class Game implements Clickable {
                     character.hit();
 
                     if (character instanceof Bug) {
-
                         Bug bug = (Bug) character;
-                        score += bug.getPoints();
-                        gameField.updateScore(score);
+                        bugHitted(bug);
                         break;
                     }
 
@@ -113,27 +93,18 @@ public class Game implements Clickable {
                     gameField.updateLives(lives);
                     break;
                 }
-
-                mouseX = 0;
-                mouseY = 0;
-
+                resetMouse();
                 Thread.sleep(30);
             }
 
-            if(character instanceof Feature){
-
-                Feature feature = (Feature) character;
-                score = score + feature.getPointsWon();
-                gameField.updateScore(score);
-            }
+         featureNotHitted(character);
 
             if (lives == 0) {
                 finished = true;
                 gameOver();
                 return;
             }
-            mouseX = 0;
-            mouseY = 0;
+            resetMouse();
             currentCharacter++;
             Thread.sleep(bugsInterval);
         }
@@ -157,8 +128,6 @@ public class Game implements Clickable {
                 gameOver.delete();
                 reset();
                 init();
-
-                return;
             }
 
             if(mouseX >= quitButton.getStartX() && mouseX <= quitButton.getEndX() &&
@@ -193,6 +162,16 @@ public class Game implements Clickable {
         score = 0;
         gameLevel = 1;
 
+    }
+
+    private void resetMouse(){
+        mouseX = 0;
+        mouseY = 0;
+    }
+
+    private void bugHitted(Bug bug){
+            score += bug.getPoints();
+            gameField.updateScore(score);
     }
 
     private void drawEverything() {
@@ -277,11 +256,48 @@ public class Game implements Clickable {
                         }
                     }
                 }
-            Thread.sleep(500);
+            Thread.sleep(2000);
             levelUpImage.delete();
             drawFolders();
             Thread.sleep(500);
             }
+    }
+
+    private void featureNotHitted(Char character){
+        if(character instanceof Feature){
+
+            Feature feature = (Feature) character;
+            score = score + feature.getPointsWon();
+            gameField.updateScore(score);
+        }
+    }
+
+    private void createChars(){
+        for (int i = 0; i < TOTAL_CHARACTERS; i++) {
+
+            int random = (int) (Math.random() * 10);
+
+            if (random > 1) {
+                gameCharactersRow1[i] = factory.createBugs();
+                gameCharactersRow2[i] = factory.createBugs();
+                gameCharactersRow3[i] = factory.createBugs();
+            } else {
+                gameCharactersRow1[i] = factory.createFeatures();
+                gameCharactersRow2[i] = factory.createFeatures();
+                gameCharactersRow3[i] = factory.createFeatures();
+            }
+        }
+    }
+
+    private void createFolders(){
+        for (int i = 0; i < FOLDERS_PER_ROW; i++) {
+
+            String folderPath = randomFolder();
+            row1FolderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), ROW_MARGIN_TOP,  folderPath);
+            row2FolderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), ROW_MARGIN_TOP - 180,  folderPath);
+            row3FolderPic[i] = new Picture(MARGIN_LEFT + (PADDING_FOLDERS * i), ROW_MARGIN_TOP - 360,  folderPath);
+
+        }
     }
 
     private Char chooseCharToMove(){
