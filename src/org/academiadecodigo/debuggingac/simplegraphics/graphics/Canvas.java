@@ -25,26 +25,23 @@ public class Canvas {
     private BufferedImage background;
     private JFrame frame;
     private CanvasComponent component;
-    /**
-     * fullscreen
-     */
     GraphicsDevice device;
     boolean fullscreen;
 
+
     private Canvas() {
         component = new CanvasComponent();
-        /**
-         * fullscreen
-         */
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         device = ge.getDefaultScreenDevice();
+       Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 
         frame = new JFrame();
         frame.add(component);
         frame.pack();
-        frame.setLocation(LOCATION_OFFSET, LOCATION_OFFSET);
         frame.setSize(1200, 800);
+        frame.setLocation(dim.width/2-frame.getSize().width/2, dim.height/2-frame.getSize().height/2);
         frame.setTitle("Debugging in <AC_>");
+        frame.setResizable(false);
         frame.setVisible(true);
     }
 
@@ -250,6 +247,7 @@ public class Canvas {
             return new Dimension(maxx + MARGIN, maxy + MARGIN);
         }
     }
+
 
     public JFrame getFrame() {
         return frame;
