@@ -1,5 +1,6 @@
 package org.academiadecodigo.debuggingac;
 
+import org.academiadecodigo.debuggingac.audio.Audio;
 import org.academiadecodigo.debuggingac.characters.*;
 import org.academiadecodigo.debuggingac.menu.ButtonFactory;
 import org.academiadecodigo.debuggingac.menu.ButtonType;
@@ -37,7 +38,7 @@ public class Game implements Clickable {
     private Picture[] row3FolderPic = new Picture[FOLDERS_PER_ROW];
     private Buttons restartButton = ButtonFactory.getNewButton(ButtonType.RESTART);
     private Buttons quitButton = ButtonFactory.getNewButton(ButtonType.QUIT);
-
+    private static Audio loadingSound;
     private String randomFolder(){
         return FolderType.getRandomFolder().getFolderPic();
     }
@@ -53,7 +54,7 @@ public class Game implements Clickable {
     }
 
     public void start() throws InterruptedException {
-
+        this.loadingSound = new Audio("/resources/sounds/music.wav");
         startTime = System.currentTimeMillis();
 
         Picture getReadyImage = new Picture(0, 0, "resources/images/ready_bg.png");
@@ -61,7 +62,7 @@ public class Game implements Clickable {
         Thread.sleep(3000);
         getReadyImage.delete();
         drawEverything();
-
+        loadingSound.start(true);
         while (!finished && currentCharacter < TOTAL_CHARACTERS) {
 
             Char character = chooseCharToMove();
