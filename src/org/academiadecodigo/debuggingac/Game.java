@@ -191,6 +191,7 @@ public class Game implements Clickable {
         time = 99;
         lives = 3;
         score = 0;
+        gameLevel = 1;
 
     }
 
@@ -236,11 +237,13 @@ public class Game implements Clickable {
         }
     }
 
-    private void levelUp() {
+    private void levelUp() throws InterruptedException{
         if (score > 19 * gameLevel) {
             time += 20;
             gameLevel++;
             bugsInterval /= 2;
+            Picture levelUpImage = new Picture(0, 0, "resources/images/levelup.png");
+            levelUpImage.draw();
 
                 if (gameLevel == 2) {
 
@@ -251,17 +254,12 @@ public class Game implements Clickable {
                         if (random > 1) {
                             Char.setY(ROW_MARGIN_TOP - 195);
                             gameCharactersRow2[i] = factory.createBugs();
-                            gameCharactersRow2[i].drawCharacter();
                         } else {
                             Char.setY(ROW_MARGIN_TOP - 195);
                             gameCharactersRow2[i] = factory.createFeatures();
-                            gameCharactersRow2[i].drawCharacter();
                         }
                     }
 
-                    for (int i = 0; i < FOLDERS_PER_ROW; i++) {
-                        row2FolderPic[i].draw();
-                    }
                 }
 
                 if (gameLevel == 3) {
@@ -273,19 +271,16 @@ public class Game implements Clickable {
                         if (random > 1) {
                             Char.setY(ROW_MARGIN_TOP - 375);
                             gameCharactersRow3[i] = factory.createBugs();
-
-                            gameCharactersRow3[i].drawCharacter();
                         } else {
                             Char.setY(ROW_MARGIN_TOP - 375);
                             gameCharactersRow3[i] = factory.createFeatures();
-                            gameCharactersRow3[i].drawCharacter();
                         }
                     }
-
-                    for (int i = 0; i < FOLDERS_PER_ROW; i++) {
-                        row3FolderPic[i].draw();
-                    }
                 }
+            Thread.sleep(500);
+            levelUpImage.delete();
+            drawFolders();
+            Thread.sleep(500);
             }
     }
 
@@ -314,6 +309,29 @@ public class Game implements Clickable {
         }
 
         return character;
+    }
+
+    private void drawFolders(){
+        if (gameLevel == 2) {
+
+            for (int i = 0; i < TOTAL_CHARACTERS; i++) {
+                gameCharactersRow2[i].drawCharacter();
+            }
+            for (int i = 0; i < FOLDERS_PER_ROW; i++) {
+                row2FolderPic[i].draw();
+            }
+        }
+
+        if (gameLevel == 3) {
+
+            for (int i = 0; i < TOTAL_CHARACTERS; i++) {
+                    gameCharactersRow3[i].drawCharacter();
+                }
+
+            for (int i = 0; i < FOLDERS_PER_ROW; i++) {
+                row3FolderPic[i].draw();
+            }
+        }
     }
 
     @Override
