@@ -38,7 +38,7 @@ public class Mouse implements MouseListener, MouseMotionListener {
 
         Point point;
         if (isMacOs || isUnix) {
-            point = new Point(74, 172);
+            point = new Point(48, 124);
         } else {
             point = new Point(0, 0);
         }

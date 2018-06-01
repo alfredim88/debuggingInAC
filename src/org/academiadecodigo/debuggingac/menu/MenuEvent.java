@@ -5,11 +5,12 @@ import org.academiadecodigo.debuggingac.simplegraphics.pictures.Picture;
 
 public class MenuEvent {
 
-    private int menuLoops = 1;
+    private int menuLoops = 5;
     private static Picture menuBG;
     private static Picture menuBG2;
     private static Picture tutorial;
     private static Picture credits;
+    private static Picture easterEgg;
     private static Audio menu;
     private static Picture loadingZero;
     private static Picture loadingOne;
@@ -34,6 +35,7 @@ public class MenuEvent {
         this.menuBG2 = new Picture(0,0,"resources/images/menu/menu_x2.png");
         this.tutorial = new Picture(0,0, "resources/images/menu/tutorial.png");
         this.credits = new Picture(0,0, "resources/images/menu/credits.png");
+        this.easterEgg = new Picture(0, 0, "resources/images/menu/easter.png");
         this.loadingZero = new Picture(0, 0, "resources/images/loading/0.jpg");
         this.loadingOne = new Picture(0, 0, "resources/images/loading/1.jpg");
         this.loadingTwo = new Picture(0, 0, "resources/images/loading/2.jpg");
@@ -149,6 +151,18 @@ public class MenuEvent {
     public void removeTutorial() {
 
         tutorial.delete();
+
+    }
+
+    public void easterEgg() {
+
+        easterEgg.draw();
+
+    }
+
+    public void removeEasterEgg() {
+
+        easterEgg.delete();
 
     }
 
