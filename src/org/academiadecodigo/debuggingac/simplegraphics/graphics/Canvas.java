@@ -26,6 +26,7 @@ public class Canvas {
     private CanvasComponent component;
     GraphicsDevice device;
     boolean fullscreen;
+    private Robot robot;
 
 
     private Canvas() {
@@ -33,6 +34,12 @@ public class Canvas {
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         device = ge.getDefaultScreenDevice();
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+
+        try {
+            robot = new Robot(device);
+        } catch (AWTException e) {
+            e.printStackTrace();
+        }
 
         frame = new JFrame();
         frame.add(component);
@@ -247,6 +254,9 @@ public class Canvas {
         }
     }
 
+    public Robot getRobot() {
+        return robot;
+    }
 
     public JFrame getFrame() {
         return frame;

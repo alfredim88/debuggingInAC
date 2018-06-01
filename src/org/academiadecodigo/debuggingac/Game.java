@@ -188,7 +188,7 @@ public class Game implements Clickable {
         lives = 3;
         score = 0;
         gameLevel = 1;
-
+        currentCharacter = 0;
     }
 
     private void resetMouse() {
@@ -253,6 +253,7 @@ public class Game implements Clickable {
             levelUpImage.draw();
             loadingSound.stop();
             levelupSound.start(true);
+            currentCharacter=0;
 
             if (gameLevel == 2) {
 
