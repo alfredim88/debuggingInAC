@@ -1,11 +1,9 @@
 package org.academiadecodigo.debuggingac;
 
-import org.academiadecodigo.debuggingac.audio.Audio;
 import org.academiadecodigo.debuggingac.characters.*;
 import org.academiadecodigo.debuggingac.menu.ButtonFactory;
 import org.academiadecodigo.debuggingac.menu.ButtonType;
 import org.academiadecodigo.debuggingac.menu.Buttons;
-import org.academiadecodigo.debuggingac.menu.MenuEvent;
 import org.academiadecodigo.debuggingac.simplegraphics.pictures.Picture;
 
 
@@ -16,16 +14,17 @@ public class Game implements Clickable {
     private static final int MARGIN_LEFT = 0;
     private static final int ROW_MARGIN_TOP = 650;
     private static final int TOTAL_CHARACTERS = 100;
+    private static final int LEVELUP_SCORE = 199;
     private GameField gameField;
     private CharactersFactory factory = new CharactersFactory();
     private volatile int mouseX;
     private volatile int mouseY;
     private boolean finished;
-    private int time = 30;
+    private int time = 30;     
     private long startTime;
     private long currentTime;
-    private int gameLevel = 3;
-    private int lives = 1;
+    private int gameLevel = 1;
+    private int lives = 3;
     private int score = 0;
     private int currentCharacter = 0;
     private int bugsInterval = 1000;
@@ -38,7 +37,7 @@ public class Game implements Clickable {
     private Picture[] row3FolderPic = new Picture[FOLDERS_PER_ROW];
     private Buttons restartButton = ButtonFactory.getNewButton(ButtonType.RESTART);
     private Buttons quitButton = ButtonFactory.getNewButton(ButtonType.QUIT);
-    private static Audio loadingSound;
+
     private String randomFolder(){
         return FolderType.getRandomFolder().getFolderPic();
     }
@@ -54,7 +53,7 @@ public class Game implements Clickable {
     }
 
     public void start() throws InterruptedException {
-        this.loadingSound = new Audio("/resources/sounds/music.wav");
+
         startTime = System.currentTimeMillis();
 
         Picture getReadyImage = new Picture(0, 0, "resources/images/ready_bg.png");
@@ -62,7 +61,7 @@ public class Game implements Clickable {
         Thread.sleep(3000);
         getReadyImage.delete();
         drawEverything();
-        loadingSound.start(true);
+
         while (!finished && currentCharacter < TOTAL_CHARACTERS) {
 
             Char character = chooseCharToMove();
@@ -86,7 +85,7 @@ public class Game implements Clickable {
 
                     if (character instanceof Bug) {
                         Bug bug = (Bug) character;
-                        bugHitted(bug);
+                        bugHit(bug);
                         break;
                     }
 
@@ -98,7 +97,7 @@ public class Game implements Clickable {
                 Thread.sleep(30);
             }
 
-         featureNotHitted(character);
+         featureNotHit(character);
 
             if (lives == 0) {
                 finished = true;
@@ -170,7 +169,7 @@ public class Game implements Clickable {
         mouseY = 0;
     }
 
-    private void bugHitted(Bug bug){
+    private void bugHit(Bug bug){
             score += bug.getPoints();
             gameField.updateScore(score);
     }
@@ -218,7 +217,7 @@ public class Game implements Clickable {
     }
 
     private void levelUp() throws InterruptedException{
-        if (score > 199 * gameLevel) {
+        if (score > LEVELUP_SCORE * gameLevel) {
             time += 20;
             gameLevel++;
             bugsInterval /= 2;
@@ -264,7 +263,7 @@ public class Game implements Clickable {
             }
     }
 
-    private void featureNotHitted(Char character){
+    private void featureNotHit(Char character){
         if(character instanceof Feature){
 
             Feature feature = (Feature) character;
