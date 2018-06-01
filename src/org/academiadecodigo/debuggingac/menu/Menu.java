@@ -13,6 +13,7 @@ public class Menu implements Clickable{
     private Buttons tutorial;
     private Buttons credits;
     private Buttons back;
+    private Buttons easterEgg;
     private boolean startSelection;
     private boolean secondaryMenu;
     private static String OS = System.getProperty("os.name").toLowerCase();
@@ -31,6 +32,7 @@ public class Menu implements Clickable{
         tutorial = ButtonFactory.getNewButton(ButtonType.TUTORIAL);
         credits = ButtonFactory.getNewButton(ButtonType.CREDITS);
         back = ButtonFactory.getNewButton(ButtonType.BACK);
+        easterEgg = ButtonFactory.getNewButton(ButtonType.EASTER_EGG);
         startSelection = false;
         secondaryMenu = false;
 
@@ -56,6 +58,7 @@ public class Menu implements Clickable{
                         (mouseY >= back.getStartY() && mouseY <= back.getEndY())) {
                     menuEvent.removeCredits();
                     menuEvent.removeTutorial();
+                    menuEvent.removeEasterEgg();
                     Thread.sleep(200);
                     secondaryMenu = false;
                     mainMenu();
@@ -70,25 +73,37 @@ public class Menu implements Clickable{
                 startSelection = true;
             }
             /*
-             * If the the Credits submenu is selected
+             * If the the Tutorial submenu is selected
              */
             if ((mouseX >= tutorial.getStartX() && mouseX <= tutorial.getEndX()) &&
                     (mouseY >= tutorial.getStartY() && mouseY <= tutorial.getEndY())) {
                 secondaryMenu = true;
                 tutorial();
                 menuEvent.removeCredits();
+
+            }
+
+            if ((mouseX >= easterEgg.getStartX() && mouseX <= easterEgg.getEndX()) &&
+                    (mouseY >= easterEgg.getStartY() && mouseY <= easterEgg.getEndY())) {
+
+                secondaryMenu = true;
+                easterEgg();
+
             }
             /*
-             * If the Tutorial submenu is selected
+             * If the Credits submenu is selected
              */
             if ((mouseX >= credits.getStartX() && mouseX <= credits.getEndX()) &&
                     (mouseY >= credits.getStartY() && mouseY <= credits.getEndY())) {
                 secondaryMenu = true;
                 credits();
                 menuEvent.removeTutorial();
+
             }
         }
     }
+
+
 
     private void tutorial() {
 
@@ -98,6 +113,12 @@ public class Menu implements Clickable{
     private void credits() {
 
         menuEvent.credits();
+
+    }
+
+    private void easterEgg() {
+
+        menuEvent.easterEgg();
 
     }
 
