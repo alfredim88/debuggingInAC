@@ -14,8 +14,8 @@ public class Game implements Clickable {
     private static final int PADDING_FOLDERS = 150;
     private static final int MARGIN_LEFT = 0;
     private static final int ROW_MARGIN_TOP = 650;
-    private static final int TOTAL_CHARACTERS = 500;
-    private static final int LEVELUP_SCORE = 199;
+    private static final int TOTAL_CHARACTERS = 200;
+    private static final int LEVELUP_SCORE = 299;
     private GameField gameField;
     private CharactersFactory factory = new CharactersFactory();
     private volatile int mouseX;
@@ -56,15 +56,18 @@ public class Game implements Clickable {
             gameField = new GameField();
         }
 
+        levelupSound = new Audio("/resources/sounds/level.wav");
+        loadingSound = new Audio("/resources/sounds/music.wav");
+        oneSecSound = new Audio("/resources/sounds/1.wav");
+        twoSecSound = new Audio("/resources/sounds/2.wav");
+        gameOverSound = new Audio("/resources/sounds/gameover.wav");
+        dieSound = new Audio("/resources/sounds/die.wav");
         createChars();
         createFolders();
         start();
     }
 
     public void start() throws InterruptedException {
-        this.loadingSound = new Audio("/resources/sounds/music.wav");
-        this.oneSecSound = new Audio("/resources/sounds/1.wav");
-        this.twoSecSound = new Audio("/resources/sounds/2.wav");
         startTime = System.currentTimeMillis();
 
         Picture getReadyImage = new Picture(0, 0, "resources/images/ready_bg.png");
@@ -112,7 +115,7 @@ public class Game implements Clickable {
                     gameField.updateLives(lives);
                     break;
                 }
-                resetMouse();
+                //resetMouse();
                 Thread.sleep(30);
             }
 
@@ -131,8 +134,7 @@ public class Game implements Clickable {
     }
 
     public void gameOver() throws InterruptedException {
-        this.gameOverSound = new Audio("/resources/sounds/gameover.wav");
-        this.dieSound = new Audio("/resources/sounds/die.wav");
+
         finished = true;
         this.loadingSound.stop();
         Picture gameOver = new Picture(0, 0, "resources/images/gameover.png");
@@ -241,9 +243,6 @@ public class Game implements Clickable {
     }
 
     private void levelUp() throws InterruptedException {
-
-        this.levelupSound = new Audio("/resources/sounds/level.wav");
-
 
         if (score > LEVELUP_SCORE * gameLevel) {
             time += 20;
