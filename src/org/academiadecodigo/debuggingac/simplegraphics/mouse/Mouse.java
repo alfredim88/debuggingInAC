@@ -24,6 +24,8 @@ public class Mouse implements MouseListener, MouseMotionListener {
     boolean isUnix = osName.indexOf("nix") >= 0 || osName.indexOf("nux") >= 0 || osName.indexOf("aix") > 0;
     private Cursor aim;
     private Cursor hit;
+    private Robot robot;
+
 
 
     /**
@@ -31,6 +33,8 @@ public class Mouse implements MouseListener, MouseMotionListener {
      */
     public Mouse(MouseHandler handler) {
         Canvas.getInstance().addMouseListener(this);
+
+        robot = Canvas.getInstance().getRobot();
 
         this.handler = handler;
         mouseEventArrayList = new ArrayList<>();
@@ -45,7 +49,7 @@ public class Mouse implements MouseListener, MouseMotionListener {
         aim = Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("resources/images/cursor/aim.png").getImage(), point, "aim");
         hit = Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("resources/images/cursor/hit.png").getImage(), point, "hit");
 
-        pane.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("resources/images/cursor/idle.png").getImage(), point,"idle"));
+        pane.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("resources/images/cursor/idle.png").getImage(), point, "idle"));
     }
 
     /**
@@ -72,7 +76,6 @@ public class Mouse implements MouseListener, MouseMotionListener {
      */
     @Override
     public void mouseClicked(MouseEvent e) {
-
     }
 
     /**
@@ -86,6 +89,7 @@ public class Mouse implements MouseListener, MouseMotionListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
+
         pane.setCursor(hit);
 
         if (handler == null) {
@@ -104,6 +108,7 @@ public class Mouse implements MouseListener, MouseMotionListener {
 
     @Override
     public void mouseReleased(MouseEvent e) {
+
         pane.setCursor(aim);
     }
 
@@ -113,6 +118,11 @@ public class Mouse implements MouseListener, MouseMotionListener {
 
     @Override
     public void mouseExited(MouseEvent e) {
+
+        int x = e.getX() <= 10 ? 50 : -50;
+        int y = e.getY() <= 10 ? 50 : 50;
+        robot.mouseMove((int) e.getLocationOnScreen().getX() + x, (int) e.getLocationOnScreen().getY() + y);
+
     }
 
     @Override

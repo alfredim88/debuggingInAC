@@ -33,6 +33,7 @@ public class Swatter implements MouseHandler {
 
     @Override
     public void mouseMoved(MouseEvent e) {
+
     }
 
     public void setClickable(Clickable clickable) {
