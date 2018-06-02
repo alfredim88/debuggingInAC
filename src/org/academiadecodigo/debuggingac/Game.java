@@ -21,7 +21,7 @@ public class Game implements Clickable {
     private volatile int mouseX;
     private volatile int mouseY;
     private boolean finished;
-    private int time = 30;     
+    private int time = 30;
     private long startTime;
     private long currentTime;
     private int gameLevel = 1;
@@ -84,6 +84,7 @@ public class Game implements Clickable {
         // Thread.sleep(3000);
         getReadyImage.delete();
         drawEverything();
+        loadingSound.start(true);
 
         while (!finished && currentCharacter < TOTAL_CHARACTERS) {
 
@@ -185,7 +186,12 @@ public class Game implements Clickable {
         Char.setY(Game.getRowMarginTop() - 15);
         finished = false;
         time = 30;
-        lives = 3;
+        if (lives == 0) {
+            lives = 3;
+            return;
+        }
+        lives--;
+        gameField.updateLives(lives);
         score = 0;
         gameLevel = 1;
         currentCharacter = 0;
@@ -253,7 +259,7 @@ public class Game implements Clickable {
             levelUpImage.draw();
             loadingSound.stop();
             levelupSound.start(true);
-            currentCharacter=0;
+            currentCharacter = 0;
 
             if (gameLevel == 2) {
 
