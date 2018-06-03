@@ -28,7 +28,7 @@ public class Game implements Clickable {
     private int lives = 3;
     private int score = 0;
     private int currentCharacter = 0;
-    private int bugsInterval = 1000;
+    private int bugsInterval = 2000;
     private int initialBugPosition;
     private Char[] gameCharactersRow1 = new Char[TOTAL_CHARACTERS];
     private Char[] gameCharactersRow2 = new Char[TOTAL_CHARACTERS];
@@ -83,16 +83,16 @@ public class Game implements Clickable {
         Picture getReadyImage = new Picture(0, 0, "resources/images/ready_bg.png");
         getReadyImage.draw();
         Thread.sleep(1000);
-        oneSecSound.start(true);
+/*        oneSecSound.start(true);
         Thread.sleep(1000);
         oneSecSound.start(true);
         Thread.sleep(1000);
-        twoSecSound.start(true);
+        twoSecSound.start(true);*/
         Thread.sleep(300);
 
         getReadyImage.delete();
         drawEverything();
-        loadingSound.start(true);
+//        loadingSound.start(true);
 
         while (!finished && currentCharacter < TOTAL_CHARACTERS) {
 
@@ -126,9 +126,11 @@ public class Game implements Clickable {
                     break;
                 }
                 Thread.sleep(30);
-            }
 
-            featureNotHit(character);
+                if (character.hasEnded()){
+                featureNotHit(character);
+                }
+            }
 
             if (lives == 0) {
                 finished = true;
@@ -145,10 +147,10 @@ public class Game implements Clickable {
     public void gameOver() throws InterruptedException {
 
         finished = true;
-        this.loadingSound.stop();
+       // this.loadingSound.stop();
         Picture gameOver = new Picture(0, 0, "resources/images/gameover.png");
-        this.gameOverSound.start(true);
-        this.dieSound.start(true);
+        //this.gameOverSound.start(true);
+        //this.dieSound.start(true);
         gameOver.draw();
         inGameMenu(gameOver);
     }
@@ -264,8 +266,8 @@ public class Game implements Clickable {
             bugsInterval /= 2;
             Picture levelUpImage = new Picture(0, 0, "resources/images/levelup.png");
             levelUpImage.draw();
-            loadingSound.stop();
-            levelUpSound.start(true);
+//            loadingSound.stop();
+//            levelUpSound.start(true);
             currentCharacter = 0;
 
             if (gameLevel == 2) {
@@ -300,6 +302,7 @@ public class Game implements Clickable {
                     }
                 }
             }
+            //featureNotHit(character);
             Thread.sleep(2000);
             levelUpImage.delete();
             loadingSound.start(true);
@@ -312,7 +315,7 @@ public class Game implements Clickable {
 
         if (character instanceof Feature) {
 
-            featureSound.start(true);
+           // featureSound.start(true);
             Feature feature = (Feature) character;
             score = score + feature.getPointsWon();
             gameField.updateScore(score);

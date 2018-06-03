@@ -5,7 +5,7 @@ import org.academiadecodigo.debuggingac.menu.Menu;
 public class Main {
 
     public static void main(String[] args) throws InterruptedException {
-        boolean debug = false;
+        boolean debug = true;
         new Fullscreen();
 
         Swatter swatter = new Swatter();

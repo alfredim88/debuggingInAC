@@ -8,6 +8,7 @@ public abstract class Char {
     private boolean swattered;
     private Picture pic1;
     private Picture pic2;
+    private Picture pic3;
     private boolean goingUp = true;
     private long topTimer;
     private int x;
@@ -16,24 +17,33 @@ public abstract class Char {
     private int speed;
     private int initialPosition;
 
-    public Char(String pic1, String pic2, int speed){
+    public Char(String pic1, String pic2, String pic3, int speed){
         this.x = Randomizer.randomFolder();
         this.pic1 = new Picture(x,y,pic1);
         this.pic2 = new Picture(x,y,pic2);
+        this.pic3 = new Picture(x,y,pic3);
         this.speed = speed;
     }
 
     public void drawCharacter(){
+        pic2.grow(size,size);
+        pic2.draw();
         pic1.grow(size,size);
         pic1.draw();
         }
 
     public void hit() throws InterruptedException {
         pic1.delete();
-        pic2.grow(size,size);
-        pic2.draw();
-        Thread.sleep(300);
-        pic2.delete();
+        if(this instanceof Bug){
+            pic3.draw();
+            Thread.sleep(300);
+            pic2.delete();
+            pic3.delete();
+        } else if(this instanceof Feature){
+            Thread.sleep(300);
+            pic2.delete();
+        }
+
         swattered = true;
     }
 
@@ -49,6 +59,7 @@ public abstract class Char {
 
             pic1.translate(0,-10);
             pic2.translate(0,-10);
+            pic3.translate(0,-10);
 
             if (reachTop()) {
                 goingUp = false;
@@ -57,12 +68,15 @@ public abstract class Char {
             return;
         }
 
-        if (System.currentTimeMillis() - topTimer > 1000/speed) {
+        if (System.currentTimeMillis() - topTimer > 2000/speed) {
             pic1.translate(0, 10);
             pic2.translate(0,10);
+            pic3.translate(0,10);
 
             if (pic1.getY() >= initialPosition){
                 pic1.delete();
+                pic2.delete();
+                pic3.delete();
             }
         }
     }
