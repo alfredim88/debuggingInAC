@@ -13,7 +13,9 @@ public class Main {
         Menu menu = new Menu();
         swatter.setClickable(menu);
 
-        menu.selection();
+        if (!debug) {
+            menu.selection();
+        }
 
         Game game = new Game();
         swatter.setClickable(game);
