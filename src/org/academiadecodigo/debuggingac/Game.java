@@ -41,10 +41,16 @@ public class Game implements Clickable {
     private static Audio loadingSound;
     private static Audio gameOverSound;
     private static Audio dieSound;
-    private static Audio levelupSound;
+    private static Audio levelUpSound;
     private static Audio oneSecSound;
     private static Audio twoSecSound;
     private static Audio featureSound;
+    private static String OS = System.getProperty("os.name").toLowerCase();
+    public static boolean isUnix() {
+
+        return (OS.indexOf("nix") >= 0 || OS.indexOf("nux") >= 0 || OS.indexOf("aix") > 0 );
+
+    }
 
     private String randomFolder() {
         return FolderType.getRandomFolder().getFolderPic();
@@ -55,13 +61,16 @@ public class Game implements Clickable {
         if (gameField == null) {
             gameField = new GameField();
         }
+        if (!isUnix()) {
+            levelUpSound = new Audio("/resources/sounds/level.wav");
+            loadingSound = new Audio("/resources/sounds/music.wav");
+            oneSecSound = new Audio("/resources/sounds/1.wav");
+            twoSecSound = new Audio("/resources/sounds/2.wav");
+            gameOverSound = new Audio("/resources/sounds/gameover.wav");
+            dieSound = new Audio("/resources/sounds/die.wav");
+            featureSound = new Audio("/resources/sounds/coin.wav");
+        }
 
-        levelupSound = new Audio("/resources/sounds/level.wav");
-        loadingSound = new Audio("/resources/sounds/music.wav");
-        oneSecSound = new Audio("/resources/sounds/1.wav");
-        twoSecSound = new Audio("/resources/sounds/2.wav");
-        gameOverSound = new Audio("/resources/sounds/gameover.wav");
-        dieSound = new Audio("/resources/sounds/die.wav");
         createChars();
         createFolders();
         start();
@@ -81,7 +90,6 @@ public class Game implements Clickable {
         twoSecSound.start(true);
         Thread.sleep(300);
 
-        // Thread.sleep(3000);
         getReadyImage.delete();
         drawEverything();
         loadingSound.start(true);
@@ -117,7 +125,6 @@ public class Game implements Clickable {
                     gameField.updateLives(lives);
                     break;
                 }
-                //resetMouse();
                 Thread.sleep(30);
             }
 
@@ -258,7 +265,7 @@ public class Game implements Clickable {
             Picture levelUpImage = new Picture(0, 0, "resources/images/levelup.png");
             levelUpImage.draw();
             loadingSound.stop();
-            levelupSound.start(true);
+            levelUpSound.start(true);
             currentCharacter = 0;
 
             if (gameLevel == 2) {
@@ -302,7 +309,7 @@ public class Game implements Clickable {
     }
 
     private void featureNotHit(Char character) {
-        this.featureSound = new Audio("/resources/sounds/coin.wav");
+
         if (character instanceof Feature) {
 
             featureSound.start(true);
