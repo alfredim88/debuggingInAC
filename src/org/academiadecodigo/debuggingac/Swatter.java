@@ -14,7 +14,7 @@ public class Swatter implements MouseHandler {
 
     public Swatter() {
         Mouse swatter = new Mouse(this);
-        swatHit = new Audio("/resources/sounds/hammer.wav");
+        //swatHit = new Audio("/resources/sounds/hammer.wav");
         swatter.addEventListener(MouseEventType.MOUSE_CLICKED);
     }
 
@@ -28,7 +28,7 @@ public class Swatter implements MouseHandler {
         clickable.setX((int) e.getX());
         clickable.setY((int) e.getY());
 
-        swatHit.start(true);
+        //swatHit.start(true);
     }
 
     @Override
@@ -39,4 +39,6 @@ public class Swatter implements MouseHandler {
     public void setClickable(Clickable clickable) {
         this.clickable = clickable;
     }
+
+
 }
