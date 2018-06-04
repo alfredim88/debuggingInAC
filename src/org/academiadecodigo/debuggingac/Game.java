@@ -178,6 +178,7 @@ public class Game implements Clickable {
     }
 
     public void reset() {
+        getReadyImage.draw();
         for (int i = 0; i < FOLDERS_PER_ROW; i++) {
             row1FolderPic[i].delete();
             row2FolderPic[i].delete();
@@ -196,7 +197,7 @@ public class Game implements Clickable {
 
         Char.setY(Game.getRowMarginTop() - 15);
         finished = false;
-        time = 30;
+        time = 60;
         if (lives == 0) {
             lives = 3;
             return;
@@ -204,8 +205,10 @@ public class Game implements Clickable {
         lives--;
         gameField.updateLives(lives);
         score = 0;
+        gameField.updateScore(score);
         gameLevel = 1;
         currentCharacter = 0;
+        getReadyImage.delete();
     }
 
     private void resetMouse() {
