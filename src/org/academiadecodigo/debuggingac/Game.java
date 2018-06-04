@@ -21,7 +21,7 @@ public class Game implements Clickable {
     private volatile int mouseX;
     private volatile int mouseY;
     private boolean finished;
-    private int time = 60;
+    private int time = 10;
     private long startTime;
     private long currentTime;
     private int gameLevel = 1;
@@ -203,7 +203,7 @@ public class Game implements Clickable {
         }
         lives--;
         gameField.updateLives(lives);
-        score = 0;
+        this.score = 0;
         gameLevel = 1;
         currentCharacter = 0;
     }
