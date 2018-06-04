@@ -21,7 +21,7 @@ public class Game implements Clickable {
     private volatile int mouseX;
     private volatile int mouseY;
     private boolean finished;
-    private int time = 60;
+    private int time = 59;
     private long startTime;
     private long currentTime;
     private int gameLevel = 1;
@@ -41,20 +41,10 @@ public class Game implements Clickable {
     private static Audio loadingSound;
     private static Audio gameOverSound;
     private static Audio dieSound;
-    private static Audio levelUpSound;
+    private static Audio levelupSound;
     private static Audio oneSecSound;
     private static Audio twoSecSound;
     private static Audio featureSound;
-    private Picture levelUpImage = new Picture(0, 0, "resources/images/levelup.png");
-    private Picture gameOver = new Picture(0, 0, "resources/images/gameover.png");
-    private Picture getReadyImage = new Picture(0, 0, "resources/images/ready_bg.png");
-    private static String OS = System.getProperty("os.name").toLowerCase();
-
-    public static boolean isUnix() {
-
-        return (OS.indexOf("nix") >= 0 || OS.indexOf("nux") >= 0 || OS.indexOf("aix") > 0);
-
-    }
 
     private String randomFolder() {
         return FolderType.getRandomFolder().getFolderPic();
@@ -65,24 +55,22 @@ public class Game implements Clickable {
         if (gameField == null) {
             gameField = new GameField();
         }
-        if (!isUnix()) {
-            levelUpSound = new Audio("/resources/sounds/level.wav");
-            loadingSound = new Audio("/resources/sounds/music.wav");
-            oneSecSound = new Audio("/resources/sounds/1.wav");
-            twoSecSound = new Audio("/resources/sounds/2.wav");
-            gameOverSound = new Audio("/resources/sounds/gameover.wav");
-            dieSound = new Audio("/resources/sounds/die.wav");
-            featureSound = new Audio("/resources/sounds/coin.wav");
-        }
 
+        levelupSound = new Audio("/resources/sounds/level.wav");
+        loadingSound = new Audio("/resources/sounds/music.wav");
+        oneSecSound = new Audio("/resources/sounds/1.wav");
+        twoSecSound = new Audio("/resources/sounds/2.wav");
+        gameOverSound = new Audio("/resources/sounds/gameover.wav");
+        dieSound = new Audio("/resources/sounds/die.wav");
         createChars();
         createFolders();
         start();
     }
 
     public void start() throws InterruptedException {
-
         startTime = System.currentTimeMillis();
+
+        Picture getReadyImage = new Picture(0, 0, "resources/images/ready_bg.png");
         getReadyImage.draw();
         Thread.sleep(1000);
         oneSecSound.start(true);
@@ -92,10 +80,10 @@ public class Game implements Clickable {
         twoSecSound.start(true);
         Thread.sleep(300);
 
+        // Thread.sleep(3000);
         getReadyImage.delete();
         drawEverything();
         loadingSound.start(true);
-
         while (!finished && currentCharacter < TOTAL_CHARACTERS) {
 
             Char character = chooseCharToMove();
@@ -127,12 +115,11 @@ public class Game implements Clickable {
                     gameField.updateLives(lives);
                     break;
                 }
+                //resetMouse();
                 Thread.sleep(30);
-
-                if (character.hasEnded()) {
-                    featureNotHit(character);
-                }
             }
+
+            featureNotHit(character);
 
             if (lives == 0) {
                 finished = true;
@@ -150,7 +137,7 @@ public class Game implements Clickable {
 
         finished = true;
         this.loadingSound.stop();
-
+        Picture gameOver = new Picture(0, 0, "resources/images/gameover.png");
         this.gameOverSound.start(true);
         this.dieSound.start(true);
         gameOver.draw();
@@ -178,7 +165,6 @@ public class Game implements Clickable {
     }
 
     public void reset() {
-        getReadyImage.draw();
         for (int i = 0; i < FOLDERS_PER_ROW; i++) {
             row1FolderPic[i].delete();
             row2FolderPic[i].delete();
@@ -198,17 +184,16 @@ public class Game implements Clickable {
         Char.setY(Game.getRowMarginTop() - 15);
         finished = false;
         time = 60;
-        if (lives == 0) {
+       lives = 3;
+      /*  if (lives == 0) {
             lives = 3;
             return;
         }
         lives--;
-        gameField.updateLives(lives);
+        gameField.updateLives(lives);*/
         score = 0;
-        gameField.updateScore(score);
         gameLevel = 1;
-        currentCharacter = 0;
-        getReadyImage.delete();
+
     }
 
     private void resetMouse() {
@@ -251,7 +236,7 @@ public class Game implements Clickable {
 
     private void updateTime() throws InterruptedException {
 
-        if (currentTime - startTime > 1000) {
+        if (currentTime - startTime > 1500) {
             time--;
             startTime = currentTime;
             gameField.updateTime(time);
@@ -269,15 +254,14 @@ public class Game implements Clickable {
             time += 20;
             gameLevel++;
             bugsInterval /= 2;
+            Picture levelUpImage = new Picture(0, 0, "resources/images/levelup.png");
             levelUpImage.draw();
             loadingSound.stop();
-            levelUpSound.start(true);
-            currentCharacter = 0;
+            levelupSound.start(true);
 
             if (gameLevel == 2) {
 
-
-                    for (int i = 0; i < TOTAL_CHARACTERS; i++) {
+                for (int i = 0; i < TOTAL_CHARACTERS; i++) {
 
                     int random = (int) (Math.random() * 10);
 
@@ -316,7 +300,7 @@ public class Game implements Clickable {
     }
 
     private void featureNotHit(Char character) {
-
+        this.featureSound = new Audio("/resources/sounds/coin.wav");
         if (character instanceof Feature) {
 
             featureSound.start(true);
@@ -385,7 +369,6 @@ public class Game implements Clickable {
 
     private void drawFolders() {
         if (gameLevel == 2) {
-
 
             for (int i = 0; i < TOTAL_CHARACTERS; i++) {
                 gameCharactersRow2[i].drawCharacter();

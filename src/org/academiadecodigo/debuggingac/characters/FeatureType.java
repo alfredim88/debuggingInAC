@@ -4,22 +4,20 @@ import org.academiadecodigo.debuggingac.simplegraphics.pictures.Picture;
 
 public enum FeatureType {
 
-    BABY(2, 5, "resources/images/chars/baby_normal.png", "resources/images/chars/baby_hit.png", "resources/images/chars/hit.png"),
-    TOADETTE(1, 10, "resources/images/chars/toadette_normal.png", "resources/images/chars/toadette_hit.png", "resources/images/chars/hit.png"),
-    GOOMBELA(2, 3, "resources/images/chars/goombela_normal.png", "resources/images/chars/goombela_hit.png", "resources/images/chars/hit.png");
+    BABY(2, 5, "resources/images/chars/baby_normal.png", "resources/images/chars/baby_hit.png"),
+    TOADETTE(1, 10, "resources/images/chars/toadette_normal.png", "resources/images/chars/toadette_hit.png"),
+    GOOMBELA(2, 3, "resources/images/chars/goombela_normal.png", "resources/images/chars/goombela_hit.png");
 
     private int speed;
     private int pointsWon;
     private String alive;
     private String dead;
-    private String hitCloud;
 
-    FeatureType(int speed, int pointsWon, String alive, String dead, String hitCloud){
+    FeatureType(int speed, int pointsWon, String alive, String dead){
         this.speed = speed;
         this.pointsWon = pointsWon;
         this.alive = alive;
         this.dead = dead;
-        this.hitCloud = hitCloud;
     }
 
     public static FeatureType getRandomFeature(){
@@ -44,7 +42,4 @@ public enum FeatureType {
         return dead;
     }
 
-    public String getHitCloud() {
-        return hitCloud;
-    }
 }

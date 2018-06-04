@@ -232,7 +232,7 @@ public class Canvas {
             if (background != null) {
                 g.drawImage(background, 0, 0, null);
             }
-            for (Shape s : new ArrayList<>(shapes)) {
+            for (Shape s : new ArrayList<Shape>(shapes)) {
                 Graphics2D g2 = (Graphics2D) g.create();
                 s.paintShape(g2);
                 g2.dispose();

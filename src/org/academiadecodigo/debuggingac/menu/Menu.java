@@ -26,6 +26,8 @@ public class Menu implements Clickable{
     public Menu() throws InterruptedException {
 
         menuEvent = new MenuEvent();
+        //loading();
+
         play = ButtonFactory.getNewButton(ButtonType.PLAY);
         tutorial = ButtonFactory.getNewButton(ButtonType.TUTORIAL);
         credits = ButtonFactory.getNewButton(ButtonType.CREDITS);
@@ -40,7 +42,9 @@ public class Menu implements Clickable{
 
         menuEvent.init();
 
-        if (!isUnix()) {
+        if (isUnix()) {
+            //menuEvent.soundMenu();
+        } else {
             menuEvent.soundMenu();
         }
 
