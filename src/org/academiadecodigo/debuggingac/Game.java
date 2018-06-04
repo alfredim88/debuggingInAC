@@ -21,7 +21,7 @@ public class Game implements Clickable {
     private volatile int mouseX;
     private volatile int mouseY;
     private boolean finished;
-    private int time = 30;
+    private int time = 60;
     private long startTime;
     private long currentTime;
     private int gameLevel = 1;
@@ -45,10 +45,14 @@ public class Game implements Clickable {
     private static Audio oneSecSound;
     private static Audio twoSecSound;
     private static Audio featureSound;
+    private Picture levelUpImage = new Picture(0, 0, "resources/images/levelup.png");
+    private Picture gameOver = new Picture(0, 0, "resources/images/gameover.png");
+    private Picture getReadyImage = new Picture(0, 0, "resources/images/ready_bg.png");
     private static String OS = System.getProperty("os.name").toLowerCase();
+
     public static boolean isUnix() {
 
-        return (OS.indexOf("nix") >= 0 || OS.indexOf("nux") >= 0 || OS.indexOf("aix") > 0 );
+        return (OS.indexOf("nix") >= 0 || OS.indexOf("nux") >= 0 || OS.indexOf("aix") > 0);
 
     }
 
@@ -79,8 +83,6 @@ public class Game implements Clickable {
     public void start() throws InterruptedException {
 
         startTime = System.currentTimeMillis();
-
-        Picture getReadyImage = new Picture(0, 0, "resources/images/ready_bg.png");
         getReadyImage.draw();
         Thread.sleep(1000);
         oneSecSound.start(true);
@@ -126,9 +128,11 @@ public class Game implements Clickable {
                     break;
                 }
                 Thread.sleep(30);
-            }
 
-            featureNotHit(character);
+                if (character.hasEnded()) {
+                    featureNotHit(character);
+                }
+            }
 
             if (lives == 0) {
                 finished = true;
@@ -146,7 +150,7 @@ public class Game implements Clickable {
 
         finished = true;
         this.loadingSound.stop();
-        Picture gameOver = new Picture(0, 0, "resources/images/gameover.png");
+
         this.gameOverSound.start(true);
         this.dieSound.start(true);
         gameOver.draw();
@@ -262,7 +266,6 @@ public class Game implements Clickable {
             time += 20;
             gameLevel++;
             bugsInterval /= 2;
-            Picture levelUpImage = new Picture(0, 0, "resources/images/levelup.png");
             levelUpImage.draw();
             loadingSound.stop();
             levelUpSound.start(true);
@@ -270,7 +273,8 @@ public class Game implements Clickable {
 
             if (gameLevel == 2) {
 
-                for (int i = 0; i < TOTAL_CHARACTERS; i++) {
+
+                    for (int i = 0; i < TOTAL_CHARACTERS; i++) {
 
                     int random = (int) (Math.random() * 10);
 
@@ -378,6 +382,7 @@ public class Game implements Clickable {
 
     private void drawFolders() {
         if (gameLevel == 2) {
+
 
             for (int i = 0; i < TOTAL_CHARACTERS; i++) {
                 gameCharactersRow2[i].drawCharacter();

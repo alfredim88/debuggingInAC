@@ -6,14 +6,14 @@ public class Feature extends Char {
     private int pointsWon;
 
     public Feature(FeatureType featureType) {
-        super(featureType.getAlive(), featureType.getDead(), featureType.getSpeed());
+        super(featureType.getAlive(), featureType.getDead(), featureType.getHitCloud(), featureType.getSpeed());
         this.featureType = featureType;
         this.pointsWon = featureType.getPointsWon();
     }
-
+/*
     public FeatureType getFeatureType() {
         return featureType;
-    }
+    }*/
 
     public int getPointsWon() {
         return pointsWon;
